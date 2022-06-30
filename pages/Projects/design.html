@@ -1,0 +1,122 @@
+<!-- Design homework -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hungie app design</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+  <body class="container border">
+    <header class="header border">
+        <h1>Hello world!</h1>
+        <nav>
+          <a href="/index.html">About this page</a>
+          <a href="../links.html">Cool links</a>
+          <a href="../cv.html">Curriculum vitae</a>
+          <a href="../projects.html">My projects</a>
+          <a href="../notes.html">Notes</a>
+        </nav>
+      </header>
+      <main class="main border">
+        <article>
+          <h2>Interface design assignment</h2>
+          <section>
+            <a id="motivation"><h3>Motivation</h3></a>
+            <p>The motivation for this work is to create a design for an application that will help people 
+            pay attention to what and how much they eat. The idea is based on a quote from Peter Drucker - 
+            <i>What gets measured gets managed.</i> <br>
+            The Hungie app is therfore used to monitor calories and record meals. The app can function
+            eaither as a tool to improve onse lifestyle or as a simple food diary.</p>
+          </section>
+          <section>
+              <a id="goals"><h3>Goals</h3></a>
+              <p>The goal is to design the front end of a simple app for recording meals. The application 
+                should be as clear as possible so the user will not get discouraged from making regular
+                records. If everything takes too long, the user will lose interest.<br>
+                Long story shor, the main points of this tesign are:<br>
+                <ul>
+                    <li>Create a design for a food diary app</li>
+                    <li>Provide users with a tool to quickly record meals and allow users to deal with the details later</li>
+                    <li>Let the users specify the location of the entry on the map</li>
+                    <li>Give the users the opportunity to remember the good foods of the past</li>
+                </ul>
+              </p>
+          </section>
+          <section>
+            <a id="useCases"><h3>Use Cases and Scenarios</h3></a>
+            <h4>Use case 1</h4>
+            <ul>
+                <li>The user goes through initial settings on the first laucnho of the app.</li>
+                <li>The user expexts the system do display the main page.</li>
+                <li>The user expects to be able to add a record and to go through the history of saved records on the main page.</li>
+                <li>The user requests the ability to swithc between the main page and the sub pages.</li>
+            </ul>
+            <h4>Scenario 1</h4>
+              <ul>
+                <li>The system shows options for registration or login using the user's Google or Apple accounts on the first launch. There is a welcome sign at the top, and an image in the background.</li>
+                <li>The system shows the main page of the app.</li>
+                <li>On the top of the main page there is user's profile picture and a graph showing the percentage of todays consumed calories.</li>
+                <li>There is a calory counter near the middle of the screen. Under that lies a list of eaten meals sorted by the date and time.</li>
+                <li>In the bottom right corener is a button for making a new entry.</li>
+                <li>The navigation bar is at the bottom of the screen for ease of use. The bar allows the user to switch between the app screens.</li>
+              </ul>
+            <h4>Use case 2</h4>
+              <ul>
+                <li>The user expects the system to show the details of records.</li>
+                <li>The user requires the ability to edit or delete the details of records.</li>
+              </ul>
+            <h4>Scenario 2</h4>
+            <ul>
+                <li>The system displays cards with meals, sorted by the time of the record.</li>
+                <li>The cards contain picture of the meal, name and a button that leads to details page.</li>
+                <li>There is a search button in bottom right of the screen.</li>
+                <li>The system shows a new page with meal details on a click on the details button on any card.</li>
+                <li>The details page contains the meal name on the top, followed by its picture, number of calories, date and time of the record, 
+                    notes and a map with location of the record, if it was added.</li>
+                <li>The system shows buttons for editing or deletion of the record in place of the app's nav bar.</li>
+                <li>If user taps on the delete button, the system shows a warning with a confirmation button.</li>
+              </ul>
+            <h4>Use case 3</h4>
+              <ul>
+                <li>The user wants to be able to add new records, change the name, number of calories, notes, picture and location.</li>
+              </ul>
+            <h4>Scenario 3</h4>
+            <ul>
+                <li>On the main page the system shows a button for adding a new meal.</li>
+                <li>System waits for user to press the button.</li>
+                <li>After the add button is pressed, the system shows a new windows with title "New recording" and fields for the details.</li>
+                <li>To add the details, the system waits for the user to tap into the specific field of the detail.</li>
+                <li>The detail fields are, from top to the bottom, picture of the meal, name, number of calories, date, notes and a map.</li>
+                <li>The only required field is the name of the meal. The date and time is filled automatically. The rest of the details can be added later.</li>
+                <li>The system shows two buttons in the place of the app's nav bar. The first is to save the record, the other is to retur to the main page without saving.</li>
+                <li>If the user decides to tap on the return button, the system shows a warning - the data wonn't be saved. Under the warning there are two buttons, one 
+                    returns the user to the new record screen, the other leads the user to the main page.
+                </li>
+              </ul>
+          </section>
+          <section>
+            <a id="logic"><h3>Logical design</h3>
+          </section>
+          <section>
+            <a id="graphics"><h3>Graphical design</h3>
+          </section>
+        </article>
+      </main>
+      <aside class="aside border">
+        <h2>Article navigation</h2>
+        <ul>
+            <li><a href="#motivation">Motivation</a></li>
+            <li><a href="#goals">Goals</a></li>
+            <li><a href="#useCases">Use Cases and Use Cases</a></li>
+            <li><a href="#logic">Logical Design</a></li>
+            <li><a href="#graphics">Graphical Design</a></li>
+          </ul>
+      </aside>
+      <footer class="footer border">
+        <p>sch3fr, 2022</p>
+      </footer>
+  </body>
+</html>
