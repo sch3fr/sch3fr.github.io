@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mastermind C#</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body class="container border">
+  <header class="header border">
+    <h1>Hello world!</h1>
+    <nav>
+      <a href="/index.html">About this page</a>
+      <a href="../links.html">Cool links</a>
+      <a href="../cv.html">Curriculum vitae</a>
+      <a href="../projects.html">My projects</a>
+      <a href="../notes.html">Notes</a>
+    </nav>
+  </header>
+  <main class="main border">
+    <section>
+      <h2>MasterMind</h2>
+      <p>A simple game that was my first coding assignment. The topic of the assignment was chosen in a draw. I got a Mastemind game.</p>
+      <h3>Assignment requirements</h3>
+      <p>The requirements were quite simple. The porgram was in command line, since at the time we didn't know how to make GUI yet. The program had to be able to run the main function, 
+          in my case the Mastermind game, and also export and load files. The export and load was tricky to come up with, since it does not really make sense in my case. 
+          I ended up coding some import and export functionality, but it is useless.</p>
+      <h3>So what exactly is Mastermind?</h3>
+      <p>Mastermind is a code-breaking board game for who players. Player one choses the pattern of four code pegs. There are 6 colors of the pegs. The other player has to guess the pattern, 
+          based on a feedback from player one. The feedback comes in form of key pegs. There are two types of them, one signs that the player two guessed the color used in the pattern, 
+          but it is on wrong position, and the other one signs that the codebreaker guessed right both the color and position. Then the second player comes up with new guess until he 
+          either guesses the whole pattern, or he runs out of the space on game board.</p>
+      <h3>How does it work?</h3>
+      <p>Since I had no idea how to make a color guessing game, I ended up making a number guessing version. The program generates a random 3 digits number and the user keeps 
+          guessing until they get it right. There is no limit here.<br>
+          It is possible and very easy to tweak the difficulty to make the random number 4 digits.</p>
+      <h3>What is new in v2</h3>
+      <p>Compared to v1 I acutally submitted, v2 is coded entirely in English. It is also split into multiple classes files. If you would like to view the 
+          abomination that was the v1, you can in the /Backup/.</p>
+    </section>
+    <section>
+      <h3>Gallery</h3>
+      <div class="gallery">
+        <a target="_blank" href="/images/mastermind/menu.png">
+          <img src="/images/mastermind/menu.png" alt="The main menu of the game" width="900" height="auto">
+        </a>
+        <div class="desc">The main menu of the game</div>
+      </div>
+      <div class="gallery">
+        <a target="_blank" href="/images/mastermind/game.png">
+          <img src="/images/mastermind/game.png" alt="The gameplay" width="900" height="auto">
+        </a>
+        <div class="desc">Stunning gameplay with raytracing</div>
+      </div>
+    </section>
+  </main>
+  <aside class="aside border">
+    <h2>View the source code</h2>
+    <a href="https://www.github.com/sch3fr/mastermind">On Github!</a>
+  </aside>
+  <footer class="footer border">
+    <p>sch3fr, 2022</p>
+  </footer>
+</body>
