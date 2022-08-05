@@ -32,20 +32,20 @@
                 <div class="desc">The one, the only, 1*1 ortholinear macro pad.</div>
               </div>
             </div>
-        <h2>Story and motivation behind the project</h2>
+        <h2 id="story">Story and motivation behind the project</h2>
         <h3>Story part</h3>
         <p>So the other day I was drinking some coffee, you know, chilling in the morning, at the beginning of a big day. Then sudenly I got a message from a friend. 
            He got into a habbit of sending me several memes almost every day. No complaints from me, it makes me kinda happy. Anyway he sent me this video of a guy 
            who had a 1 key programmable keyboard, that he used to play Never Gonna Give You Up video. The keyboard in the video was unusual, in the sense that it 
            needed several seconds to boot. I thought I could do better and jokingly replied "I COULD BUILD THAT KEYBOARD". And my friend said "GO FOR IT MAN". I started 
-           the research, completely forgoting about all the task I wanted to do that morning.
+           the research, completely forgoting about all the things I wanted to do that morning.
         </p>
         <h3>Motivation behind the project</h3>
         <p>As I started my research, I realized that there next to no open source macro pads with only 1 key. The ones I was able to find used some kind of special 
            PCB, and since I didn't want to spend too much money building this I just ended up designing the whole thing myself. As I wanted it to be somewhat sturdy, 
            I decided to put my 3D printer to a good use.
         </p>
-        <h2>The design</h2>
+        <h2 id="design">Design</h2>
         <p>Since this is a joke, there was not much thought put behind the design and firmware of the device. As I am still very new to 3D modelling, I made the 
            printable files very simple. There is a flat bottom piece, and somewhat rounded top piece that functions as the housing of the device. On top there is 
            a hole for cherry style mechanical switch. In the front of the macro pad is a hole for Micro USB connector, that I made unnecesairly complicated and only 
@@ -55,7 +55,7 @@
            do literally anything else than rickrolling. What are you gonna do with it depends completely on your imagination. Though I can't imagine many people 
            rushing to build a single key macro pad.
         </p>
-        <h2>Bill of materials</h2>
+        <h2 id="materials">Bill of materials</h2>
         <ul>
           <li>1× Cherry MX style mechanical switch</li>
           <li>1× keycap</li>
@@ -66,7 +66,7 @@
           <li>Less than 5 m of 3D printer filament, I used PLA </li>
           <li>Something to short ground and reset pins on the Pro Micro when flashing the firmware</li>
         </ul>
-        <h2>Requirements</h2>
+        <h2 id="requirements">Requirements</h2>
         <p>If you decide to use the rickroll firmware, you have to check for following requirements</p>
         <ul>
             <li>OS: Windows 10/11 or Linux with Gnome 40+</li>
@@ -76,19 +76,19 @@
         <p>Note: Since the macro pad was designed to work with my system, you may find the timing of the coded macro off, to fix it you have to change the SS_DELAYs 
            in keymap.c and compile the whole firmware.
         </p>
-        <h2>Assembly guide</h2>
+        <h2 id="guide">Assembly guide</h2>
         <ol>
           <li>Print both the 3D files</li>
           <li>Place the Cherry switch to the hole in the bigger 3D piece, switch facing up</li>
           <li>Solder the switch to the Pro Micro pins B5 and D1, do not screw the pieces together yet, as you will have to reset the microcontroller</li>
           <li>Download the rickroll firmware, or build your own</li>
-          <li>Flash the firmware, I use QMK flashing utility</li>
+          <li>Flash the firmware, I use QMK Toolbox</li>
           <ol type="a"><li>Before flashing, connect the controller to your computer, short RST and GND pins and THEN press the Flash button</li></ol>
           <li>Once you check everything is working, screw the pieces together</li>
           <ol type="a"><li>I messed up the design, so the pieces fit together in one way only, you may have to fidget with it before finding the right orientation</li></ol>
           <li>Put on a keycap and enjoy your majestic new macro pad</li>
         </ol>
-        <h2>Demonstration</h2>
+        <h2 id="demo">Demonstration</h2>
         <video controls>
             <source src="/images/rickpad/demo.mp4" type="video/mp4">
           Your browser does not support the video tag.
@@ -97,5 +97,21 @@
       <footer class="footer border">
         <p>sch3fr, 2022</p>
       </footer>
+      <aside class="aside border">
+        <h2>Table of contents</h2>
+        <ul>
+            <li><a href="#story">Story and motivation</a></li>
+            <li><a href="#design">Design</a></li>
+            <li><a href="#materials">Bill of Materials</a></li>
+            <li><a href="#requirements">Requirements</a></li> 
+            <li><a href="#guide">Assembly guide</a></li> 
+            <li><a href="#demo">Demonstration</a></li> 
+          </ul>
+          <h2>Links</h2>
+          <ul>
+            <li>GitHub Repo</li>
+            <li>QMK Toolbox</li>
+          </ul>
+      </aside>
   </body>
 </html>
