@@ -88,6 +88,18 @@
           <ol type="a"><li>I messed up the design, so the pieces fit together in one way only, you may have to fidget with it before finding the right orientation</li></ol>
           <li>Put on a keycap and enjoy your majestic new macro pad</li>
         </ol>
+        <h2 id="firmware">Custom firmware</h2>
+        <p>If you want to customize the functionality of the button, you have to write your own firmware, as Vial is not supported (yet). To make your own firmware you 
+           have to have QMK Environment installed on your computer. All the files you will need are on my Github repo. All you have to do is to edit the keymap.c file 
+           located in /Firmware/keymaps/default/ . If you decide to not use macro, you can delete the whole switch case, and simply replece ROLL in 
+        </p>
+        <code>[0] = LAYOUT_ortho_1x1(<br> &emsp; ROLL <br>)</code>
+        <p>If you want to write your own macro, you have to edit the SEND_STRING function in the aforementioned switch case.</p>
+        <code>if (record->event.pressed) {<br>
+              &emsp; SEND_STRING("your macro here"); <br>
+              } else {
+        </code>
+        <p>Please refer to the QMK documentation in case you want to change things.</p>
         <h2 id="demo">Demonstration</h2>
         <video controls>
             <source src="/images/rickpad/demo.mp4" type="video/mp4">
@@ -105,12 +117,14 @@
             <li><a href="#materials">Bill of Materials</a></li>
             <li><a href="#requirements">Requirements</a></li> 
             <li><a href="#guide">Assembly guide</a></li> 
+            <li><a href="#firmware">Custom firmware</a></li>
             <li><a href="#demo">Demonstration</a></li> 
           </ul>
           <h2>Links</h2>
           <ul>
             <li><a href="https://www.github.com/sch3fr/rickPad">Github repo</a></li>
             <li><a href="https://github.com/qmk/qmk_toolbox/releases">QMK Toolbox</a></li>
+            <li><a href="https://docs.qmk.fm/#/feature_macros?id=using-macros-in-c-keymaps">QMK macros guide</a></li>
           </ul>
       </aside>
   </body>
