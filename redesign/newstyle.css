@@ -66,22 +66,31 @@ main {
     flex-basis: 0;
 }
 
-.sticky {
-    overflow: auto;
-    float: left;
-    background: #eee;
-    height: min-content;
-    width: 10rem;
-    flex-grow: 1;
-    flex-basis: 300px;
-    position: sticky;
-    top: 2rem;
-    padding: 10px;
-    /* centering the text 
-    
+@media screen and (min-width: 791px) {
+    .sticky 
+    { 
+        position:sticky; 
+        overflow: auto;
+        /* float: left; */
+        height: min-content;
+        width: 10rem;
+        flex-grow: 1;
+        flex-basis: 300px; 
+        position: sticky;
+
+    /* centering the text     
     display: inline;
     align-items: center;
     justify-content: center;*/
+    }
+}
+
+.sticky {
+    /* float: left; */
+    background: #eee;
+    flex-grow: 1;
+    top: 2rem;
+    padding: 10px;
 }
 
 .me {
