@@ -27,6 +27,11 @@ main {
     margin: 2rem auto;
 }
 
+.buttons button {
+    display: block;
+    width: 100%;
+}
+
 /* Styling hero */
 .hero {
     max-width: 50rem;
@@ -42,6 +47,7 @@ main {
     color: #555;
     opacity: .8;
     line-height: 1.5rem;
+    margin-top: 0.5rem;
 }
 
 /* Styling grid*/
