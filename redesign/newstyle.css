@@ -30,6 +30,9 @@ main {
 .buttons button {
     display: block;
     width: 100%;
+    font-size: medium;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 
 /* Styling hero */
