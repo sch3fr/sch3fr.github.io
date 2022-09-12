@@ -14,6 +14,7 @@ header {
     text-align: center;
     font-size: 3.5rem;
     margin-bottom: .5rem;
+    font-family: monospace;
 }
 footer {
     background: #eee;
@@ -36,7 +37,7 @@ main {
     margin-top: 5px;
     margin-bottom: 5px;
 }
-.buttons link {
+.buttons a {
     text-decoration: none;
 }
 
