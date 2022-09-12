@@ -12,6 +12,8 @@ header {
     background: #eee;
     padding: 20px;
     text-align: center;
+    font-size: 3.5rem;
+    margin-bottom: .5rem;
 }
 footer {
     background: #eee;
@@ -37,13 +39,8 @@ main {
 
 /* Styling hero */
 .hero {
-    max-width: 50rem;
+    max-width: 65rem;
     margin-bottom: 3rem;
-}
-
-.hero h1{
-    font-size: 4rem;
-    margin-bottom: .5rem;
 }
 
 .hero p, ul{
@@ -53,20 +50,46 @@ main {
     margin-top: 0.5rem;
 }
 
+.article h1{
+    font-size: xx-large;
+    padding-bottom: 1rem;
+}
+
 /* Styling grid*/
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
     grid-gap: 2rem;
 }
 
 .grid div {
     background: #eee;
-    height: 10rem;
+    height: 20rem;
     /* centering the text */
-    display: flex;
-    align-items: center;
+    
+    align-items: top;
     justify-content: center;
+}
+
+.grid div:hover {
+    border: 1px solid #777;
+}
+
+.grid p {
+    padding: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.grid img {
+    height: 15rem;
+    width: 100%;
+    object-fit: cover;
+}
+
+.gallery {
+    margin: 5px;
 }
 
 .article {
