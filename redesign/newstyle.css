@@ -39,7 +39,7 @@ main {
 
 /* Styling hero */
 .hero {
-    max-width: 65rem;
+    max-width: 55rem;
     margin-bottom: 3rem;
 }
 
@@ -58,13 +58,13 @@ main {
 /* Styling grid*/
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-gap: 2rem;
 }
 
 .grid div {
     background: #eee;
-    height: 20rem;
+    height: 15rem;
     /* centering the text */
     
     align-items: top;
@@ -83,7 +83,7 @@ main {
 }
 
 .grid img {
-    height: 15rem;
+    height: 10rem;
     width: 100%;
     object-fit: cover;
 }
