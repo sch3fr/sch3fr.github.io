@@ -36,6 +36,9 @@ main {
     margin-top: 5px;
     margin-bottom: 5px;
 }
+.buttons link {
+    text-decoration: none;
+}
 
 /* Styling hero */
 .hero {
