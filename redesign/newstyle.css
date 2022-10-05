@@ -54,6 +54,15 @@ main {
     margin-top: 0.5rem;
 }
 
+.hero h2{
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+.hero h1 {
+    padding-top: 1.5rem;
+}
+
 .article h1{
     font-size: xx-large;
     padding-bottom: 1rem;
