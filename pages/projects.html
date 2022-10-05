@@ -7,84 +7,97 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My showroom</title>
-  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../redesign/newstyle.css">
 </head>
-  <body class="container border">
-    <header class="header border">
-        <h1>Hello world!</h1>
-        <nav>
-          <a href="../index.html">About this page</a>
-          <a href="/pages/links.html">Cool links</a>
-          <a href="/pages/cv.html">Curriculum vitae</a>
-          <a href="/pages/projects.html">My projects</a>
-          <a href="/pages/notes.html">Notes</a>
-        </nav>
-      </header>
-      <main class="main border">
-        <section>
-          <a id="deSnap"><a href="/pages/Projects/desnap.html"><h2>deSnap GTA Tool</h2></a></a>
-          <p>This is a beautiful example of creating a solution for a real problem, not coding for the sake of it. deSnap is a tool for extracting pictures from 
-            the Snapmatic feature in Grand Theft Auto Online. The images are stored on a drive, but in binary unopenable file. This tool strips the binary 
-            of useless header data and exports the images to the desktop. Simple as that. And the code is beautiful with less than 50 lines. Read more 
-            <a href="../pages/Projects/desnap.html">here</a> or on <a href="https://github.com/sch3fr/deSnap">Github</a>
-          </p>
-        </section>
-        <section>
-          <a id="hungie"><a href="/pages/Projects/design.html"><h2>Interface design assignment</h2></a></a>
-          <p>This is a project I worked on for my Human-computer Interactions class. The assignment was to design an interface for an app of my choice.
-            I chose to design a phone app for tracking meals during the day. The user can record photos of food, number of calories and date and time of dinner.
-            Eventually I'd like to make a working prototype of this app. More info can be found <a href="../pages/Projects/design.html">here</a>.
-          </p>
-        </section>
-        <section>
-          <a id="mastermind"><a href="/pages/Projects/mastermind.html"><h2>Mastermind C# console game</h2></a></a>
-          <p>This is the first "real" program I ever created. It was an assignment for my first programming class. Everybody had to do one, but the topics
-            were chosen in a draw. I got the Mastermind game. The requirements were as follows:
-          </p>
-          <ul>
-            <li>Program on topic</li>
-            <li>No random crashes</li>
-            <li>No "magic" variables</li>
-            <li>Absolutely no spahgetti</li>
-            <li>The abilty to export and import data</li>
-          </ul>
-          <p>You can view more info either <a href="../pages/Projects/mastermind.html">here</a> or on <a href="https://github.com/sch3fr/mastermind">Github</a></p>
-        </section>
-        <section>
-          <a id="smolboat"><a href="/pages/Projects/smolobat.html"><h2>SmolBoatRemiXD firmware</h2></a></a>
-          <p>This is my weekend project that took me about 6 days to finish, it was harder than it looked. I found a cool looking 
-            custom keyboard on Thingiverse, but there was no wiring diagram, no firmware, and some things I didn't like about the .STLs. 
-            So I took it upon myself to fix all of those things. As always, you can find more about it either <a href="../pages/Projects/smolobat.html">here</a> 
-            or on <a href="https://github.com/sch3fr/SmolBoatRemiXD">Github</a>
-          </p>
-        </section>
-        <section>
-          <a id="rickpad" href="/pages/Projects/rickpad.html"><h2>Rick Astley Macro Pad</h2></a>
-          <p>Redbull-fuelled, 5:30 AM joke of a project full of hate, based on a meme my friend sent me the other day (Thanks, Paleček).</p>
-        </section>
-        <section>
-          <h2>Following projects will be added soon™</h2>
-          <ul>
-            <li>MilCalc console</li>
-            <li>MilCalc GUI</li>
-            <li>Just(To)DoIt</li>
-            <li>CulsMD</li>
-          </ul>
-        </section>
-      </main>
-      <aside class="aside border">
-        <h2>Navigation</h2>
-        <ul>
-          <li><a href="#desnap">deSnap GTA Tool</a></li>
-          <li><a href="#hungie">Interface design assignment</a></li>
-          <li><a href="#mastermind">Mastermind C# Game</a></li>
-          <li><a href="#smolboat">SmolBoatRemiXD firmware</a></li>
-          <li><a href="#rickpad">Rick Astley Macro Pad</a></li>
-        </ul>
-        <p>You can view the source code of this website and of my projects on my <a href="https:github.com/sch3fr">Github profile</a></p>
-      </aside>
-      <footer class="footer border">
-        <p>sch3fr, 2022</p>
-      </footer>
-  </body>
+<header><h1>Hello world!</h1></header>
+<main>
+  <aside class="sticky">
+    <img class="me" id="me"src="/redesign/me.jpg" alt="That's me!"/>
+    <h2>Welcome to my personal website</h2>
+    <div class="buttons">
+      <a href="/pages/cv.html"><button>Resume</button></a>
+      <a href="/pages/projects.html"><button>Projects</button></a>
+      <h3>Reach out to me</h3>
+      <button>Email</button>
+      <button>Discord</button>
+    </div>
+  </aside>
+  <section class="article">
+    <div class="hero">
+      <p>Here you can see all of my projects. Well at least the ones I decided
+        to share. You can always visit my <a href="www.github.com/shc3fr">Github</a> 
+        profile to explore the source code and see more, unlisted things.
+      </p>
+    </div>
+    <div class="grid">
+      <div class="box">
+        <a href="/pages/Projects/desnap.html"></a>
+        
+      </div>
+    </div>
+  </section>
+
+
+  <section class="article">
+    <a href="/pages/Projects/desnap.html">
+      <h2>deSnap GTA Tool</h2>
+    </a>
+    <p>This is a beautiful example of creating a solution for a real problem, not coding for the sake of it. deSnap is a tool for extracting pictures from 
+      the Snapmatic feature in Grand Theft Auto Online. The images are stored on a drive, but in binary unopenable file. This tool strips the binary 
+      of useless header data and exports the images to the desktop. Simple as that. And the code is beautiful with less than 50 lines. Read more 
+      <a href="../pages/Projects/desnap.html">here</a> or on <a href="https://github.com/sch3fr/deSnap">Github</a>
+    </p>
+  </section>
+  <section class="article">
+    <a href="/pages/Projects/design.html">
+      <h2>Interface design assignment</h2>
+    </a>
+      <p>This is a project I worked on for my Human-computer Interactions class. The assignment was to design an interface for an app of my choice.
+        I chose to design a phone app for tracking meals during the day. The user can record photos of food, number of calories and date and time of dinner.
+        Eventually I'd like to make a working prototype of this app. More info can be found <a href="../pages/Projects/design.html">here</a>.
+      </p>
+  </section>
+  <section class="article">
+    <a href="/pages/Projects/mastermind.html">
+      <h2>Mastermind C# console game</h2>
+    </a>
+      <p>This is the first "real" program I ever created. It was an assignment for my first programming class. Everybody had to do one, but the topics
+        were chosen in a draw. I got the Mastermind game. The requirements were as follows:
+      </p>
+      <ul>
+        <li>Program on topic</li>
+        <li>No random crashes</li>
+        <li>No "magic" variables</li>
+        <li>Absolutely no spahgetti</li>
+        <li>The abilty to export and import data</li>
+      </ul>
+      <p>You can view more info either <a href="../pages/Projects/mastermind.html">here</a> or on <a href="https://github.com/sch3fr/mastermind">Github</a></p>
+  </section>
+  <section class="article">
+    <a href="/pages/Projects/smolobat.html">
+      <h2>SmolBoatRemiXD firmware</h2>
+    </a>
+    <p>This is my weekend project that took me about 6 days to finish, it was harder than it looked. I found a cool looking 
+      custom keyboard on Thingiverse, but there was no wiring diagram, no firmware, and some things I didn't like about the .STLs. 
+      So I took it upon myself to fix all of those things. As always, you can find more about it either <a href="../pages/Projects/smolobat.html">here</a> 
+      or on <a href="https://github.com/sch3fr/SmolBoatRemiXD">Github</a>
+    </p>
+  </section>
+  <section class="article">
+    <a id="rickpad" href="/pages/Projects/rickpad.html">
+      <h2>Rick Astley Macro Pad</h2>
+    </a>
+    <p>Redbull-fuelled, 5:30 AM joke of a project full of hate, based on a meme my friend sent me the other day (Thanks, Paleček).</p>
+  </section>
+  <section class="article">
+    <h2>Following projects will be added soon™</h2>
+    <ul>
+      <li>MilCalc console</li>
+      <li>MilCalc GUI</li>
+      <li>Just(To)DoIt</li>
+      <li>CulsMD</li>
+    </ul>
+  </section>
+</main>
+<footer>bigfoot is real and he tried to eat my ass, 2022, #blessed</footer>
 </html>
