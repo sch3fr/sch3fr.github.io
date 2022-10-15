@@ -7,160 +7,179 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SmolBoat Remix</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/redesign/newstyle.css">
 </head>
-<body class="container border">
-  <header class="header border">
+<body>
+  <header>
     <h1>Hello world!</h1>
-    <nav>
-      <a href="/index.html">About this page</a>
-      <a href="../links.html">Cool links</a>
-      <a href="../cv.html">Curriculum vitae</a>
-      <a href="../projects.html">My projects</a>
-      <a href="../notes.html">Notes</a>
-    </nav>
   </header>
-  <main class="main border">
-    <section>
-      <h2>SmolBoatRemiXD</h2>
-      <p>SmolBoat is a custom 3D printed mechanical keyboard designed by <a href="https://www.thingiverse.com/thing:3289175">Druz320 on Thingiverse.</a> 
-        While I really liked the design, there were some tweaks that I wanted to make, and I also needed smaller models, so I could print it on my smaller 3D printer. 
-        Please note that this firmware is focused only on the JJ50/Preonic clone.
-      </p>
-      <div class="gallery">
-        <a target="_blank" href="/images/smolobat/keeb.jpg">
-          <img src="/images/smolobat/keeb.jpg" alt="Finished keyboard." width="600" height="auto">
-        </a>
-        <div class="desc">Finished keyboard.</div>
+  <main>
+    <aside class="sticky">
+      <img class="me" id="me" src="/redesign/me.jpg" alt="That's me"/>
+      <h2>Welcome to my personal website</h2>
+      <div class="buttons">
+        <a href="../../index.html"><button>Home</button></a>
+        <a href="../cv.html"><button>Resume</button></a>
+        <a href="../projects.html"><button>🔙</button></a>
+        <h3>Reach out to me</h3>
+        <button>Email</button>
+        <button>Discord</button>
+        <button>Github</button>
       </div>
-      <h2>Changes compared to the original</h2>
-      <ul>
-        <li>Changed the cutout to fit the SparkFun Pro Micro microcontroller</li>
-        <li>Added a hole for controller brace</li>
-        <li>Added cherry stabiliser for 2U spacebar</li>
-        <li>Added smaller cut files to print on my 3D printer</li>
-      </ul>
-      <h2>Cuts</h2>
-      <p>There are 4 smaller files, two for the bottom and 2 for the top piece. The pieces have hole in the sides for pegs, also included
-        in the .STL files, of which you will need 4 of. The pegs help with glueing and overall rugidity of the whole case. As I didn't have 
-        any glue suitable for PLA, I used a 3D pen to "weld" the pieces together, which is also a valid option, however make sure to sand 
-        down the top piece afterwards, or the switches may not sit fulsh.
-      </p>
-      <h2>Wiring</h2>
-      <p>This is a standard hand wired keyboard. The rows are connected with diodes and the columns are joined together with wire. I may 
-        have gotten the wiring confused, so in the following tables you can see the wiring I was going for. If your keyboard does not work 
-        properly, you can just change the <i>MATRIX_ROW_PINS</i> and <i>MATRIX_COL_PINS</i> <a href="https://github.com/sch3fr/SmolBoatRemiXD/blob/main/firmware/config.h">in the config.h</a> 
-        file and recompile it using QMK. 
-      </p>
-      <table>
-        <tr>
-          <th>Row number</th>
-          <th>Pin number</th>
-        </tr>
-        <tr>
-          <td>0</td>
-          <td>D3</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>D2</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>D1</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>D0</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>D4</td>
-        </tr>
-      </table> 
-      <table>
-        <tr>
-          <th>Column number</th>
-          <th>Pin number</th>
-        </tr>
-        <tr>
-          <td>0</td>
-          <td>B6</td>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>B2</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>B3</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>B1</td>
-        </tr>
-        <tr>
-          <td>4</td>
-          <td>F7</td>
-        </tr>
-        <tr>
-          <td>5</td>
-          <td>F6</td>
-        </tr>
-        <tr>
-          <td>6</td>
-          <td>F5</td>
-        </tr>
-        <tr>
-          <td>7</td>
-          <td>F4</td>
-        </tr>
-        <tr>
-          <td>8</td>
-          <td>B5</td>
-        </tr>
-        <tr>
-          <td>9</td>
-          <td>B4</td>
-        </tr>
-        <tr>
-          <td>10</td>
-          <td>36</td>
-        </tr>
-        <tr>
-          <td>11</td>
-          <td>D7</td>
-        </tr>
-      </table>
-      <div class="gallery">
-        <a target="_blank" href="/images/smolobat/diagram.png">
-          <img src="/images/smolobat/diagram.png" alt="Wiring diagram." width="600" height="auto">
-        </a>
-        <div class="desc">Wiring diagram.</div>
-      </div>
-      <h2>Firmware</h2>
-      <p>The firmware is your standard .HEX file compiled using QMK. You can find my .HEX as well as the full source files on my Github page.
-        I'd recommend you to write your own keymap, as I used mapping for Czech layout and forgot to add parentheses. Mistakes were made, 
-        next version coming soon™.
-      </p>
-      <h2>Notes</h2>
-      <ul>
-        <li>I ended up not using the controller brace piece, since my awful wiring is pushing the Pro Micro to its place</li>
-        <li>You might have to file file the Cherry stabs hole a bit for it to fit.</li>
-        <li>I'd love to add Vial support sometime in the future.</li>
-        <li>The keyboard you can see in the first picture is the finished product, however I am dissatisifed with the top finish from my 3d printer, 
-          I may have to remake it some time in the future.
-        </li>
-      </ul>
-    </section>
-  </main>
-  <aside class="aside border">
-    <ul>
-      <li><a href="https://www.github.com/sch3fr/SmolBoatRemiXD">Explore the source code on Github!</a></li>
-      <li><a href="https://www.thingiverse.com/thing:3289175">Visit the original project on Thingiverse.</a> </li>
-    </ul>   
-  </aside>
+    </aside>
+
+    <article class="article">
+      <section class="hero">
+        <h2>SmolBoatRemiXD</h2>
+        <p>SmolBoat is a custom 3D printed mechanical keyboard designed by 
+          <a href="https://www.thingiverse.com/thing:3289175">Druz320 on Thingiverse.</a> 
+          While I really liked the design, there were some tweaks that I wanted 
+          to make, and I also needed smaller models, so I could print it on my 
+          smaller 3D printer. Please note that this firmware is focused only on 
+          the JJ50/Preonic clone.</p>
+        <div class="gallery">
+          <a target="_blank" href="/images/smolobat/keeb.jpg">
+            <img src="/images/smolobat/keeb.jpg" alt="Finished keyboard." width="600" height="auto">
+          </a>
+        </div>
+        <h2>Changes compared to the original</h2>
+          <p>Changed the cutout to fit the SparkFun Pro Micro<br>
+            Added a hole for controller brace<br>
+            Added cherry stabiliser for 2U spacebar<br>
+            Added smaller cut files to print on my 3D printer
+          </p>
+        <h2>Cuts</h2>
+          <p>There are 4 smaller files, two for the bottom and 2 for the top 
+            piece. The pieces have hole in the sides for pegs, also included
+            in the .STL files, of which you will need 4 of. The pegs help with 
+            glueing and overall rugidity of the whole case. As I didn't have 
+            any glue suitable for PLA, I used a 3D pen to "weld" the pieces 
+            together, which is also a valid option, however make sure to sand 
+            down the top piece afterwards, or the switches may not sit fulsh.
+        </p>
+        <h2>Wiring</h2>
+        <p>This is a standard hand wired keyboard. The rows are connected with 
+          diodes and the columns are joined together with wire. I may 
+          have gotten the wiring confused, so in the following tables you can 
+          see the wiring I was going for. If your keyboard does not work 
+          properly, you can just change the <i>MATRIX_ROW_PINS</i> and 
+          <i>MATRIX_COL_PINS</i> 
+          <a href="https://github.com/sch3fr/SmolBoatRemiXD/blob/main/firmware/config.h">
+            in the config.h
+          </a> 
+          file and recompile it using QMK. 
+        </p>
+        <div class="grid">
+        <table>
+          <tr>
+            <th>Row number</th>
+            <th>Pin number</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>D3</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>D2</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>D1</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>D0</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>D4</td>
+          </tr>
+        </table> 
+        <table>
+          <tr>
+            <th>Column number</th>
+            <th>Pin number</th>
+          </tr>
+          <tr>
+            <td>0</td>
+            <td>B6</td>
+          </tr>
+          <tr>
+            <td>1</td>
+            <td>B2</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>B3</td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>B1</td>
+          </tr>
+          <tr>
+            <td>4</td>
+            <td>F7</td>
+          </tr>
+          <tr>
+            <td>5</td>
+            <td>F6</td>
+          </tr>
+          <tr>
+            <td>6</td>
+            <td>F5</td>
+          </tr>
+          <tr>
+            <td>7</td>
+            <td>F4</td>
+          </tr>
+          <tr>
+            <td>8</td>
+            <td>B5</td>
+          </tr>
+          <tr>
+            <td>9</td>
+            <td>B4</td>
+          </tr>
+          <tr>
+            <td>10</td>
+            <td>36</td>
+          </tr>
+          <tr>
+            <td>11</td>
+            <td>D7</td>
+          </tr>
+        </table>
+        </div>
+        <h3>Wiring diagram</h3>
+          <div class="gallery">
+            <a target="_blank" href="/images/smolobat/diagram.png">
+              <img src="/images/smolobat/diagram.png" alt="Wiring diagram." width="600" height="auto">
+            </a>
+          </div>
+        <h2>Firmware</h2>
+          <p>The firmware is your standard .HEX file compiled using QMK. You can find my .HEX as well as the full source files on my Github page.
+            I'd recommend you to write your own keymap, as I used mapping for Czech layout and forgot to add parentheses. Mistakes were made, 
+            next version coming soon™.
+          </p>
+        <h2>Notes</h2>
+          <p>I ended up not using the controller brace piece, since my awful 
+            wiring is pushing the Pro Micro to its place<br>
+            You might have to file file the Cherry stabs hole a bit for it to fit.<br>
+            I'd love to add Vial support sometime in the future.<br>
+            The keyboard you can see in the first picture is the finished product, 
+            however I am dissatisifed with the top finish from my 3d printer,
+            I may have to remake it some time in the future.<br>
+            <a href="https://www.github.com/sch3fr/SmolBoatRemiXD">Explore the 
+              source code on Github!
+            </a> <br>
+            <a href="https://www.thingiverse.com/thing:3289175">Visit the 
+              original project on Thingiverse.
+            </a>
+          </p>
+      </section>
+    </main>
   <footer class="footer border">
-    <p>sch3fr, 2022</p>
+    <p>bigfoot is real and he tried to eat my ass, 2022, #blessed</p>
   </footer>
 </body>

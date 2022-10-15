@@ -141,3 +141,8 @@ main {
 .me {
     max-width: 100%;
 }
+
+table, tr, td{
+    border: 1px solid;
+    text-align: center;
+}
