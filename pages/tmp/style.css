@@ -1,0 +1,16 @@
+.container {
+    margin: 0;
+    width: 100%;
+    max-height: fit-content;
+    padding: 0;
+    overflow: hidden;
+}
+body{
+    background-image: url(/Blockpage/Resources/scrolling.png);
+    background-size: 1920px;
+}
+
+img {
+    width: 1920px;
+    height: auto;
+}
