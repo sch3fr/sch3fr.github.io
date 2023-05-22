@@ -82,7 +82,7 @@ main {
 }
 
 .article h2{
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-bottom: 0.5rem;
     color: var(--foreground-blue);
 }
@@ -104,7 +104,7 @@ main {
 }
 
 .grid div {
-    background: var(--background-blue);
+    background: var(--foreground-blue);
     height: 15rem;
     /* centering the text */
     
@@ -160,7 +160,8 @@ main {
 
 .sticky {
     /* float: left; */
-    background: var(--foreground-blue);
+    margin-top: 20px;
+    background: var(--background-blue);
     flex-grow: 1;
     top: 2rem;
     padding: 10px;
