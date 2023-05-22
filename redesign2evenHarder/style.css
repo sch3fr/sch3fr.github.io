@@ -1,0 +1,131 @@
+:root{
+    --background-main: #282828;
+    --background-red: #cc241d;
+    --background-orange: #d65d0e;
+    --background-green: #98971a;
+    --background-yellow: #d79921;
+    --background-blue: #458588;
+    --background-purple: #b16286;
+    --background-aqua: #689d6a;
+    --background-gray: #a89984;
+
+    --foreground-main: #ebdbb2;
+    --foreground-red: #fb4934;
+    --foreground-orange: #fe8019;
+    --foreground-green: #b8bb26;
+    --foreground-yellow: #fabd2f;
+    --foreground-blue: #83a598;
+    --foreground-purple: #d3869b;
+    --foreground-aqua: #8ec07c;
+    --foreground-gray: #928374;
+
+    background-color: var(--background-main);
+    font-family: monospace, monospace;
+}
+
+.container {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0 15px;
+    color: var(--foreground-gray);
+}
+@media (min-width: 769px) {
+    .container {
+        max-width: 769px;
+    }
+}
+@media (min-width: 1025px) {
+    .container {
+        max-width: 1024px;
+    }
+}
+@media (min-width: 1201px) {
+    .container {
+        max-width: 1200px;
+    }
+}
+
+h1 {
+    color: var(--foreground-red);
+    font-size: xx-large;
+}
+
+h2 {
+    color:var(--foreground-orange);
+}
+
+a:link{
+    color: var(--foreground-blue);
+}
+a:visited{
+    color: var(--foreground-blue);
+}
+a.nav__item{
+    text-decoration: none;
+}
+
+.nav{
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+}
+.nav li{
+    display:inline;
+}
+.nav a{
+    display:inline-block;
+    padding:10px;
+}
+
+.article{
+    color: var(--foreground-yellow);
+    display: grid;
+    grid-template-columns: auto 420px;
+    grid-template-rows: 420px;
+}
+
+.intro1{grid-row: 1; grid-column: 1;}
+
+
+.portrait{
+    grid-column: 2;
+    grid-row-start: span 4;
+    justify-self: stretch; /*works only on widescreen, FIX PLS*/
+    align-self: stretch;
+}
+
+.featured__project{
+    margin: 20px 0 20px 0;
+    border-style: solid;
+    border-width: 2px;
+    border-color: var(--foreground-yellow);
+    display: flex;
+    flex-wrap: nowrap;
+    align-self: center;
+    align-items: stretch;
+}
+
+.featured__project:hover{
+    border-color: var(--foreground-green);
+}
+
+.featured__project-card{
+    margin: 15px 25px 15px 25px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    color: var(--foreground-main);
+}
+
+.featured__project-card h3{
+    margin-bottom: -12px;
+}
+
+.featured__project img{
+    max-height: 250px;
+}
+
+.even_card{
+    margin-left: auto;
+}

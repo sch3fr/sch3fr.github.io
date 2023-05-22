@@ -1,4 +1,31 @@
 /* CSS Document */
+:root{
+  --background-main: #282828;
+  --background-red: #cc241d;
+  --background-orange: #d65d0e;
+  --background-green: #98971a;
+  --background-yellow: #d79921;
+  --background-blue: #458588;
+  --background-purple: #b16286;
+  --background-aqua: #689d6a;
+  --background-gray: #a89984;
+
+  --foreground-main: #ebdbb2;
+  --foreground-red: #fb4934;
+  --foreground-orange: #fe8019;
+  --foreground-green: #b8bb26;
+  --foreground-yellow: #fabd2f;
+  --foreground-blue: #83a598;
+  --foreground-purple: #d3869b;
+  --foreground-aqua: #8ec07c;
+  --foreground-gray: #928374;
+
+  background-color: var(--background-main);
+  font-family: monospace, monospace;
+}
+
+
+
 #layout{
     width: 50%;
     display: block;
