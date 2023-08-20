@@ -103,6 +103,12 @@ button:hover{
     color: var(--foreground-blue);
 }
 
+.article h3{
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+    color: var(--background-blue);
+}
+
 .hero h1 {
     padding-top: 1.5rem;
 }
@@ -200,8 +206,16 @@ table, tr, td{
     color: var(--foreground-main);
 }
 
-
 footer{
     background-color: var(--foreground-blue);
     color: var(--background-main);
+}
+
+.article ul{
+    padding-left: 15px;
+    color: var(--foreground-main);
+}
+
+.ul li{
+    margin-top: -15px;
 }
