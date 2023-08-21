@@ -220,3 +220,7 @@ footer{
 .ul li{
     margin-top: -15px;
 }
+
+.desc {
+    color: var(--foreground-main);
+}
