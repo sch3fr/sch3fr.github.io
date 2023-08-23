@@ -90,21 +90,39 @@
                 connected to Arduino pins specified in the [charlieplexing.ino] file. It is important to know which cable
                 is which, since changing them leads to glitchy animations.
             </p><br>
-            <p> The vable leads into the mask. there are 4 resistors in the mouth area of the mask, each wire having its own resistor.
-                After that the leads split and and connect to the eye circles. However if you're thinking about making your own mask, I'd
-                recommend starting with creating the eye circles first, and only after making sure it works properly starting the work on the
-                rest of the electronics stuff.
+
+            <p> The cable leads to the mask. there are 4 resistors in the mouth area of the mask, each wire having its own resistor.
+                After that the leads split and and connect to the eye circles. However if you're thinking about making your own mask, <b>I'd
+                recommend starting with creating the eye circles first</b>, and only after making sure it works properly starting the work on the
+                rest of the electronics stuff.</p>
+                <!--
+                <div class="textGallery">
+                    <img src="/images/pedro/ledjig.png" id="ledJIgImg">
+                    <figcaption id="ledJIgImg">LED jig</figcaption>
+                </div>
+
+                sem někam by se hodil wiring diagram
+                -->
+                <p>
                 To simplify the wiring process of the circles, I designed and printed two simple LED jigs. Then I used a sharpie to write a number next to each
                 hole, mimicking a watchface. That's to make it easier to identify parts of the circuit and follow numbering on the wiring
                 diagram. The circuit is somewhat challenging, not sure I'd reccomend it to total soldering novice.
+                
+                
             </p><br>
             <p>Once all the soldering is done, it's time to print the main piece that holds the LEDs and screws into some existing screwholes in the mask and it's done.
                 <br>
                 The whole thing took me several weeks to make, including research, prototyping, and failing to make the circle circuit several times. 
                 But it was a joy to make, because at some point I managed to enter flow state whenever I worked on it. I knew exactly what to do and how
-                to do it.And it felt great.
+                to do it. And it felt great.
             </p>
             <h3>Software integration</h3>
+            <p>The firmware is simple to understand and modify. On boot, the Arduino waits for user to choose an animation.
+                Every animation consists of flashing single LEDs in succession to make it look like there are multiple LEDs
+                lit up at the same time. After the animation is finished, Arduino checks for change of animation triggered 
+                by pressing another button. If button is not pressed, Arduino runs the last animation again indefinitely.
+            </p>
+
             <h3>Results and Achievments</h3>
 
             <h3>Lessons learned</h3>

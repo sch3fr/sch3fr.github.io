@@ -224,3 +224,13 @@ footer{
 .desc {
     color: var(--foreground-main);
 }
+
+#ledJIgImg {
+    
+    max-height: 180px;
+}
+
+.textGallery {
+    display: block;
+    float: right;
+}

@@ -5,5 +5,5 @@ My website
 - [ ] fix style of mastermind.html
 - [ ] figure out what to do with design.html, notes.html and links.html
 - [ ] fix table of smolboat.html
-- [ ] fix layout of cv.html
-- [ ] fix layout of projects.html
+- [x] fix layout of cv.html
+- [x] fix layout of projects.html
