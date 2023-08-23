@@ -65,7 +65,7 @@
                 electronics project I had to make something else, because I had no idea how I'd make it, not 
                 to mention how to power it. So I had to make something simpler in less than 3 months with full time
                 uni and part time job.</p>
-            <p> I settled on something similar to <a href="https://static.wikia.nocookie.net/watchdogscombined/images/e/e5/Polycarbonight.PNG/revision/latest?cb=20210408122641">polycarbonight</a> from Watch_dogs: Legion,
+            <p> I settled on something similar to <a href="https://static.wikia.nocookie.net/watchdogscombined/images/e/e5/Polycarbonight.PNG">polycarbonight</a> from Watch_dogs: Legion,
                 meaning now I had to "just" make two controllable led circles inside some kind of visor.
                 I bought a cheap airsoft mask on Aliexpress as a base.
             </p>
@@ -75,6 +75,7 @@
                 would get its own 4 pins from Arduino, making it brighter but also complicating the wiring and lowering the
                 battery life.
             </p>
+            <!--WIRING DIAGRAM HERE-->
 
             <h3>Implementation</h3>
             <p>This project would not be possible without 3D printing and the rapid prototyping it allows.
@@ -100,8 +101,6 @@
                     <img src="/images/pedro/ledjig.png" id="ledJIgImg">
                     <figcaption id="ledJIgImg">LED jig</figcaption>
                 </div>
-
-                sem někam by se hodil wiring diagram
                 -->
                 <p>
                 To simplify the wiring process of the circles, I designed and printed two simple LED jigs. Then I used a sharpie to write a number next to each
@@ -121,6 +120,9 @@
                 Every animation consists of flashing single LEDs in succession to make it look like there are multiple LEDs
                 lit up at the same time. After the animation is finished, Arduino checks for change of animation triggered 
                 by pressing another button. If button is not pressed, Arduino runs the last animation again indefinitely.
+                <br><br>
+                Charlieplexing allows for the LEDs to be individually lit up, one by one, by changing the signals on output pins.
+                For example, High on Pin1 and Low on Pin2 lights up only LED1, Low on Pin1 and High on Pin2 lights up only LED2 etc.
             </p>
 
             <h3>Results and Achievments</h3>
@@ -150,7 +152,13 @@
             a generous bath in hot glue to stop it from stressing. The better solution is to either <b>redesign the box in a way that supports
             the cable, or use different board with stronger connector.</b>
             </p>
-            <h3>Conclustion</h3>
+            <h3>Closing thoughts</h3>
+            <p>I am very happy with how this project turned out. I hope to start something that will put me in the 
+                flow state again ASAP. Also I should start working on LED matrix display soon, otherwise I'll never
+                make it in time for next year's event.<br><br>
+                Massive thank you to Jana and Petr for my arts and crafts support, and all of my friends who attended
+                this year's event with me, love y'all <3
+            </p>
         </section>
     </article>
 </main>
@@ -160,7 +168,7 @@
 </body>
 
 <footer class="footer border">
-    <p>Last update on 22.8.2023, #blessed</p>
+    <p>Last update on 23.8.2023, #blessed</p>
   </footer>
 
 </html>
