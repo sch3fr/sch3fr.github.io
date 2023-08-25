@@ -110,6 +110,10 @@ button:hover{
     color: var(--background-blue);
 }
 
+.article h4{
+    color: var(--background-aqua);
+}
+
 .hero h1 {
     padding-top: 1.5rem;
 }
@@ -223,6 +227,10 @@ footer{
 }
 */
 
+ul li{
+    font-weight: 300;
+}
+
 ol li{
     margin-left: 2rem;
     color: var(--foreground-main);
@@ -245,4 +253,12 @@ code {
 .textGallery {
     display: block;
     float: right;
+}
+
+a:link {
+    color: var(--foreground-purple);
+}
+
+a:visited {
+    color: var(--background-purple);
 }

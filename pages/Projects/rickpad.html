@@ -30,37 +30,43 @@
   <article class="article">
     <section class="hero">
     <h2>Rick Astley Macro Pad</h2>
-    <p>Rickpad, for short. It's small, cheap, glorious, and only a little bit cursed. <br>
-      Rickpad is a 1*1 ortholinear, 3D printed macro pad with QMK support, designed to do one thing. To launch a Never Gonna Give You Up music video by Rick Astley.
+    <p>Rickpad, for short. It's small, cheap, glorious, and only kinda cursed. <br>
+      It is a 1*1 ortholinear, 3D printed macro pad with QMK support, designed to do one thing. To launch a Never Gonna 
+      Give You Up music video by Rick Astley.
     </p>
     <div class="responsive">
       <div class="gallery">
         <a target="_blank" href="/images/rickpad/rickpad.jpg">
           <img src="/images/rickpad/rickpad.jpg" alt="Rick Astley Macro Pad." width="600" height="auto">
         </a>
-      <div class="desc">The one, the only, 1*1 ortholinear macro pad.</div>
+      <!--<div class="desc">The one, the only, 1*1 ortholinear macro pad.</div>-->
     </div>
     <h3>Story behind</h3>
-    <p>So the other day I was drinking some coffee, you know, chilling in the morning, at the beginning of a big day. Then sudenly I got a message from a friend. 
-      He got into a habbit of sending me several memes almost every day. No complaints from me, it makes me kinda happy. Anyway he sent me this video of a guy 
-      who had a 1 key programmable keyboard, that he used to play Never Gonna Give You Up video. The keyboard in the video was unusual, in the sense that it 
-      needed several seconds to boot. I thought I could do better and jokingly replied "I COULD BUILD THAT KEYBOARD". And my friend said "GO FOR IT MAN". I started 
-      the research, completely forgoting about all the things I wanted to do that morning.
+    <p>So the other day I was drinking some coffee, you know, chilling in the morning, at the beginning of a big day. 
+      Then sudenly I got a message from a friend. He got into a habbit of sending me several memes almost every day. No 
+      complaints from me, it makes me kinda happy. Anyway he sent me this video of a guy who had a 1 key programmable 
+      macropad, that he used to play Never Gonna Give You Up video. The pad in the video was unusual, in the sense that 
+      it needed several seconds to boot. I thought I could do better and jokingly replied "I COULD BUILD THAT KEYBOARD". 
+      And my friend said "GO FOR IT MY MAN". I started the research, completely forgoting about all the things I wanted 
+      to do that morning.
     </p>
     <h3>Motivation behind the project</h3>
-    <p>As I started my research, I realized that there next to no open source macro pads with only 1 key. The ones I was able to find used some kind of special 
-      PCB, and since I didn't want to spend too much money building this I just ended up designing the whole thing myself. As I wanted it to be somewhat sturdy, 
-      I decided to put my 3D printer to a good use.
+    <p>As I started my research, I realized that there next to no open source macro pads with only 1 key. The ones I was 
+      able to find used some kind of special PCB, and since I didn't want to spend too much money building this I just 
+      ended up designing the whole thing myself. I decided to put my 3D printer to a good use, as I wanted it to be 
+      somewhat sturdy.
     </p>
     <h3>Design</h3>
-    <p>Since this is a joke, there was not much thought put behind the design and firmware of the device. As I am still very new to 3D modelling, I made the 
-      printable files very simple. There is a flat bottom piece, and somewhat rounded top piece that functions as the housing of the device. On top there is 
-      a hole for cherry style mechanical switch. In the front of the macro pad is a hole for Micro USB connector, that I made unnecesairly complicated and only 
-      later realized that this was a bad idea, after an incident with a soldering iron. The pieces are held together by 4 M3 screws, that somewhat acts as a 
-      legs of the device, but since it is so lightweight the weight of the micro USB cable drags it around so it could use some rubber feet.<br>
-      The pad is powered by SparkFun Pro Micro, with the switch soldered to pins B5 and D1. The device runs on QMK and therefore is very easy to reprogram to 
-      do literally anything else than rickrolling. What are you gonna do with it depends completely on your imagination. Though I can't imagine many people 
-      rushing to build a single key macro pad.
+    <p>Since this is a joke, there was not much thought put behind the design and firmware of the device. As I am still 
+      very new to 3D modelling, I made the printable files very simple. There is a flat bottom piece, and somewhat 
+      rounded top piece that functions as the housing of the device. On top there is a hole for cherry style mechanical 
+      switch. In the front of the macro pad is a hole for Micro USB connector, that I made unnecesairly complicated and 
+      only later realized that this was a bad idea, after an incident with a soldering iron. The pieces are held 
+      together by 4 M3 screws, that somewhat acts as a legs of the device, but since it is so lightweight the weight of 
+      the micro USB cable drags it around so it could use some rubber feet.<br>
+      The pad is powered by SparkFun Pro Micro, with the switch soldered to pins B5 and D1. The device runs on QMK and 
+      therefore is very easy to reprogram to do literally anything else than rickrolling. What are you gonna do with it 
+      depends completely on your imagination. Though I can't imagine many people rushing to build a single key macro pad.
     </p>
     <h3>Bill of materials</h3>
       <ul>
@@ -80,32 +86,41 @@
         <li>System language set to English</li>
         <li>Latest version of Mozilla Firefox</li>
       </ul>
-      <p>Note: Since the macro pad was designed to work with my system, you may find the timing of the coded macro off, to fix it you have to change the SS_DELAYs 
-        in keymap.c and compile the whole firmware.
+      <p>Note: Since the macro pad was designed to work with my system, you may find the timing of the coded macro off, 
+        to fix it you have to change the SS_DELAYs in keymap.c and compile the whole firmware.
       </p>
       <h3>Assembly guide</h3>
       <ol>
         <li>Print both the 3D files</li>
         <li>Place the Cherry switch to the hole in the bigger 3D piece, switch facing up</li>
-        <li>Solder the switch to the Pro Micro pins B5 and D1, do not screw the pieces together yet, as you will have to reset the microcontroller</li>
+        <li>Solder the switch to the Pro Micro pins B5 and D1, do not screw the pieces together yet, as you will have to 
+          reset the microcontroller</li>
         <li>Download the rickroll firmware, or build your own</li>
         <li>Flash the firmware, I use QMK Toolbox</li>
-        <ol type="a"><li>Before flashing, connect the controller to your computer, short RST and GND pins and THEN press the Flash button</li></ol>
+        <ol type="a"><li>Before flashing, connect the controller to your computer, short RST and GND pins and THEN press
+           the Flash button</li></ol>
         <li>Once you check everything is working, screw the pieces together</li>
-        <ol type="a"><li>I messed up the design, so the pieces fit together in one way only, you may have to fidget with it before finding the right orientation</li></ol>
+        <ol type="a"><li>I messed up the design, so the pieces fit together in one way only, you may have to fidget with 
+          it before finding the right orientation</li></ol>
         <li>Put on a keycap and enjoy your majestic new macro pad</li>
       </ol>
       <h3>Custom firmware</h3>
-      <p>If you want to customize the functionality of the button, you have to write your own firmware, as Vial is not supported (yet). To make your own firmware you 
-        have to have QMK Environment installed on your computer. All the files you will need are on my Github repo. All you have to do is to edit the keymap.c file 
-        located in /Firmware/keymaps/default/ . If you decide to not use macro, you can delete the whole switch case, and simply replece ROLL in 
+      <p>If you want to customize the functionality of the button, you have to write your own firmware, as Vial is not 
+        supported (yet). To make your own firmware you have to have QMK Environment installed on your computer. All the 
+        files you will need are on my Github repo. All you have to do is to edit the keymap.c file located in 
+        /Firmware/keymaps/default/ . If you decide to not use macro, you can delete the whole switch case, and simply 
+        replece ROLL in 
       </p><br>
+
       <code>[0] = LAYOUT_ortho_1x1(<br> &emsp; ROLL <br>)</code><br><br>
-      <p>If you want to write your own macro, you have to edit the SEND_STRING function in the aforementioned switch case.</p><br>
+
+      <p>If you want to write your own macro, you have to edit the SEND_STRING function in the aforementioned switch 
+        case.</p><br>
       <code>if (record->event.pressed) {<br>
             &emsp; SEND_STRING("your macro here"); <br>
             } else {
       </code><br><br>
+      
       <p>Please refer to the QMK documentation in case you want to change things.</p>
       <h3 id="demo">Demonstration</h3>
       <video controls>
