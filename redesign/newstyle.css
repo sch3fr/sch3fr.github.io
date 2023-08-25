@@ -217,8 +217,20 @@ footer{
     color: var(--foreground-main);
 }
 
+/*
 .ul li{
     margin-top: -15px;
+}
+*/
+
+ol li{
+    margin-left: 2rem;
+    color: var(--foreground-main);
+}
+
+code {
+    color: var(--foreground-aqua);
+    font-size: larger;
 }
 
 .desc {
