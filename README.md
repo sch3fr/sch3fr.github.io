@@ -1,9 +1,9 @@
 # sch3fr.github.io
 My website
 ## To do
-- [ ] fix style of rickpad.html
-- [ ] fix style of mastermind.html
-- [ ] figure out what to do with design.html, notes.html and links.html
-- [ ] fix table of smolboat.html
-- [x] fix layout of cv.html
-- [x] fix layout of projects.html
+- [ ] unite the mess across the HTML files
+- [ ] add pics to PEDRO page
+- [ ] fix side buttons
+- [ ] develop a way to add images to pages and not make it werid
+- [ ] APP UI IS STILL MESSED UP? FIX ASAP
+- [ ] maybe change the rickpad video to a gif
