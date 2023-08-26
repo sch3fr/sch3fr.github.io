@@ -47,26 +47,22 @@
           <li>Added cherry stabiliser for 2U spacebar</li>
           <li>Added smaller cut files to print on my 3D printer</li>
           </ul>
-        <h2>Cuts</h2>
-          <p>There are 4 smaller files, two for the bottom and 2 for the top 
-            piece. The pieces have hole in the sides for pegs, also included
-            in the .STL files, of which you will need 4 of. The pegs help with 
-            glueing and overall rugidity of the whole case. As I didn't have 
-            any glue suitable for PLA, I used a 3D pen to "weld" the pieces 
-            together, which is also a valid option, however make sure to sand 
-            down the top piece afterwards, or the switches may not sit fulsh.
+        <h2>STLs</h2>
+          <p>There are 4 smaller files STL files, two for the bottom and 2 for the top piece. The pieces have holes in 
+            the sides for pegs, also included in the .STL files, of which you will need 4 of. The pegs help with glueing 
+            and overall rugidity of the whole case. As I didn't have any glue suitable for PLA, I used a 3D pen to 
+            "weld" the pieces together, which is also a valid option, however make sure to sand down the top piece 
+            afterwards, or the switches may not sit fulsh.
         </p>
         <h2>Wiring</h2>
-        <p>This is a standard hand wired keyboard. The rows are connected with 
-          diodes and the columns are joined together with wire. I may 
-          have gotten the wiring confused, so in the following tables you can 
-          see the wiring I was going for. If your keyboard does not work 
-          properly, you can just change the <i>MATRIX_ROW_PINS</i> and 
+        <p>This is a standard hand wired keyboard. The rows are connected with diodes and the columns are joined 
+          together with wire. I may have gotten the wiring confused, so in the following tables you can see the wiring 
+          I was going for. If your keyboard does not work properly, you can just change the <i>MATRIX_ROW_PINS</i> and 
           <i>MATRIX_COL_PINS</i> 
           <a href="https://github.com/sch3fr/SmolBoatRemiXD/blob/main/firmware/config.h">
             in the config.h
           </a> 
-          file and recompile it using QMK. <br><br>
+          file and recompile it using QMK or Vial.<br><br>
         </p>
         <div class="tables">
         <table>
@@ -160,18 +156,19 @@
           </div>
 
         <h2>Firmware</h2>
-          <p>The firmware is your standard .HEX file compiled using QMK. You can find my .HEX as well as the full source files on my Github page.
-            I'd recommend you to write your own keymap, as I used mapping for Czech layout and forgot to add parentheses. Mistakes were made, 
-            next version coming soon™.
+          <p>There are 3 firmware files available to flash on keyboars's github page. Versions 1 and 1.1 are written in 
+            QMK. I do not reccommend you using those, since I use Czech QWERTZ layout. There is also a Vial firmware 
+            file, that it based on the QMK 1.1 file, but is very easy to reprogram using Vial software. That means you
+            do not need to programm, compile and flash the firmware whenever you want to make some changes to it. More 
+            on Vial firmware <a href="https://get.vial.today/">here</a>.
           </p>
         <h2>Notes</h2>
-          <p>I ended up not using the controller brace piece, since my awful 
-            wiring is pushing the Pro Micro to its place<br>
+          <p>I ended up not using the controller brace piece, since my awful wiring is pushing the Pro Micro to its 
+            place<br>
             You might have to file file the Cherry stabs hole a bit for it to fit.<br>
             I'd love to add Vial support sometime in the future.<br>
-            The keyboard you can see in the first picture is the finished product, 
-            however I am dissatisifed with the top finish from my 3d printer,
-            I may have to remake it some time in the future.<br>
+            The keyboard you can see in the first picture is the finished product, however I am dissatisifed with the 
+            top finish from my 3d printer, I may have to remake it some time in the future.<br>
             <a href="https://www.github.com/sch3fr/SmolBoatRemiXD">Explore the 
               source code on Github!
             </a> <br>
@@ -182,6 +179,6 @@
       </section>
     </main>
 
-    <footer>Last update on 25.8.2023, #blessed</footer>
+    <footer>Last update on 26.8.2023, #blessed</footer>
 
 </html>
