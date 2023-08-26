@@ -199,8 +199,12 @@ button:hover{
 }
 
 table, tr, td{
-    border: 1px solid;
+    border: 3px solid;
+    border-collapse: collapse;
     text-align: center;
+    border-color: var(--background-blue);
+    color: var(--foreground-main);
+    
 }
 
 .hero p{
@@ -220,12 +224,6 @@ footer{
     padding-left: 15px;
     color: var(--foreground-main);
 }
-
-/*
-.ul li{
-    margin-top: -15px;
-}
-*/
 
 ul li{
     font-weight: 300;
@@ -250,15 +248,28 @@ code {
     max-height: 180px;
 }
 
-.textGallery {
-    display: block;
-    float: right;
-}
-
 a:link {
     color: var(--foreground-purple);
 }
 
 a:visited {
     color: var(--background-purple);
+}
+
+@media screen and (min-width: 1366px) {
+    .articleImg {
+        display: block;
+        margin-left: 10rem;
+        margin-right: auto;
+        width: 50%;
+    }
+    
+}
+
+.tables {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
 }
