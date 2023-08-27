@@ -7,3 +7,4 @@ My website
 - [ ] develop a way to add images to pages and not make it werid
 - [ ] APP UI IS STILL MESSED UP? FIX ASAP
 - [ ] maybe change the rickpad video to a gif
+- [ ] clean up the CSS
