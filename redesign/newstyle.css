@@ -244,8 +244,11 @@ code {
 }
 
 #ledJIgImg {
-    
+    display: block;
+    width: 50%;
     max-height: 180px;
+    max-width: 180px;
+    margin: auto;
 }
 
 a:link {
@@ -258,10 +261,9 @@ a:visited {
 
 @media screen and (min-width: 1366px) {
     .articleImg {
-        display: block;
-        margin-left: 10rem;
-        margin-right: auto;
-        width: 50%;
+        display: block;;
+        margin: auto;
+        width: 80%;
     }
     
 }
@@ -272,4 +274,16 @@ a:visited {
     justify-content: center;
     align-items: center;
     gap: 30px;
+}
+
+hr.solid {
+    color: var(--foreground-aqua);
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+figcaption {
+    color: var(--foreground-main);
+    text-align: center;
+    padding-top: 10px;
 }
