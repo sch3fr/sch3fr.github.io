@@ -251,6 +251,10 @@ code {
     margin: auto;
 }
 
+#pedroImgLimit {
+    width: 40%;
+}
+
 a:link {
     color: var(--foreground-purple);
 }
