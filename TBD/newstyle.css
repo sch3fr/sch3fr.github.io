@@ -21,7 +21,7 @@
     --foreground-gray: #928374;
   
     background-color: var(--background-main);
-    font-family: monospace, monospace;
+    font-family: chicago, monospace;
 }
 
 .container {
