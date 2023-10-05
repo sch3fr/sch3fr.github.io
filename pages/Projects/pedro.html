@@ -39,7 +39,7 @@
             </p>
             <h3>Project overview</h3>
             <p>The mask is using a method called Charlieplexing to individually control two sets of 12 LEDs with only 
-                4 pins coming from an Arduino "Pro Micro" clone. There are 12 LEDs in each circle, in the same positions 
+                4 pins coming from an Arduino Nano clone. There are 12 LEDs in each circle, in the same positions 
                 as numbers on a watch face. The microcontroller is programmed with 4 simple emotinos/animations to make 
                 it a bit less creepy for other people to talk to me whenever I wear it. The faces are:
                 <ul>
@@ -71,11 +71,11 @@
                 from Watch_dogs: Legion, meaning now I had to "just" make two controllable led circles inside some 
                 kind of visor. I bought a cheap airsoft mask on Aliexpress as a base.
             </p>
-            <p> I basically copied a charlieplexing circuit from [link to TinkerCAD]. What I did different though
-                was splitting the signal lines from Arduino so it poweres both circles at the same time. That leads to
-                lowered LED brightness, so if needed, the mask could be easily modified in a way that each circle circuit 
-                would get its own 4 pins from Arduino, making it brighter but also complicating the wiring and lowering 
-                the battery life.
+            <p> I basically copied a charlieplexing circuit by <a href="https://www.tinkercad.com/things/6aAVVP95gmT-charlieplexing-12-leds">eric-chrysalis</a>. 
+                What I did different though was splitting the signal lines from Arduino so it poweres both circles at 
+                the same time. That leads to lowered LED brightness, so if needed, the mask could be easily modified in 
+                a way that each circle circuit would get its own 4 pins from Arduino, making it brighter but also 
+                complicating the wiring and lowering the battery life.
             </p>
             
             <div class="articleImgWrapper">
@@ -90,7 +90,7 @@
 
             <h3>Implementation</h3>
             <p>This project would not be possible without 3D printing and the rapid prototyping it allows.
-                The microcontroller is contained in a 3D printed box mounted to a belt of my jeans. There are 4 buttons 
+                The microcontroller is contained in a 3D printed box mounted to a belt of my pants. There are 4 buttons 
                 on the top of the box. I used mechanical keyboard switches with some leftover keycaps, since that was 
                 what I had at hand and I like the way it looks. Each button is wired to it's own dedicated pin of
                 the microcontroller, the other pin of every button is connected to common groud pin.
@@ -152,7 +152,7 @@
                 <li>I was expecting fogging issues, but outside it was fine. The mask fogged up a little wheile I was 
                     inside of a mall or at a subway station</li>
                 <li>It may be tempting to wear this mask to a rave, but I took it to a techno and I got very sweaty. 
-                    The mask survived fine, but I had saltier eyes then that one time I almost drowned in the Albania</li>
+                    The mask survived fine, but I had saltier eyes then that one time I almost drowned in Albania</li>
             </ul>
             <h3>Future enhancements</h3>
             <p>There are several things to think about when designing next revision/fixing my current mask.
@@ -165,8 +165,8 @@
             press random buttons. This could be fixed by <b>using different kind of buttons, changing the design of the 
             box</b> or simply changing the springs of the switches for heavier ones (I used 67g clicky keys btw.)
             <br><br>
-            Speaking of the box, I damaged the microUSB port of the Pro Micro, resulting in random power offs. There 
-            are two solutions. Short term solution is replacing the damaged pro micro (I am not good enough at soldering 
+            Speaking of the box, I damaged the microUSB port on the Nano, resulting in random power offs. There 
+            are two solutions. Short term solution is replacing the damaged Arduino (I am not good enough at soldering 
             to replace the connector) and give it a generous bath in hot glue to stop it from stressing. The better 
             solution is to either <b>redesign the box in a way that supports the cable, or use different board with 
             stronger connector.</b>
