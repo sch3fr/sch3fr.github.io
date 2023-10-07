@@ -2,13 +2,14 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hungie mobile app UI design</title>
-    <link rel="stylesheet" href="/redesign/newstyle.css">
-    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hungie mobile app UI design</title>
+  <link rel="stylesheet" href="/redesign/newstyle.css">
+  <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
 </head>
 
 <body class="container border">
@@ -18,139 +19,145 @@
 
   <main class="main border">
 
-  <aside class="sticky">
-    <img class="me" id="me" src="/redesign/me.png" alt="That's me"/>
-    <h2>Worlds okayest engineer</h2>
-    <div class="buttons">
-      <a href="../../index.html"><button><b>Home</b></button></a>
-      <a href="../cv.html"><button><b>Resume</b></button></a>
-      <a href="../projects.html"><button>🔙</button></a>
-      <h3>Reach out to me</h3>
-      <button><b>Email</b></button>
-      <button><b>Discord</b></button>
-      <button><b>Github</b></button>
-    </div>
-  </aside>
-    
-  <article class="article">
-    <section class="hero">
-    <h2>Interface design assignment</h2>
-        <section>
-          <a id="motivation"><h3>Motivation</h3></a>
-          <p>The motivation for this work is to create a design for an application that will help people 
-          pay attention to what and how much they eat. The idea is based on a quote from Peter Drucker - 
+    <aside class="sticky">
+      <img class="me" id="me" src="/redesign/me.png" alt="That's me" />
+      <h2>Worlds okayest engineer</h2>
+      <div class="buttons">
+        <a href="../../index.html"><button><b>Home</b></button></a>
+        <a href="../cv.html"><button><b>Resume</b></button></a>
+        <a href="../projects.html"><button>🔙</button></a>
+        <h3>Reach out to me</h3>
+        <button><b>Email</b></button>
+        <button><b>Discord</b></button>
+        <button><b>Github</b></button>
+      </div>
+    </aside>
+
+    <article class="article">
+      <section class="hero">
+        <h2>Interface design assignment</h2>
+
+        <h3>Motivation</h3>
+        <p>The motivation for this work is to create a design for an application that will help people
+          pay attention to what and how much they eat. The idea is based on a quote from Peter Drucker -
           <i>What gets measured gets managed.</i> <br>
           The Hungie app is therfore used to monitor calories and record meals. The app can function
-          eaither as a tool to improve onse lifestyle or as a simple food diary.</p>
-        </section>
-        <section>
-            <a id="goals"><h3>Goals</h3></a>
-            <p>The goal is to design the front end of a simple app for recording meals. The application 
-              should be as clear as possible so the user will not get discouraged from making regular
-              entries. If everything takes too long, the user will lose interest.<br>
-              Long story short, the main points of this design are:<br>
-              <ul>
-                <li>Create a design for a food diary app</li>
-                <li>Provide users with a tool to quickly record meals and allow users to deal with the details later</li>
-                <li>Let the users specify the location of the entry on the map</li>
-                <li>Give the users the opportunity to remember the good foods of the past</li>
-              </ul>
-            </p>
-        </section>
-        <section>
-          <a id="useCases"><h3>Use Cases and Scenarios</h3></a>
-          <h4>Use case 1</h4>
-          <ul>
-            <li>The user goes through initial settings on the first laucnho of the app.</li>
-            <li>The user expexts the system do display the main page.</li>
-            <li>The user expects to be able to add an entry and to go through the history of saved records on the main page.</li>
-            <li>The user requests the ability to swithc between the main page and the sub pages.</li>
-          </ul>
-          <h4>Scenario 1</h4>
-            <ul>
-              <li>The system shows options for registration or login using the user's Google or Apple accounts on the first launch. There is a welcome sign at the top, and an image in the background.</li>
-              <li>The system shows the main page of the app.</li>
-              <li>On the top of the main page there is user's profile picture and a graph showing the percentage of todays consumed calories.</li>
-              <li>There is a calory counter near the middle of the screen. Under that lies a list of eaten meals sorted by the date and time.</li>
-              <li>In the bottom right corener is a button for making a new entry.</li>
-              <li>The navigation bar is at the bottom of the screen for ease of use. The bar allows the user to switch between the app screens.</li>
-            </ul>
-          <h4>Use case 2</h4>
-            <ul>
-              <li>The user expects the system to show the details of records.</li>
-              <li>The user requires the ability to edit or delete the details of entries.</li>
-            </ul>
-          <h4>Scenario 2</h4>
-          <ul>
-            <li>The system displays cards with meals, sorted by the time of the record.</li>
-            <li>The cards contain picture of the meal, name and a button that leads to details page.</li>
-            <li>There is a search button in bottom right of the screen.</li>
-            <li>The system shows a new page with meal details on a click on the details button on any card.</li>
-            <li>The details page contains the meal name on the top, followed by its picture, number of calories, date and time of the record, 
-                notes and a map with location of the entry, if it was added.</li>
-            <li>The system shows buttons for editing or deletion of the record in place of the app's nav bar.</li>
-            <li>If user taps on the delete button, the system shows a warning with a confirmation button.</li>
-          </ul>
-          <h4>Use case 3</h4>
-            <ul>
-              <li>The user wants to be able to add new records, change the name, number of calories, notes, picture and location.</li>
-            </ul>
-          <h4>Scenario 3</h4>
-          <ul>
-            <li>On the main page the system shows a button for adding a new meal.</li>
-            <li>System waits for user to press the button.</li>
-            <li>After the add button is pressed, the system shows a new windows with title "New recording" and fields for the details.</li>
-            <li>To add the details, the system waits for the user to tap into the specific field of the detail.</li>
-            <li>The detail fields are, from top to the bottom, picture of the meal, name, number of calories, date, notes and a map.</li>
-            <li>The only required field is the name of the meal. The date and time is filled automatically. The rest of the details can be added later.</li>
-            <li>The system shows two buttons in the place of the app's nav bar. The first is to save the record, the other is to retur to the main page without saving.</li>
-            <li>If the user decides to tap on the return button, the system shows a warning - the data wonn't be saved. Under the warning there are two buttons, one 
-                returns the user to the new record screen, the other leads the user to the main page.</li>
-          </ul>
-        </section>
+          eaither as a tool to improve onse lifestyle or as a simple food diary.
+        </p>
 
-        <section>
-          <h3>Logical design</h3>
-          <div class="scroll-container">
-            <img src="/images/hungie/logicSplash.png" alt="Logical design of the splash screen">
-            <img src="/images/hungie/logicMain.png" alt="Logical design of the main screen">
-            <img src="/images/hungie/logicSub.png" alt="Logical design of the sub screen">
-            <img src="/images/hungie/logicDetails.png" alt="Logical design of the details page">
-            <img src="/images/hungie/logicSettings.png" alt="Logical design of the settings">
-          </div>
+        <h3>Goals</h3>
+        <p>The goal is to design the front end of a simple app for recording meals. The application
+          should be as clear as possible so the user will not get discouraged from making regular
+          entries. If everything takes too long, the user will lose interest.<br>
+          Long story short, the main points of this design are:<br>
+        <ul>
+          <li>Create a design for a food diary app</li>
+          <li>Provide users with a tool to quickly record meals and allow users to deal with the details later</li>
+          <li>Let the users specify the location of the entry on the map</li>
+          <li>Give the users the opportunity to remember the good foods of the past</li>
+        </ul>
+        </p>
 
-          <p>Here you can see the logical designes of:
-            <ol>
-              <li>The splash screen</li>
-              <li>The main screen</li>
-              <li>The secondary; screen</li>
-              <li>The details page</li>
-              <li>The settings page</li>
-            </ol>
-            <p>in this order.
-          </p>
-        </section>
-        <section>
-          <h3>Graphical design</h3>
-          <div class="scroll-container">
-            <img src="/images/hungie/designMain.png" alt="Graphical design of the main screen">
-            <img src="/images/hungie/designSub.png" alt="Graphical design of the secondary screen">
-          </div>
-          <p>Here you can see the graphical designes of:
-            <ol>
-              <li>The main screen</li>
-              <li>The subecondary screen</li>
-            </ol>
-            <p>in this order.
-          </p>
-          </section>
-    </section>
-        </article>
-      </main>
-  </body>
+        <h3>Use Cases and Scenarios</h3>
+        <h4>Use case 1</h4>
+        <ul>
+          <li>The user goes through initial settings on the first laucnho of the app.</li>
+          <li>The user expexts the system do display the main page.</li>
+          <li>The user expects to be able to add an entry and to go through the history of saved records on the main
+            page.</li>
+          <li>The user requests the ability to swithc between the main page and the sub pages.</li>
+        </ul>
+        <h4>Scenario 1</h4>
+        <ul>
+          <li>The system shows options for registration or login using the user's Google or Apple accounts on the first
+            launch. There is a welcome sign at the top, and an image in the background.</li>
+          <li>The system shows the main page of the app.</li>
+          <li>On the top of the main page there is user's profile picture and a graph showing the percentage of todays
+            consumed calories.</li>
+          <li>There is a calory counter near the middle of the screen. Under that lies a list of eaten meals sorted by
+            the date and time.</li>
+          <li>In the bottom right corener is a button for making a new entry.</li>
+          <li>The navigation bar is at the bottom of the screen for ease of use. The bar allows the user to switch
+            between the app screens.</li>
+        </ul>
+        <h4>Use case 2</h4>
+        <ul>
+          <li>The user expects the system to show the details of records.</li>
+          <li>The user requires the ability to edit or delete the details of entries.</li>
+        </ul>
+        <h4>Scenario 2</h4>
+        <ul>
+          <li>The system displays cards with meals, sorted by the time of the record.</li>
+          <li>The cards contain picture of the meal, name and a button that leads to details page.</li>
+          <li>There is a search button in bottom right of the screen.</li>
+          <li>The system shows a new page with meal details on a click on the details button on any card.</li>
+          <li>The details page contains the meal name on the top, followed by its picture, number of calories, date and
+            time of the record,
+            notes and a map with location of the entry, if it was added.</li>
+          <li>The system shows buttons for editing or deletion of the record in place of the app's nav bar.</li>
+          <li>If user taps on the delete button, the system shows a warning with a confirmation button.</li>
+        </ul>
+        <h4>Use case 3</h4>
+        <ul>
+          <li>The user wants to be able to add new records, change the name, number of calories, notes, picture and
+            location.</li>
+        </ul>
+        <h4>Scenario 3</h4>
+        <ul>
+          <li>On the main page the system shows a button for adding a new meal.</li>
+          <li>System waits for user to press the button.</li>
+          <li>After the add button is pressed, the system shows a new windows with title "New recording" and fields for
+            the details.</li>
+          <li>To add the details, the system waits for the user to tap into the specific field of the detail.</li>
+          <li>The detail fields are, from top to the bottom, picture of the meal, name, number of calories, date, notes
+            and a map.</li>
+          <li>The only required field is the name of the meal. The date and time is filled automatically. The rest of
+            the details can be added later.</li>
+          <li>The system shows two buttons in the place of the app's nav bar. The first is to save the record, the other
+            is to retur to the main page without saving.</li>
+          <li>If the user decides to tap on the return button, the system shows a warning - the data wonn't be saved.
+            Under the warning there are two buttons, one
+            returns the user to the new record screen, the other leads the user to the main page.</li>
+        </ul>
+        <h3>Logical design</h3>
+        <div class="scroll-container">
+          <img src="/images/hungie/logicSplash.png" alt="Logical design of the splash screen" class="responsive">
+          <img src="/images/hungie/logicMain.png" alt="Logical design of the main screen" class="responsive">
+          <img src="/images/hungie/logicSub.png" alt="Logical design of the sub screen" class="responsive">
+          <img src="/images/hungie/logicDetails.png" alt="Logical design of the details page" class="responsive">
+          <img src="/images/hungie/logicSettings.png" alt="Logical design of the settings" class="responsive">
+        </div>
 
-  <footer class="footer border">
-    <p>Last update on 7.10.2023, #blessed</p>
+        <p>Here you can see the logical designs of:
+        <ol>
+          <li>The splash screen</li>
+          <li>The main screen</li>
+          <li>The secondary; screen</li>
+          <li>The details page</li>
+          <li>The settings page</li>
+        </ol>
+        <p>in this order.
+        </p>
+        <h3>Graphical design</h3>
+        <div class="scroll-container">
+          <img src="/images/hungie/designMain.png" alt="Graphical design of the main screen" class="responsive">
+          <img src="/images/hungie/designSub.png" alt="Graphical design of the secondary screen" class="responsive">
+        </div>
+        <p>Here you can see the graphical designs of:
+        <ol>
+          <li>The main screen</li>
+          <li>The subecondary screen</li>
+        </ol>
+        <p>in this order.
+        </p>
+
+      </section>
+    </article>
+  </main>
+</body>
+
+<footer class="footer border">
+  <p>Last update on 7.10.2023, #blessed</p>
 </footer>
 
 </html>

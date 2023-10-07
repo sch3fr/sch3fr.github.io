@@ -2,9 +2,9 @@
 My website
 ## To do
 - [ ] unite the mess across the HTML files
-- [ ] add pics to PEDRO page
+- [x] add pics to PEDRO page
 - [ ] fix side buttons
-- [ ] develop a way to add images to pages and not make it werid
+- [x] develop a way to add images to pages and not make it werid
 - [ ] APP UI IS STILL MESSED UP? FIX ASAP
 - [ ] maybe change the rickpad video to a gif
 - [ ] clean up the CSS
