@@ -22,9 +22,21 @@
   
     background-color: var(--background-main);
     font-family: monospace, monospace;
-  }
-  
-  
+}
+/*
+@media screen and (min-width: 769px){
+    main{
+        max-width: 769px;
+    }
+}
+
+@media screen and (min-width: 1025px){
+
+}
+
+@media screen and (min-width: 1201px){
+
+}*/
 
 * {
     margin: 0;
@@ -302,3 +314,8 @@ div.scroll-container {
 div.scroll-container img {
     padding: 10px;
 }
+
+.responsive {
+    width: 100%;
+    height: auto;
+  }
