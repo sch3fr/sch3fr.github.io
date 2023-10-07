@@ -99,6 +99,32 @@
             </div>
 
             <h3>Implementation</h3>
+            <p>To build this thing, you will need:
+                <ul>
+                    <li>24* 3mm LEDs</li>
+                    <li>4* 330Ω resistors</li>
+                    <li>1* 1kΩ resistor</li>
+                    <li>1* Arduino Nano</li>
+                    <li>4* mechanical keyboard switches</li>
+                    <li>4* mechanical keyboard keycaps</li>
+                    <li>1* <a href="https://www.aliexpress.com/item/1005005392812734.html?spm=a2g0o.order_list.order_list_main.85.48121802i8JtWP">mask</a></li>
+                    <li>1* 3D printed LED mounting bracket</a></li>
+                    <li>1* 3D printed board and switches housing</li>
+                    <li>1m of paracord</li>
+                    <li>a length of wire</li>
+                    <li>You may also want to print 2 LED jigs</li>
+                </ul>
+                <br>
+            <p>The 3D printed files can be found at projects <a href="https://github.com/sch3fr/pedro"> github page</a></p><br>
+            <div class="articleImgWrapper">
+                <hr class="solid">
+                <a href="/images/pedro/eyepiece.png" target="_blank">
+                    <img src="/images/pedro/eyepiece.png" class="articleImg">
+                </a>
+                <figcaption>3D printed eyepiece that mounts into the mask</figcaption>
+                
+                <hr class="solid">
+            </div>
             <p>This project would not be possible without 3D printing and the rapid prototyping it allows.
                 The microcontroller is contained in a 3D printed box mounted to a belt of my pants. There are 4 buttons 
                 on the top of the box. I used mechanical keyboard switches with some leftover keycaps, since that was 
@@ -131,6 +157,7 @@
                 identify parts of the circuit and follow numbering on the wiring diagram. The circuit is somewhat 
                 challenging, not sure I'd reccomend it to total soldering novice.
             </p>
+            <!--
             <div class="articleImgWrapper">
                 <hr class="solid">
                 <a href="/images/pedro/wiringGruv.png" target="_blank">
@@ -138,7 +165,7 @@
                 </a>
                 <figcaption>The wiring can get messy quickly</figcaption>
                 <hr class="solid">
-            </div>
+            </div>-->
 
             <p>Once all the soldering is done, it's time to print the main piece that holds the LEDs and screws into 
                 some existing screwholes in the mask and it's done.
@@ -146,7 +173,8 @@
                 The whole thing took me several weeks to make, including research, prototyping, and failing to make the 
                 circle circuit several times. But it was a joy to make, because at some point I managed to enter flow 
                 state whenever I worked on it. I knew exactly what to do and how to do it. And it felt great.
-            </p>
+            </p><br>
+            <p><b>The full assembly guide is on the project's Github page</b></p>
             <h3>Software integration</h3>
             <p>The firmware is simple to understand and modify. On boot, the Arduino waits for user to choose an 
                 animation. Every animation consists of flashing single LEDs in succession to make it look like there 
@@ -190,6 +218,13 @@
             solution is to either <b>redesign the box in a way that supports the cable, or use different board with 
             stronger connector.</b>
             </p>
+            <h3>Gallery</h3>
+            <div class="scroll-container">
+                <img src="/images/pedro/wiringGruv.png" alt="Wiring can get rather messy" id="pedroImgLimit">
+                <img src="/images/pedro/controlBoxGruv.png" alt="Control box" id="pedroImgLimit">
+                <img src="/images/pedro/demo.gif" alt="Demo of the mask" id="pedroImgLimit">
+                
+              </div> 
             <h3>Closing thoughts</h3>
             <p>I am very happy with how this project turned out. I hope to start something that will put me in the 
                 flow state again ASAP. Also I should start working on LED matrix display soon, otherwise I'll never
@@ -204,7 +239,7 @@
 </body>
 
 <footer class="footer border">
-    <p>Last update on 5.10.2023, #blessed</p>
+    <p>Last update on 7.10.2023, #blessed</p>
 </footer>
 
 </html>
