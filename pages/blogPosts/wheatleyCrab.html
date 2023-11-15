@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom of spaghetti code</title>
+  <link rel="stylesheet" href="/redesign/newstyle.css">
+</head>
+<header><h1>Hello world!</h1></header>
+<main>
+    <aside class="sticky">
+        <img class="me" id="me"src="/redesign/me.png" alt="That's me!"/>
+        <h2>Worlds okayest engineer</h2>
+        <div class="buttons">
+          <a href="/pages/cv.html"><button><b>Resume</b></button></a>
+          <a href="/pages/projects.html"><button><b>Projects</b></button></a>
+          <a href="/pages/blog.html"><button>🔙</button></a>
+          <h3>Reach out to me</h3>
+          <a href="https://twitter.com/sch3fr"><button><b>Twitter</b></button></a>
+          <a href="https://github.com/sch3fr"><button><b>Github</b></button></a>
+        </div>
+    </aside>
+
+<!-- Content here :)-->
+<section class="article">
+  <div class="hero">
+    <h2>Building wheatley Crab</h2>
+    <p>15.11.23</p>
+    <p>I've been watching and enjoying Mr. Volt's videos for quite some thime. His creations are very complex and, honestly,
+        kinda impractical to recreate. However once he made <a href="https://youtu.be/nXVsbjl3NYk?si=EyhqIdn6VHsi1qNm">
+        Wheatley crab video</a> it has been stored somewhere in the back
+        of my mind. Since I've had some money to spare this fall I thought, what the hell, why shouldn't I make my own
+        Wheatley Crab. So I ordered the parts and started working on, whatever this was gonna be.
+        <br><br>
+        So I ordered some filament, RPI 2040, and <a href="https://www.waveshare.com/1.28inch-lcd-module.htm">display</a>. 
+        And then the problems started.
+    </p>
+    <h3>The display situation</h3>
+    <p>
+        So. Waveshare. Love 'em. There's one thing though. Their 1.28" rounded displays? Yeah there are multiple types.
+        The non-touch and the touch variants. Of course I got the touch one. It's no big deal I thought, and boy... I was
+        somewhat right, but also wrong to some degree.
+        <br><br>
+        The good thing is that the display worked.
+        <br>
+        And that's where the good things ended. The first problem was the different labels on cables.
+        It was annoying, but I managed to make a table of all the differences in pin labels, since the pins in the 
+        video didn't match with the documentation nor my touch display.
+    </p>
+
+    <br>
+    <div class="tables">
+    <table>
+        <tbody>
+            <tr>
+                <td>Pico pin</td>
+                <td>Lables in video</td>
+                <td>Pins in display documentation</td>
+                <td>Pins on touch display </td>
+            </tr>
+            <tr>
+                <td>3.3 V</td>
+                <td>VCC</td>
+                <td>VCC </td>
+                <td>VCC </td>
+            </tr>
+            <tr>
+                <td>GND</td>
+                <td>GND</td>
+                <td>GND</td>
+                <td>GND</td>
+            </tr>
+            <tr>
+                <td>GP10</td>
+                <td>SCL</td>
+                <td>CLK</td>
+                <td>SCLK</td>
+            </tr>
+            <tr>
+                <td>GP11</td>
+                <td>SDA</td>
+                <td>DIN</td>
+                <td>MOSI</td>
+            </tr>
+            <tr>
+                <td>GP12</td>
+                <td>RES</td>
+                <td>RST</td>
+                <td>LCD_RST</td>
+            </tr>
+            <tr>
+                <td>GP13</td>
+                <td>DC</td>
+                <td>DC</td>
+                <td>LCD_DC</td>
+            </tr>
+            <tr>
+                <td>GP14</td>
+                <td>CS</td>
+                <td>CS</td>
+                <td>LCD_CS</td>
+            </tr>
+            <tr>
+                <td>GP15</td>
+                <td>BLK </td>
+                <td>BL</td>
+                <td>LCD_BL </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <br>
+    <p>
+        So I connected my TP display to pins on the Pico, but that was not the end of my troubles. The display module 
+        itself is a few milimeters larger than non-touch version, which means that it won't fit the display bracket. Unless
+        I print the bracket a few % larger. So the display bracket printed fine, but now it does not line up with the 
+        screwholes on the other piece. I mean, I can fit like, 2, maybe 3 screws, but not all 4. And you know what.
+        I don't care. 2 screws is enough and that's what I'm gonna leave it at.
+    </p>
+    <h3>Software</h3>
+    <p>So Mr. Volt leaves a link in the video description to a Circuit Python library that shows images on the display.
+        However. The repo in question in repurposed. Where the library was once hosted is now simple demo of usage of 
+        said library. Now you may ask where to get it. It is not the standard part of Circuit Python. And it was not listed
+        in available libraries. I had to look it up somewhere on the internets.<br><br>
+        Once I finally got the library needed I loaded the code from the forementioned repository. 
+        But to show the iconic wheatley eye you need to get the image from somewhere. Luckily, Mr. Volt has got that covered.
+        He provides a link to JPEGs of Portal 2 Core eyes. And the library only works with BMP. Great.
+        <br>
+        I read that to convert the pictures one should use ImageMagick. I thought I was being smart when I decided not to
+        download yet another program I'll only use once and then never touch again. I have GIMP, I can use that to convert
+        it in BMP, right? Well, no. Even the scammy online converters didn't work. The display would simply show a cryptic,
+        cropped error. So I caved in and downloaded ImageMagick. And lo and behold, it worked. Now all I had to do was to
+        print the rest of the body and my Wheatley crab would be done. 
+    </p>
+    <h3>Finishing touches</h3>
+    <p>I screwed the whole thing together using random screws I had lying around. I tapped down unused cables with duckt
+        tape. And glued the leg thingies with superglue. My god. The superglue. It was everywhere. I am terrible with it.
+        It was all over my fingers for two days. Anyway my Wheatley Crab turned out pretty much the same as all of my DI-Why
+        projects. Scuffed AF but I love it anyway.
+    </p>
+    
+    <div class="articleImgWrapper">
+        <hr class="solid">
+        <a target="_blank" href="/images/wheatleyCrab/hiResCrab.jpg">
+          <img src="/images/wheatleyCrab/crab.png" alt="ahahahaha. Wheatley crab" class="articleImg responsive">
+        </a>
+        <figcaption>ahahahaha. Wheatley crab</figcaption>
+        <hr class="solid">
+      </div>
+    </div>
+</section>
+
+</main>
+    <footer class="footer border">
+        <p>Last update on 15.11.2023; #blessed</p>
+    </footer>
+</html>
