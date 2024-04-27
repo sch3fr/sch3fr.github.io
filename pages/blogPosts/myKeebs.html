@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kingdom of spaghetti code</title>
+  <link rel="stylesheet" href="/redesign/newstyle.css">
+</head>
+<header><h1>Hello world!</h1></header>
+<main>
+    <aside class="sticky">
+        <img class="me" id="me"src="/redesign/me.png" alt="That's me!"/>
+        <h2>Worlds okayest engineer</h2>
+        <div class="buttons">
+          <a href="/pages/cv.html"><button><b>Resume</b></button></a>
+          <a href="/pages/projects.html"><button><b>Projects</b></button></a>
+          <a href="/pages/blog.html"><button>🔙</button></a>
+          <h3>Reach out to me</h3>
+          <a href="https://twitter.com/sch3fr"><button><b>Twitter</b></button></a>
+          <a href="https://github.com/sch3fr"><button><b>Github</b></button></a>
+        </div>
+    </aside>
+
+<!-- Content here :)-->
+<section class="article">
+  <div class="hero">
+    <h2>Showing off my kustom keyboards</h2>
+    <p>25.04.24</p>
+    <p>
+        So I've been in the keeb game for a few years now, and I just randomly felt like sharing my keebs, since they are
+        not featured on my projects page.<br>
+        So I bought my first mechanical keyboard in 2019 I think. It was a cheap chinese brand TKL with very light linear
+        swhitches and I absolutely loved that thing. But then, in late 2021, I discovered the
+    </p>
+    <h3>Split89</h3>
+    <p>
+        Split89 is a TKL split keyboard designed by <a href="https://github.com/jurassic73/">jusrrasic73</a>, and it's ultimetaly
+        the reason why I got into mechanical keyboards. To be frank, I've been thinking about cool custom keyboards for a looong time,
+        since, like, 2018. The realization that I can make keyboards on my 3D printer for cheaper than buying all the parts 
+        was the great "aha" moment for me. And when I saw this keyboard on reddit I fell in love with it instantly and I had to make it.<br>
+        There is actually a great source of information on topic of 3D printed keyboards, namely <a href="https://www.youtube.com/watch?v=yYcNi9hKxDk&t=38s&pp=ygUiemFjaCBmcmVkbWFuIDNkIHByaW50aW5nIGtleWJvYXJkcw%3D%3D">
+        this video by Zack Freedman</a>. It game me enough confidence to order some switches and get going.<br>
+        So I ordered some kind of tactile swithces (reviews say it feels similar to the Holy Pandas) and "Off white" clone 
+        XDA keycaps from Aliexpress. The printing went mostly fine, although I did manage to scratch my print bed pretty bad when
+        printing the writs supports. Wiring took me ages, since tthis was the very first thing I ever soldered on my own.
+        And of course there were some mistakes. This keyboard needs 2 Pro Micros, and I managed to break the ports on both of them.
+        Other than that, it was my daliy driver for quite some time, I actually used it every day until last November.
+        <div class="articleImgWrapper">
+          <hr class="solid">
+          <a target="_blank" href="/pages/blogPosts/images/keebs/split89.jpeg">
+            <img src="/pages/blogPosts/images/keebs/split89.jpeg" alt="Finished Split89" class="articleImg responsive">
+          </a>
+          <figcaption>Finished Split89</figcaption>
+          <hr class="solid">
+      </div>
+    </p>
+    <h3>Banana pad</h3>
+    <p>
+      Around this time I still had some leftover parts from Split89 and a lot of free time. I found this <a href="https://github.com/dbostian/banana">
+      banana macropad</a>, and I just had to make it.<br>
+      Building Split89 taught me one important thing tohugh, and that was the magick of the QMK firmware. While I had next
+      to no experience with it, I knew it was far more elegant solution to using it than the <a href="https://github.com/dbostian/banana/blob/main/arduino/banana.ino">proposed arduino code</a>.
+      I had no idea what I was doing, but I managed to make something using the, now depricated, keyboard firmware builder.
+      While fun project, I didn't find it to be that useful, since I had some programmed macros in my Split89 and I never found
+      a use for it. It was nice though, improving someone elses project. I never shared the qmk firmware though, I though I'd
+      fix it one day. Might fork it and make new, better working firmware for it soon though.
+    </p>
+    <h3>SmolBoat</h3>
+    <p>
+      This was around the time I got much deeper into the rabbit hole. I fell in love with the aesthetic of 40% keyboards. 
+      Mainly the Planck keyboard. And I thought I could make my own on cheap. And so I did. What was supposed to be a wekkend
+      project took me around 5 days to complete and I hated it.<br>
+      I got cheap, heavy clicky swithces, since it was the last category of mechanical switches that I never tried, and I
+      combined that with Aliexpress special, black and yellow double shot keycaps of unknown profile. And thats when I
+      realized, that 40% keyboard is absolutely unusable when typing in Czech. We need the number row for extra characters, 
+      such as "č" and "ř", not to mentiont the "ů" on the right of the alphas. So I caved in, disassembled my beloved 
+      whateverTheHellWasItCalled, and I started making the <a href="https://www.thingiverse.com/thing:3289175">SmolBoat</a>.
+      The thing was though, there was no guide. So this was a great learning experience for me, since I had to edit the 
+      3D files a bit, design the wiring matrix and write the firmware, all of which is described <a href="/pages/Projects/smolobat.html">here</a>.
+      I also had to solder it together and then tear it apart and remake, since I messed up royaly, and I made something
+      somewhere short, and since I didn't have a multimeter, I just had to rebuildi it. And no, my homemade arduino based
+      continuity tester didn't help.
+      <br>
+      But after I was done, I never really used it. The switches are annoying and I never got to designing a usable keymap
+      for it. It still lives in my drawer, waiting for something to happen.
+    </p>
+    <h3>RickPad</h3>
+    <p>
+      It has it's own <a href="/pages/Projects/rickpad.html">project page</a>. I just wanted to mention it here, since it 
+      tought me how to write QMK macros. While I had some special functionality in my Split, I used the online tool QMK 
+      configurator. This, on the other hand, was all done by me in the span of one day. And I'm still proud of it.
+    </p>
+    <h3>Batoid</h3>
+    <p>
+      After long period of nothing, I saw <a href="https://github.com/kotte-computer-electronics/batoid">this beauty</a>
+      on reddid and I just had to make it too. I think it's somewhere in the neighborhood of 40%. I thought that now I just
+      had to make it work, it was just too nice looking not to use it.<br>But.<br>
+      I had a lot of troubles.<br>
+      My printer was out of whack, I was ill, my wiring was faulty, and I could not get it to work with provided firmware.
+      I put it on the shelf for some time, thinking I'd come back to it. I eventually managed to vrite working VIAL 
+      firmware for it, but after weeks of experimenting, I just could not come up with keymap that would work for Czech.
+      And it's heartbreaking since I really like the look and feel of the board. It uses DIY gasket mount, and I got the
+      Holy Pandas for it and cute keycaps and everything.
+
+      <div class="articleImgWrapper">
+        <hr class="solid">
+        <a target="_blank" href="/pages/blogPosts/images/keebs/batoid.jpg">
+          <img src="/pages/blogPosts/images/keebs/batoid.jpg" alt="Finished Batoid" class="articleImg responsive">
+        </a>
+        <figcaption>Finished Batoid</figcaption>
+        <hr class="solid">
+    </div>
+    </p>
+    <h3>Unix60</h3>
+    <p>
+      Here comes the real deal. The first keyboard kit I ever bought, and it might be the last, at least for some time.
+      The Unix60. I've been wanting to try HHKB layout for years, I just could not find a good 3D printed chasis for it.
+      The ones I found either used costar stabs, which I hate, or were off in some ways. I even half heartedly tried modifying
+      existing 60% 3D printed keyboard files, but to no avail. Then I found this kit in local shop and I just had to get it.
+      Though it was not without it's own set of problems. I speedrun soldering, and I managed to royaly mess something up,
+      and some keys just did not work without putting a lot of preassure to it. I decided to take it apart and rebuild it,
+      but I managed to rip off several solder pads and absolutely destroy the Pro Micro I used.<br>
+      While sad and angry at my own stupidity, I ordered anoter kit.<br>
+      Once it came I did everything in my power to make it work right. And boy was it worth it. I decided to change the controller
+      mid way throught and that didnt't go without any damage. I ripped the solder pads of one switch, again. But this 
+      time, I used my gigantic smooth brain and I just followed the trace, and then I soldered a wire between the switch and 
+      the end point. Once I got that working I rewrote the firmware to use VIAL, so I can quickly make changes, but I landed on
+      a prety much perfect keymap, very close to the original HHKB. And I love it to bits. After that I 3D printed case parts
+      for it, and wrapped them in redbull cans. With my UFO keycaps it is the perfect keyboard for local crackhead.
+      <div class="articleImgWrapper">
+        <hr class="solid">
+        <a target="_blank" href="/pages/blogPosts/images/keebs/Unix60-2.jpg">
+          <img src="/pages/blogPosts/images/keebs/Unix60-2.jpg" alt="My beloved Unix60" class="articleImg responsive">
+        </a>
+        <figcaption>My beloved Unix60</figcaption>
+        <hr class="solid">
+    </div>
+    </p>
+    <h3>Unix60, part Two</h3>
+    <p>
+      So now that I fell in love with the HHKB layout, I decided I should try to get my other, more broken Unix60 kit to work,
+      since now I had some ideas about how to fix it and my germophobic friend talked to me about his disgust whenever he has
+      to type on the keyboard at his workplace. I took one look at the keyboard in my office and decided that I wish to never
+      touch them. So there you have it, plan an motivation to fix it. And I went all in. Silent linear switches with film, and,
+      for the first time ever, bluetooth. I bought elite C controler thinking it would be EZ, since the shop where I got my
+      Unix60 kits listed the Elite C as compatible. While that was true, I didn't know that it does not support QMK and at the 
+      time I knew nothign about ZMK. I hit the ground running. I tried and failed and tried and failed to write working ZMK
+      for Unix60. I even asked for help at the official discord server, still nothing. I even concidered swapping the Elite C
+      for Pro Micro or something, just to get it working. But after staring at the board diagram for hours and trying tirelessly
+      I finally got it to work. And it even works wirelessly. So cool. Even my coworkers say it's dope. I'm very satisfied with
+      it, although the silent switches feel kinda weird, and next time I'd go with something heavier.
+    </p>
+    <h3>So what's next?</h3>
+    <p>
+      To be honest, I'm not really sure. I love my Unix60s, and I'm not really looking for anything different right now.
+      I mihgt try out something more exotic in the future. I really wanted to join this year maker fair, and talk about
+      3D printed keyboards and QMK (which might become it's own blog post soon™), and for that I really wanted to build 
+      and show the famous Dactyl Manuform, but I can't attend because of school this year, and after printing half of it 
+      I kinda lost interest. I still want to finish it someday, maybe before the next year, but it's nowhere near my 
+      list of priorities right now.
+      <br>
+      What I want to do is refine my keyboards. Fix broken firmwares, squish the bugs, learn more about QMK... But I don't 
+      see myself building a new board anytime soon. <br>
+      That Being said. I would love to create my own keyboard form scratch. But when, well, who knows...
+    </p>
+    <h3>Gallery</h3>
+    <div class="scroll-container">
+      <a href="/pages/blogPosts/images/keebs/split89-2.jpg" target="_blank"><img src="/pages/blogPosts/images/keebs/split89-2.jpg" alt="The birth of Split89" id="pedroImgLimit"></a>
+      <a href="/pages/blogPosts/images/keebs/Unix60-1.jpg" target="_blank"><img src="/pages/blogPosts/images/keebs/Unix60-1.jpg" alt="UFO keycaps" id="pedroImgLimit"></a>
+      <a href="/pages/blogPosts/images/keebs/smolboat-2.jpg" target="_blank"><img src="/pages/blogPosts/images/keebs/smolboat-2.jpg" alt="SmolBoat in action" id="pedroImgLimit"></a>
+      <a href="/pages/blogPosts/images/keebs/planck-2.jpg" target="_blank"><img src="/pages/blogPosts/images/keebs/planck-2c.jpg" alt="Keeb workplace" id="pedroImgLimit"></a>
+      <a href="/pages/blogPosts/images/keebs/batoid-2.jpg" target="_blank"><img src="/pages/blogPosts/images/keebs/batoid-2.jpg" alt="First stages of Batoid" id="pedroImgLimit"></a>
+      <a href="/pages/blogPosts/images/keebs/hckb.jpg" target="_blank"><img src="/pages/blogPosts/images/keebs/hckb.jpg" alt="My attempt at cloning the HHKB" id="pedroImgLimit"></a>
+    </div>
+
+    <!--
+    <div class="articleImgWrapper">
+        <hr class="solid">
+        <a target="_blank" href="/images/wheatleyCrab/hiResCrab.jpg">
+          <img src="/images/wheatleyCrab/crab.png" alt="ahahahaha. Wheatley crab" class="articleImg responsive">
+        </a>
+        <figcaption>ahahahaha. Wheatley crab</figcaption>
+        <hr class="solid">
+    </div>-->
+  </div>
+</section>
+
+</main>
+    <footer class="footer border">
+        <p>Last update on 25.04.2024; #blessed</p>
+    </footer>
+</html>
