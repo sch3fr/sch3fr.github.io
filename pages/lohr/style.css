@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #333; /* Tmavé pozadí mimo hru */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    color: white;
+}
+
+#game-container {
+    position: relative;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+#ui-layer {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    pointer-events: none; /* Aby šlo klikat skrz text na hru */
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+canvas {
+    background-color: #4CAF50; /* Zelená tráva */
+    display: block;
+}
