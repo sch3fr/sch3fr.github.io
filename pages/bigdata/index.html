@@ -348,12 +348,25 @@
                 <h2>3. Strategie nakládání s daty</h2>
 
                 <h3>Lifecycle</h3>
-
+                Byl zvolen čtyřfázový životní cyklus uzpůsobený analytickému projektu:
+                <ol>
+                    <li>Získání (Ingestion): Stažení raw dat z OpenF1 API a lokální vygenerování syntetických datasetů.</li>
+                    <li>Zpracování (Processing): Čištění, typové konverze a tvorba analytických pohledů (Views) v DuckDB.</li>
+                    <li>Využití (Analysis): Výpočty KPI a vizualizace v Jupyter Notebooku.</li>
+                    <li>Retence (Archivace): Finální databáze f1_project.duckdb s agregovanými výsledky se archivuje pro historické srovnání.</li>
+                </ol>
                 <h3>Role a odpovědnosti (RACI)</h3>
 
                 <h3>Kvalita dat</h3>
+                <p>Kvalitu je kontrolována přímo v SQL validačními pravidly:</p>
+                <ul>
+                    <li>Úplnost (Completeness): Procento nevyplněných hodnot. Práh: Méně než 5 % chybějících časů kol (lap_duration IS NOT NULL).</li>
+                    <li>Přesnost (Accuracy): Detekce outlierů. Práh: Čas kola nesmí přesáhnout 120 sekund (eliminace Safety Caru); pit stop musí trvat mezi 1.5 a 30 sekundami.</li>
+                    <li>Konzistence (Consistency): Unikátnost. Práh: Nulová tolerance duplicit pro složený klíč driver_number + lap_number.</li>
+                </ul>
 
                 <h3>Etika a rizika</h3>
+                
                 
             </section>
 
@@ -379,26 +392,27 @@
                 <h3>Shrnutí zjištění</h3>
 
                 <h3>Limity vlastního řešení</h3>
-
-                <h3>Kvalita a pokrytí dat</h3>
-
-                <h3>Bias a reprezentativnost</h3>
-
-                <h3>Přenositelnost řešení</h3>
-
-                <h3>Technická omezení</h3>
+                <ul>
+                    <li>Kvalita a pokrytí dat: Neveřejnost interní telemetrie týmů vedla k použití syntetických dat. Zásadním limitem surových dat z API je absence údaje o hmotnosti vozu – vliv úbytku paliva (Fuel Burn effect) maskuje reálnou degradaci pneumatik, což bylo řešeno dodatečným korekčním koeficientem.</li>
+                    <li>Bias: Analýza je náchylná na  „Track Bias“. Data pocházejí z jedné konkrétní Grand Prix (Suzuka, Japonsko 2026) a chování pneumatik nelze plošně zobecnit na jiné okruhy (např. městský okruh vs. permanentní trať).</li>
+                    <li>Přenositelnost: Architektura je silně závislá na schématu OpenF1 API. Změna struktury JSON odpovědi na straně poskytovatele by rozbila naši ingesční pipeline.</li>
+                    <li>Technická omezení: Lokální dávkové zpracování (Batch ELT v DuckDB) neumožňuje analýzu „live“ (near-real-time) přímo v průběhu závodu.</li>
+                </ul>
 
                 <h3>Budoucnost s AI</h3>
-
-                <h4>Kde dává smysl automatizace</h4>
+                <ul>
+                    <li>Automatizace: Nasazení orchestrátoru (např. Apache Airflow / dbt), který by automaticky spustil celou datovou pipeline (od stažení po aktualizaci DuckDB) vždy v pondělí po závodním víkendu.</li>
+                    <li>Kdy dává AI smysl:</li>
+                    <ul>
+                        <li>Machine learning: Nahrazení statického pravidla pro Pit Window (ztráta > 1.5s) prediktivním modelem (např. XGBoost), který by se učil z historických závodů a predikoval by ideální kolo pro zastávku na základě teploty trati a tempa konkurence.</li>
+                        <li>Generativní AI: Napojení LLM přímo na DuckDB pro generování automatických textových reportů a shrnutí závodní strategie.</li>
+                    </ul>
+                    <li>Rizika a kontrolní mechanismy: U ML modelů hrozí overfitting (přeučení) na konkrétní typ počasí. Nutností by bylo nasazení automatizovaných testů dat (Data Observability), aby AI nedělala rozhodnutí na základě chybných dat senzorů (např. vadný senzor teploty).</li>
+                </ul>
 
                 <h4>Pokročilé využití AI v prostředí F1</h4>
 
-                <h4>Rizika využití AI</h4>
-
-                <h4>Kontrolní mechanismy</h4>
-
-                <h4>Strategický přínost do budoucna</h4>
+                <h4>Strategický přínos do budoucna</h4>
                 
             </section>
 
@@ -406,9 +420,16 @@
                 <h2>6. Metodika a postup</h2>
 
                 <h3>Workflow</h3>
-
+                <ul><li>Byl zvolen ELT (Extract, Load, Transform) přístup:</li></ul>
+                <ol>
+                    <li>Extrakce surových JSON přes API (ošetřeno proti timeoutům).</li>
+                    <li>Generování syntetických datasetů.</li>
+                    <li>Nahrání všech dat do databáze (DuckDB).</li>
+                    <li>Transformace (čištění a JOINy) pomocí SQL pohledů (Views).</li>
+                    <li>EDA a vizualizace nad čistými daty v Jupyter Notebooku.</li>
+                </ol>
                 <h3>Replikace výsledků</h3>
-                
+                <p>Projekt je plně reprodukovatelný. Stačí spustit všechny tři Python skripty ve správném pořadí (download_api_data.py -> generate_synthetic.py -> init_duckdb.py) a následně spustit všechny buňky v přiloženém Jupyter Notebooku.</p>
                 <h3>Rozdělení rolí členů týmu</h3>
                 <ul>
                     <li> Data & Tech Lead (výběr datasetu, čištění dat, DuckDB databáze, SQL dotazy, struktura Jupyter notebooku</li>
@@ -416,7 +437,15 @@
                     <li>Josef – Analytics & Presentation lead (grafy, interpretace trendů, propojení grafů s KPI, HTML dokument, příprava prezentace + demo)</li>
                 </ul>
                 <h3>Nástroje a prostředí</h3>
-
+                <ul>
+                    <li>Sběr a transformace: Python 3.x, requests, DuckDB.</li>
+                    <li>Analýza a vizualizace: Jupyter Notebook, knihovny Pandas, Matplotlib, Seaborn.</li>
+                </ul>
+                <h4>Konvence</h4>
+                <ul>
+                    <li>Databázové tabulky a sloupce využívají striktně snake_case.</li>
+                    <li>Oddělení vrstev: Očištěné analytické SQL pohledy mají vždy explicitní prefix v_clean_ nebo v_analytical_, aby se jasně odlišily od surových vstupních tabulek.</li>
+                </ul>
                 <h3>AI použití</h3>
 
                 <h3>Zdroje</h3>
