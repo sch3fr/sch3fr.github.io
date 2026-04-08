@@ -143,7 +143,54 @@
                 width: auto;
             }
         }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            /* Zachová poměr stran při změně šířky */
+        }
+
+        table {
+        border-collapse: collapse;
+        width: 100%;
+        margin-bottom: 30px;
+        background-color: #fff;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: right;
+    }
+    th {
+        background-color: #333;
+        color: white;
+        font-weight: bold;
+    }
+    th:first-child, td:first-child {
+        text-align: center;
+        background-color: #f9f9f9;
+        color: #555;
+        font-weight: bold;
+        width: 40px;
+    }
+    h3 {
+        color: #444;
+        border-bottom: 2px solid #ddd;
+        padding-bottom: 5px;
+        margin-top: 40px;
+    }
     </style>
+
+    <script>
+        function openModal(el) {
+            const modal = document.getElementById('mainDialog');
+            const modalImg = document.getElementById('modalImg');
+            modalImg.src = el.src; // Předá cestu z náhledu do dialogu
+            modal.showModal();
+        }
+    </script>
+
 </head>
 
 <body>
@@ -179,7 +226,6 @@
                     <li>Systém pomáhá optimalizovat závodní strategii, minimalizovat riziko chybného rozhodnutí a
                         zvyšovat bodový zisk při omezeném rozpočtu týmu.</li>
                 </ul>
-                <br>
                 <ul>
                     <li>Název firmy: Formula engineering</li>
                     <li>Doména: Sportovní analytika</li>
@@ -251,8 +297,10 @@
 
                 <h4>Kontext rozpočtu F1 týmů</h4>
                 <p>
-                Roční rozpočtový strop týmů se pohybuje přibližně mezi 120–135 miliony EUR. Cena 50 000 EUR ročně představuje méně než 0,05 % ročního rozpočtu týmu.
-                Z pohledu nákladové struktury tedy jde o velmi nízkou investici s potenciálně vysokým dopadem na bodový zisk, a tedy i na finanční odměny z šampionátu konstruktérů.
+                    Roční rozpočtový strop týmů se pohybuje přibližně mezi 120–135 miliony EUR. Cena 50 000 EUR ročně
+                    představuje méně než 0,05 % ročního rozpočtu týmu.
+                    Z pohledu nákladové struktury tedy jde o velmi nízkou investici s potenciálně vysokým dopadem na
+                    bodový zisk, a tedy i na finanční odměny z šampionátu konstruktérů.
                 </p>
 
                 <h3>Business questions</h3>
@@ -264,7 +312,8 @@
                 <h3>KPI</h3>
                 <ul>
                     <li>PIT Stop Efficiency Index: poměr mezi časem pit stopu a průměrem top 3 týmů</li>
-                    <li>Degradation Delta: rozdíl mezi predikovaným a reálným časem na kolo s rostoucím počtem kol na sadě gum</li>
+                    <li>Degradation Delta: rozdíl mezi predikovaným a reálným časem na kolo s rostoucím počtem kol na
+                        sadě gum</li>
                     <li>ROI: kolik bodů tým získal vzhledem k nákladům na vývoj v daném závodě</li>
                 </ul>
                 <h3>Stakeholdeři a rozhodnutí</h3>
@@ -290,56 +339,88 @@
                 </p>
                 <h3>Předpoklady a omezení</h3>
                 <p>
-                    <ul>
-                        <li>Dostupnost dat: Spoléháme na bezplatné OpenF1 API, které má limity na počet dotazů (rate limiting) a neposkytuje interní data týmů (finance, přesná telemetrie vozu). Tento nedostatek byl vyřešen generováním syntetických dat.</li>
-                        <li>Granularita: Analýza je provedena primárně na úrovni jednotlivých kol (lap-level). Tabulka počasí s minutovou granularitou musela být na data o kolech mapována přes časová razítka.</li>
-                        <li>Latence: Model pracuje v dávkovém režimu (Batch processing) – analyzuje data po skončení závodu (nebo jeho části). Nejde o real-time systém; pro live nasazení na boxové zídce by bylo nutné přejít z REST API na datové streamy (např. WebSockets).</li>
-                        <li>Sezónnost: Analýza je prováděna pouze pro jeden konkrétní závod, což přináší silný "Track Bias". Výsledky degradace pneu nelze přenést na jiný okruh (jiný asfalt, jiné teploty). V rámci samotného závodu je pak sledována mikro-sezónnost v podobě měnící se teploty trati a úbytku paliva, což ovlivňuje tempo.</li>
-                        <li>Kvalita: Reálná data obsahovala šum a anomálie (extrémně dlouhá kola kvůli Safety Caru, chybné záznamy o pit stopech), které bylo nutné ošetřit analytickými pohledy (Views). Největším omezením kvality interpretace je chybějící přesný údaj o hmotnosti vozu (Fuel Burn effect), který v určitých případech maskuje skutečnou degradaci pneumatik.</li>
-                    </ul>
+                <ul>
+                    <li>Dostupnost dat: Spoléháme na bezplatné OpenF1 API, které má limity na počet dotazů (rate
+                        limiting) a neposkytuje interní data týmů (finance, přesná telemetrie vozu). Tento nedostatek
+                        byl vyřešen generováním syntetických dat.</li>
+                    <li>Granularita: Analýza je provedena primárně na úrovni jednotlivých kol (lap-level). Tabulka
+                        počasí s minutovou granularitou musela být na data o kolech mapována přes časová razítka.</li>
+                    <li>Latence: Model pracuje v dávkovém režimu (Batch processing) – analyzuje data po skončení závodu
+                        (nebo jeho části). Nejde o real-time systém; pro live nasazení na boxové zídce by bylo nutné
+                        přejít z REST API na datové streamy (např. WebSockets).</li>
+                    <li>Sezónnost: Analýza je prováděna pouze pro jeden konkrétní závod, což přináší silný "Track Bias".
+                        Výsledky degradace pneu nelze přenést na jiný okruh (jiný asfalt, jiné teploty). V rámci
+                        samotného závodu je pak sledována mikro-sezónnost v podobě měnící se teploty trati a úbytku
+                        paliva, což ovlivňuje tempo.</li>
+                    <li>Kvalita: Reálná data obsahovala šum a anomálie (extrémně dlouhá kola kvůli Safety Caru, chybné
+                        záznamy o pit stopech), které bylo nutné ošetřit analytickými pohledy (Views). Největším
+                        omezením kvality interpretace je chybějící přesný údaj o hmotnosti vozu (Fuel Burn effect),
+                        který v určitých případech maskuje skutečnou degradaci pneumatik.</li>
+                </ul>
                 </p>
-                
+
             </section>
 
             <section id="technika">
                 <h2>2. Technické řešení</h2>
                 <h3>Zdrojová data</h3>
                 <ul>
-                    <li>Reálná data jsou získávána z open-source REST API poskytujícího data z oficiální časomíry Formule 1. Data jsou generována senzory na vozech (telemetrie, GPS) a traťovými systémy (počasí, pit stopy, průjezdy sektory).</li>
-                    <li>Syntetická data jsou vygenerována python skriptem. Jde o fiktivní, ale fyzikálně a logicky podložená data, která zahrnují spotřebu paliva, opotřebení motoru a R&D náklady. Skript simuluje interní, neveřejná data.</li>
+                    <li>Reálná data jsou získávána z open-source REST API poskytujícího data z oficiální časomíry
+                        Formule 1. Data jsou generována senzory na vozech (telemetrie, GPS) a traťovými systémy (počasí,
+                        pit stopy, průjezdy sektory).</li>
+                    <li>Syntetická data jsou vygenerována python skriptem. Jde o fiktivní, ale fyzikálně a logicky
+                        podložená data, která zahrnují spotřebu paliva, opotřebení motoru a R&D náklady. Skript simuluje
+                        interní, neveřejná data.</li>
                 </ul>
 
                 <h3>Integrace</h3>
-                
+
                 <ul>
-                    <li>Režim a frekvence: V rámci projektu probíhá integrace dávkově (Batch processing) na vyžádání (Ad-hoc) pro konkrétní Session ID (konkrétní závodní víkend).</li>
-                    <li>Protokoly a formáty: Komunikace s OpenF1 probíhá přes HTTP/REST. Payload je stahován ve formátu JSON (strukturovaná a polostrukturovaná data). Syntetická data jsou ukládána jako lokální CSV soubory.</li>
-                    <li>Základní transformace (Extract & Load): Surové JSON a CSV soubory jsou hromadně načítány pomocí nativních funkcí read_json_auto a read_csv_auto přímo do relační podoby, kde probíhá odvození datových typů.</li>
+                    <li>Režim a frekvence: V rámci projektu probíhá integrace dávkově (Batch processing) na vyžádání
+                        (Ad-hoc) pro konkrétní Session ID (konkrétní závodní víkend).</li>
+                    <li>Protokoly a formáty: Komunikace s OpenF1 probíhá přes HTTP/REST. Payload je stahován ve formátu
+                        JSON (strukturovaná a polostrukturovaná data). Syntetická data jsou ukládána jako lokální CSV
+                        soubory.</li>
+                    <li>Základní transformace (Extract & Load): Surové JSON a CSV soubory jsou hromadně načítány pomocí
+                        nativních funkcí read_json_auto a read_csv_auto přímo do relační podoby, kde probíhá odvození
+                        datových typů.</li>
                 </ul>
 
                 <h3>Uložení</h3>
 
                 <ul>
                     <li>Technologie: Lokální analytická in-process databáze DuckDB.</li>
-                    <li>Struktura: Všechna data jsou uložena v jediném přenositelném souboru f1_project.duckdb, který plní roli centrálního OLAP (Online Analytical Processing) úložiště, optimalizovaného pro analytické dotazy nad sloupci.</li>
+                    <li>Struktura: Všechna data jsou uložena v jediném přenositelném souboru f1_project.duckdb, který
+                        plní roli centrálního OLAP (Online Analytical Processing) úložiště, optimalizovaného pro
+                        analytické dotazy nad sloupci.</li>
                 </ul>
 
                 <h3>Zpracování</h3>
-                <p>Zpracování probíhá ELT (Extract, Load, Transform) přístupem přímo v databázi pomocí SQL a Pythonu (Pandas).
+                <p>Zpracování probíhá ELT (Extract, Load, Transform) přístupem přímo v databázi pomocí SQL a Pythonu
+                    (Pandas).
                 <ul>
-                    <li>Čištění: Tvorba analytických pohledů (Views) odstraňujících chybějící hodnoty (NULL) a outliery (fyzicky nereálné časy zastávek, příliš rychlá kola, a jízda za Safety Carem).</li>
-                    <li>Obohacení: Propojení (JOIN) reálných dat o časech na kolo se syntetickými daty o spotřebě a opotřebení motoru pomocí složených klíčů.</li>
-                    <li>Agregace: Využití pokročilých SQL Window funkcí pro identifikaci stintů (úseků na jedné sadě pneumatik) a výpočet komplexních metrik jako je Degradation Delta a Pit Stop Efficiency.</li>
+                    <li>Čištění: Tvorba analytických pohledů (Views) odstraňujících chybějící hodnoty (NULL) a outliery
+                        (fyzicky nereálné časy zastávek, příliš rychlá kola, a jízda za Safety Carem).</li>
+                    <li>Obohacení: Propojení (JOIN) reálných dat o časech na kolo se syntetickými daty o spotřebě a
+                        opotřebení motoru pomocí složených klíčů.</li>
+                    <li>Agregace: Využití pokročilých SQL Window funkcí pro identifikaci stintů (úseků na jedné sadě
+                        pneumatik) a výpočet komplexních metrik jako je Degradation Delta a Pit Stop Efficiency.</li>
                 </ul>
                 </p>
 
                 <h3>Škálování</h3>
-                <p>Při 10x větším objemu dat:<br>
-                    Současné lokální řešení by narazilo na limity disku a paměti. Úložiště by bylo nutné migrovat do cloudového Data Warehouse (např. Google BigQuery, Snowflake) nebo Data Lakehouse platformy. Zpracování by se přesunulo z lokálního Pythonu do nástrojů jako dbt (Data Build Tool) pro robustní transformace v cloudu.<br><br>
-                    Přechod na near-real-tíme:<br>
-                    Dávkové REST API by muselo být nahrazeno streamovacím protokolem (WebSockets, MQTT). Místo DuckDB by byla nasazena streamovací pipeline (např. Apache Kafka pro message brokering a Apache Flink nebo Spark Streaming pro výpočet KPI v reálném čase).
+                <h4>Při 10x větším objemu dat:</h4>
+                <p>
+                    Současné lokální řešení by narazilo na limity disku a paměti. Úložiště by bylo nutné migrovat do
+                    cloudového Data Warehouse (např. Google BigQuery, Snowflake) nebo Data Lakehouse platformy.
+                    Zpracování by se přesunulo z lokálního Pythonu do nástrojů jako dbt (Data Build Tool) pro robustní
+                    transformace v cloudu.</p>
+                <h4>Přechod na near-real-tíme:</h4>
+                <p>Dávkové REST API by muselo být nahrazeno streamovacím protokolem (WebSockets, MQTT). Místo DuckDB by
+                    byla nasazena streamovací pipeline (např. Apache Kafka pro message brokering a Apache Flink nebo
+                    Spark Streaming pro výpočet KPI v reálném čase).
                 </p>
-                
+
                 <h3>Diagramy</h3>
                 todo
             </section>
@@ -350,24 +431,41 @@
                 <h3>Lifecycle</h3>
                 Byl zvolen čtyřfázový životní cyklus uzpůsobený analytickému projektu:
                 <ol>
-                    <li>Získání (Ingestion): Stažení raw dat z OpenF1 API a lokální vygenerování syntetických datasetů.</li>
-                    <li>Zpracování (Processing): Čištění, typové konverze a tvorba analytických pohledů (Views) v DuckDB.</li>
+                    <li>Získání (Ingestion): Stažení raw dat z OpenF1 API a lokální vygenerování syntetických datasetů.
+                    </li>
+                    <li>Zpracování (Processing): Čištění, typové konverze a tvorba analytických pohledů (Views) v
+                        DuckDB.</li>
                     <li>Využití (Analysis): Výpočty KPI a vizualizace v Jupyter Notebooku.</li>
-                    <li>Retence (Archivace): Finální databáze f1_project.duckdb s agregovanými výsledky se archivuje pro historické srovnání.</li>
+                    <li>Retence (Archivace): Finální databáze f1_project.duckdb s agregovanými výsledky se archivuje pro
+                        historické srovnání.</li>
                 </ol>
+                <!-- 
                 <h3>Role a odpovědnosti (RACI)</h3>
-
+                -->
                 <h3>Kvalita dat</h3>
                 <p>Kvalitu je kontrolována přímo v SQL validačními pravidly:</p>
                 <ul>
-                    <li>Úplnost (Completeness): Procento nevyplněných hodnot. Práh: Méně než 5 % chybějících časů kol (lap_duration IS NOT NULL).</li>
-                    <li>Přesnost (Accuracy): Detekce outlierů. Práh: Čas kola nesmí přesáhnout 120 sekund (eliminace Safety Caru); pit stop musí trvat mezi 1.5 a 30 sekundami.</li>
-                    <li>Konzistence (Consistency): Unikátnost. Práh: Nulová tolerance duplicit pro složený klíč driver_number + lap_number.</li>
+                    <li>Úplnost (Completeness): Procento nevyplněných hodnot. Práh: Méně než 5 % chybějících časů kol
+                        (lap_duration IS NOT NULL).</li>
+                    <li>Přesnost (Accuracy): Detekce outlierů. Práh: Čas kola nesmí přesáhnout 120 sekund (eliminace
+                        Safety Caru); pit stop musí trvat mezi 1.5 a 30 sekundami.</li>
+                    <li>Konzistence (Consistency): Unikátnost. Práh: Nulová tolerance duplicit pro složený klíč
+                        driver_number + lap_number.</li>
                 </ul>
 
                 <h3>Etika a rizika</h3>
-                
-                
+                <ul>
+                    <li>Omezení interpretace (Fuel Burn effect): V reálných datech chybí přesná hmotnost paliva. Ubývání
+                        hmotnosti zrychluje vůz, což může maskovat skutečnou degradaci pneumatik – interpretace našeho
+                        modelu je tímto fyzikálním jevem limitována.</li>
+                    <li>Bias (Zkreslení trati): Analyzujeme data pouze z jednoho okruhu. Závěry o opotřebení pneu či
+                        motoru nelze plošně přenést na jiné tratě (každý okruh má jiný asfalt a profil).</li>
+                    <li>Syntetická data vs. realita: Metrika ROI vychází z našich expertních odhadů rozpočtů a
+                        opotřebení motoru simuluje fyziku pomocí Gaussova šumu. Ačkoliv data respektují reálné rozložení
+                        sil (Top týmy vs. zbytek), neodrážejí skutečné finanční a technické audity, které F1 týmy přísně
+                        tají.</li>
+                </ul>
+
             </section>
 
             <section id="prezentace">
@@ -376,51 +474,402 @@
                 <h3>Přehled datasetů</h3>
 
                 <h3>Metodika vytvoření syntetických dat</h3>
+                <h4>Rozdělení týmů</h4>
+                <ul>
+                    <li>Definice slovníku, který přiřazuje úroveň týmu</li>
+
+                    <li>Úrovně: Top, Mid, Back</li>
+                    <li>Rozdělení je využito pro generování nákladů na vývoj, Ferrari nebude mít stejný rozpočet jako
+                        Williams</li>
+
+                </ul>
+
+                <h4>Generování údajů o teplotě trati</h4>
+                <ul>
+                    <li><code>base_temps = np.linspace(35.0, 28.0, NUM_LAPS) + np.random.normal(0, 1.5, NUM_LAPS)</code>
+                    </li>
+                    <li>Trend (np.linspace): Vytvoří postupně klesající řadu 50 čísel od 35 do 28. Simuluje tím, že
+                        závod začíná v horkém odpoledni a s blížícím se večerem trať chladne.</li>
+                    <li>Šum: Aby teplota neklesala dokonale lineárně, je ke každému bodu přidána náhodná odchylka (šum)
+                        podle Gaussovy křivky s průměrem 0 a směrodatnou odchylkou 1.5 °C. </li>
+                </ul>
+                <h4>Model spotřeby paliva</h4>
+                <ul>
+                    <li><code>temp_impact_fuel = (track_temp - 30) * 0.015</code><br>
+                        <code>noise_fuel = np.random.normal(0, 0.05)</code><br>
+                        <code>fuel_consumed = 1.6 + temp_impact_fuel + noise_fuel</code>
+                    </li>
+                    <li>Základ: Průměrná spotřeba je 1.6 kg na kolo</li>
+                    <li>Korelace s teplotou (<code>temp_impact_fuel</code>): Pokud je teplota trati nad 30°C, číslo je
+                        kladné a spotřeba roste, pod 30°C spotřeba mírně klesá.</li>
+                    <li>Šum: Opět je přidána náhodná odchylka.</li>
+                </ul>
+
+                <h4>Model opotřebení motoru</h4>
+                <ul>
+                    <li>
+                        <code>wear_this_lap = base_wear_rate + temp_impact_wear + noise_wear</code><br>
+                        <code>current_engine_wear += abs(wear_this_lap)</code>
+                    </li>
+                    <li>Start: Každý motor vstupuje do závodu už s drobným opotřebením (např. 28 až 30 %, vzhledem k
+                        tomu že data jsou sebrána ze 3. závodu, a motory jsou během sezóny měněny), které je
+                        vygenerováno pomocí random.uniform před začátkem závodu.</li>
+                    <li>Penalizace za extrémní teplo <code>(temp_impact_wear)</code>: Využita funkce
+                        <code>max(0, (track_temp - 32) * 0.02)</code>, která stanovuje, že pokud je teplota pod 32 °C,
+                        vliv tepla je nulová. Teplota přes 32 °C exponenciálně zvyšuje opotřebení.</li>
+                    <li>Sčítání: Opotřebení z daného kola přičteme k celkovému stavu motoru.</li>
+                </ul>
+
+                <h4>Generování nákladů týmů</h4>
+                <ul>
+                    <li>Funkce vytváří tabulku synthetic_rd_costs pro ROI KPI</li>
+                    <li>Základní cena: Týmy dostanou fixní základy podle jejich úrovně</li>
+                    <li>Top: 2 500 000 USD, Mid: 1 200 000 USD, Back: 500 000 USD</li>
+                    <li>Fluktuace: Každý tým utrácí za závodní víkend různé množství peněz, základní cena je tedy
+                        vynásobena náhodným násobitelem mezi 80% a 120%.</li>
+                </ul>
 
                 <h3>Předzpracování</h3>
+                <ul>
+                    <li>Byl zvolen ELT (Extract, Load, Transform) přístup, kdy jsou surová data načtena do databáze DuckDB 
+                        a veškeré úpravy probíhají formou analytických SQL pohledů (Views, např. v_clean_laps). Tím je 
+                        zachována integrita zdrojových dat.</li>
+                </ul>
+
+                <h4>Čištění dat</h4>
+                <ul>
+                    <li>Ošetření chybějících hodnot (NULLs): Z analýzy byly vyloučeny záznamy bez naměřeného času (např. zaváděcí kola nebo nedokončená kola po nehodě) pomocí lap_duration IS NOT NULL</li>
+                    <li>Filtrace anomálií a outlierů: Odstranění extrémních hodnot, které by zkreslily výpočet KPI. Vyloučeny byly časy kol nad 115 sekund (jízda za Safety Carem) a extrémní časy pit stopů (pod 22 s jako chyby senzorů, nad 30 s jako opravy vozu/penalizace).</li>
+                    <li>Deduplikace: Kontrola unikátnosti záznamů na základě primárního složeného klíče (driver_number + lap_number).</li>
+                </ul>
+
+                <h4>Tvorba nových atributů</h4>
+                <ul>
+                    <li>Identifikace stintů (stint_id): Rozdělení závodu jezdce na souvislé jízdy na jedné sadě pneumatik pomocí detekce výjezdu z boxů a kumulativních součtů.</li>
+                    <li>Časové metriky: Výpočet aktuálního stáří pneumatiky v daném kole (laps_on_tyre) pomocí SQL Window funkce ROW_NUMBER().</li>
+                    <li>Pokročilé agregace: Nalezení nejlepšího času v každém stintu (base_pace přes MIN() OVER PARTITION) pro následné výpočty.</li>
+                    <li>Kategorické mapování: Vytvoření mapovací logiky (CASE WHEN) pro přiřazení čísel jezdců k domovským týmům, pro spojení se syntetickými daty o rozpočtech.</li>
+                </ul>
+
+                <h4>Typové konverze a integrace</h4>
+                <ul>
+                    <li>Konverze datových typů: Explicitní přetypování čísel jezdců (driver_number) z celých čísel (Integer) na textové řetězce (String/VARCHAR) v Pandas, aby s nimi vizualizační knihovny pracovaly jako s kategoriemi.</li>
+                    <li>Datová integrace (JOIN): Sjednocení reálné telemetrie ze sledování časů se syntetickými daty o opotřebení motoru a nákladech (R&D) prostřednictvím relačních vazeb napříč databází.</li>
+                </ul>
 
                 <h3>EDA a KPI</h3>
-                todo grafy a tabulky
+                <ul>
+                    <li><a href="https://colab.research.google.com/drive/1q6Nd6Ru0t39BCjskdTBCV1iPTuRrgYio?usp=sharing">Jupyter
+                            notebook</a>
+                    </li>
+                </ul>
+                <h4>Ukázky využitých tabulek</h4>
+                <h3>🏎️ Tabulka: LAPS (Časy kol - ukázka 3 záznamů)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>driver_number</th>
+                <th>lap_number</th>
+                <th>lap_duration</th>
+                <th>is_pit_out_lap</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0</td>
+                <td>12</td>
+                <td>1</td>
+                <td>99.215</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>63</td>
+                <td>1</td>
+                <td>98.270</td>
+                <td>False</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>81</td>
+                <td>1</td>
+                <td>95.711</td>
+                <td>False</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>🛑 Tabulka: PIT (Zastávky v boxech)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>driver_number</th>
+                <th>lap_number</th>
+                <th>pit_duration</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0</td>
+                <td>1</td>
+                <td>16</td>
+                <td>23.3</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>87</td>
+                <td>16</td>
+                <td>25.0</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>16</td>
+                <td>17</td>
+                <td>22.9</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>⛽ Tabulka: SYNTHETIC_TELEMETRY (Palivo a motor)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>session_key</th>
+                <th>driver_number</th>
+                <th>lap_number</th>
+                <th>track_temperature_C</th>
+                <th>fuel_consumed_kg</th>
+                <th>engine_wear_percent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0</td>
+                <td>11253</td>
+                <td>12</td>
+                <td>1</td>
+                <td>32.79</td>
+                <td>1.706</td>
+                <td>28.73</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>11253</td>
+                <td>12</td>
+                <td>2</td>
+                <td>34.42</td>
+                <td>1.623</td>
+                <td>28.86</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>11253</td>
+                <td>12</td>
+                <td>3</td>
+                <td>34.82</td>
+                <td>1.629</td>
+                <td>28.98</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>💰 Tabulka: SYNTHETIC_RD_COSTS (Náklady na vývoj)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>session_key</th>
+                <th>team_name</th>
+                <th>development_cost_usd</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0</td>
+                <td>11253</td>
+                <td>Mercedes</td>
+                <td>2895662</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>11253</td>
+                <td>Ferrari</td>
+                <td>2593391</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>11253</td>
+                <td>McLaren</td>
+                <td>2208674</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h3>🔗 UKÁZKA VAZBY: Časy kol + Syntetická telemetrie (JOIN na úroveň kola)</h3>
+    <table>
+        <thead>
+            <tr>
+                <th></th>
+                <th>driver_number</th>
+                <th>lap_number</th>
+                <th>real_lap_time</th>
+                <th>track_temperature_C</th>
+                <th>fuel_consumed_kg</th>
+                <th>engine_wear_percent</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>0</td>
+                <td>1</td>
+                <td>1</td>
+                <td>97.639</td>
+                <td>32.79</td>
+                <td>1.635</td>
+                <td>27.33</td>
+            </tr>
+            <tr>
+                <td>1</td>
+                <td>1</td>
+                <td>2</td>
+                <td>94.905</td>
+                <td>34.42</td>
+                <td>1.668</td>
+                <td>27.46</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>1</td>
+                <td>3</td>
+                <td>96.301</td>
+                <td>34.82</td>
+                <td>1.623</td>
+                <td>27.61</td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>1</td>
+                <td>4</td>
+                <td>95.451</td>
+                <td>35.84</td>
+                <td>1.741</td>
+                <td>27.75</td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>1</td>
+                <td>5</td>
+                <td>95.170</td>
+                <td>34.09</td>
+                <td>1.628</td>
+                <td>27.88</td>
+            </tr>
+        </tbody>
+    </table>
+
 
                 <h3>Data story a vizualizace</h3>
-                
+                <h4>Klíčové proměnné</h4>
+                <img src="obrazky/EDA1.png" class="gallery-img" onclick="openModal(this)">
+                <img src="obrazky/EDA2.png" class="gallery-img" onclick="openModal(this)">
+                <img src="obrazky/EDA3.png" class="gallery-img" onclick="openModal(this)">
+                <img src="obrazky/EDA4.png" class="gallery-img" onclick="openModal(this)">
+
+                <h4>Průzkum dat</h4>
+                <img src="obrazky/segmentova_analyza.png" class="gallery-img" onclick="openModal(this)">
+                <img src="obrazky/korelace.png" class="gallery-img" onclick="openModal(this)">
+                <img src="obrazky/casovaAnalyza.png" class="gallery-img" onclick="openModal(this)">
+
+                <h4>KPI</h4>
+                <img src="obrazky/KPI1.png" class="gallery-img" onclick="openModal(this)">
+                <img src="obrazky/KPI2A.png" class="gallery-img" onclick="openModal(this)">
+                <img src="obrazky/KPI2B.png" class="gallery-img" onclick="openModal(this)">
+                <img src="obrazky/KPI3.png" class="gallery-img" onclick="openModal(this)">
+
+
+                <dialog id="mainDialog" onclick="this.close()"
+                    style="padding:0; border:none; background:rgba(0,0,0,0.85); width:100vw; height:100vh; max-width:none; max-height:none;">
+                    <div style="display:flex; align-items:center; justify-content:center; height:100%;">
+                        <img id="modalImg" src="" style="max-width:90%; max-height:90%; box-shadow: 0 0 20px black;">
+                    </div>
+                </dialog>
+
             </section>
 
             <section id="zaver">
                 <h2>5. Diskuze, závěry a doporučení</h2>
 
                 <h3>Shrnutí zjištění</h3>
-
+                <h4>KPI 1: Pit Stop Efficiency Index</h4>
+                <p>Mechanici Ferrari (16, 44), a Mercedesu (63) pracovali bezchybně a určovali tempo závodu (index
+                    1.00). Naopak u jezdce č. 11 (Pérez) došlo k viditelnému zdržení – hodnota 1.19 znamená ztrátu téměř
+                    20 % času oproti těm nejlepším, což ho mohlo stát pozici na trati.</p>
+                <h4>KPI 2: Degradation Delta</h4>
+                <ul>
+                    <li>Graf 2A: Jasně prokazuje fyzikální limit dat z API – vliv lehkého auta s prázdnou nádrží (Fuel
+                        burn effect) stlačil trendové čáry dolů a kompenzuje se tak opotřebení pneumatik.</li>
+                    <li>Graf 2B: Po aplikaci penalizace +0.06s na kolo graf ukázal realitu opotřebení pneumatik. Zatímco
+                        jezdec 16 (Leclerc) dokázal držet tempo pod kritickou hranicí 1.5 sekundy až zhruba do 17. kola,
+                        jezdec 14 (Alonso) své pneumatiky zničil mnohem dříve a do pomyslného Pit Window spadl už kolem
+                        10. kola.</li>
+                </ul>
+                <h4>KPI 3: Návratnost investic (ROI)</h4>
+                <p>Mercedes a McLaren ukázali největší finanční efektivitu (kolem 9 bodů na každý milion investovaných
+                    dolarů). Ferrari sice získalo slušných 15 bodů, ale kvůli vysokým vývojovým nákladům (2.7M) je
+                    jejich efektivita téměř poloviční.</p>
                 <h3>Limity vlastního řešení</h3>
                 <ul>
-                    <li>Kvalita a pokrytí dat: Neveřejnost interní telemetrie týmů vedla k použití syntetických dat. Zásadním limitem surových dat z API je absence údaje o hmotnosti vozu – vliv úbytku paliva (Fuel Burn effect) maskuje reálnou degradaci pneumatik, což bylo řešeno dodatečným korekčním koeficientem.</li>
-                    <li>Bias: Analýza je náchylná na  „Track Bias“. Data pocházejí z jedné konkrétní Grand Prix (Suzuka, Japonsko 2026) a chování pneumatik nelze plošně zobecnit na jiné okruhy (např. městský okruh vs. permanentní trať).</li>
-                    <li>Přenositelnost: Architektura je silně závislá na schématu OpenF1 API. Změna struktury JSON odpovědi na straně poskytovatele by rozbila naši ingesční pipeline.</li>
-                    <li>Technická omezení: Lokální dávkové zpracování (Batch ELT v DuckDB) neumožňuje analýzu „live“ (near-real-time) přímo v průběhu závodu.</li>
+                    <li>Kvalita a pokrytí dat: Neveřejnost interní telemetrie týmů vedla k použití syntetických dat.
+                        Zásadním limitem surových dat z API je absence údaje o hmotnosti vozu – vliv úbytku paliva (Fuel
+                        Burn effect) maskuje reálnou degradaci pneumatik, což bylo řešeno dodatečným korekčním
+                        koeficientem.</li>
+                    <li>Bias: Analýza je náchylná na „Track Bias“. Data pocházejí z jedné konkrétní Grand Prix (Suzuka,
+                        Japonsko 2026) a chování pneumatik nelze plošně zobecnit na jiné okruhy (např. městský okruh vs.
+                        permanentní trať).</li>
+                    <li>Přenositelnost: Architektura je silně závislá na schématu OpenF1 API. Změna struktury JSON
+                        odpovědi na straně poskytovatele by rozbila naši ingesční pipeline.</li>
+                    <li>Technická omezení: Lokální dávkové zpracování (Batch ELT v DuckDB) neumožňuje analýzu „live“
+                        (near-real-time) přímo v průběhu závodu.</li>
+                    <li>Zjednodušení dat: Spotřeba a opotřebení motoru byla navázána na zjednodušený, uměle vygenerovaný 
+                        trend teploty trati. V reálné produkci by byl implementován dynamický Time-Series JOIN (ASOF JOIN) 
+                        na reálná data z tabulky weather z OpenF1 API. Tím by syntetické modely reagovaly na skutečné výkyvy 
+                        počasí v daném závodě."</li>
                 </ul>
 
                 <h3>Budoucnost s AI</h3>
                 <ul>
-                    <li>Automatizace: Nasazení orchestrátoru (např. Apache Airflow / dbt), který by automaticky spustil celou datovou pipeline (od stažení po aktualizaci DuckDB) vždy v pondělí po závodním víkendu.</li>
+                    <li>Automatizace: Nasazení orchestrátoru (např. Apache Airflow / dbt), který by automaticky spustil
+                        celou datovou pipeline (od stažení po aktualizaci DuckDB) vždy v pondělí po závodním víkendu.
+                    </li>
                     <li>Kdy dává AI smysl:</li>
                     <ul>
-                        <li>Machine learning: Nahrazení statického pravidla pro Pit Window (ztráta > 1.5s) prediktivním modelem (např. XGBoost), který by se učil z historických závodů a predikoval by ideální kolo pro zastávku na základě teploty trati a tempa konkurence.</li>
-                        <li>Generativní AI: Napojení LLM přímo na DuckDB pro generování automatických textových reportů a shrnutí závodní strategie.</li>
+                        <li>Machine learning: Nahrazení statického pravidla pro Pit Window (ztráta > 1.5s) prediktivním
+                            modelem (např. XGBoost), který by se učil z historických závodů a predikoval by ideální kolo
+                            pro zastávku na základě teploty trati a tempa konkurence.</li>
+                        <li>Generativní AI: Napojení LLM přímo na DuckDB pro generování automatických textových reportů
+                            a shrnutí závodní strategie.</li>
                     </ul>
-                    <li>Rizika a kontrolní mechanismy: U ML modelů hrozí overfitting (přeučení) na konkrétní typ počasí. Nutností by bylo nasazení automatizovaných testů dat (Data Observability), aby AI nedělala rozhodnutí na základě chybných dat senzorů (např. vadný senzor teploty).</li>
+                    <li>Rizika a kontrolní mechanismy: U ML modelů hrozí overfitting (přeučení) na konkrétní typ počasí.
+                        Nutností by bylo nasazení automatizovaných testů dat (Data Observability), aby AI nedělala
+                        rozhodnutí na základě chybných dat senzorů (např. vadný senzor teploty).</li>
                 </ul>
 
                 <h4>Pokročilé využití AI v prostředí F1</h4>
 
                 <h4>Strategický přínos do budoucna</h4>
-                
+
             </section>
 
             <section id="metodika">
                 <h2>6. Metodika a postup</h2>
 
                 <h3>Workflow</h3>
-                <ul><li>Byl zvolen ELT (Extract, Load, Transform) přístup:</li></ul>
+                <ul>
+                    <li>Byl zvolen ELT (Extract, Load, Transform) přístup:</li>
+                </ul>
                 <ol>
                     <li>Extrakce surových JSON přes API (ošetřeno proti timeoutům).</li>
                     <li>Generování syntetických datasetů.</li>
@@ -429,12 +878,18 @@
                     <li>EDA a vizualizace nad čistými daty v Jupyter Notebooku.</li>
                 </ol>
                 <h3>Replikace výsledků</h3>
-                <p>Projekt je plně reprodukovatelný. Stačí spustit všechny tři Python skripty ve správném pořadí (download_api_data.py -> generate_synthetic.py -> init_duckdb.py) a následně spustit všechny buňky v přiloženém Jupyter Notebooku.</p>
+                <p>Projekt je plně reprodukovatelný. Stačí spustit všechny tři Python skripty ve správném pořadí
+                    (download_api_data.py -> generate_synthetic.py -> init_duckdb.py) a následně spustit všechny buňky v
+                    přiloženém Jupyter Notebooku.</p>
                 <h3>Rozdělení rolí členů týmu</h3>
                 <ul>
-                    <li> Data & Tech Lead (výběr datasetu, čištění dat, DuckDB databáze, SQL dotazy, struktura Jupyter notebooku</li>
-                    <li>Jaroslav – Business & Kpi Lead (definice firmy a problému, formulace business questions, definice 3 KPI, stakeholdeři a rozhodnutí, interpretace výsledků </li>
-                    <li>Josef – Analytics & Presentation lead (grafy, interpretace trendů, propojení grafů s KPI, HTML dokument, příprava prezentace + demo)</li>
+                    <li>František - Data & Tech Lead (výběr datasetu, čištění dat, DuckDB databáze, SQL dotazy,
+                        struktura Jupyter
+                        notebooku</li>
+                    <li>Jaroslav – Business & Kpi Lead (definice firmy a problému, formulace business questions,
+                        definice 3 KPI, stakeholdeři a rozhodnutí, interpretace výsledků </li>
+                    <li>Josef – Analytics & Presentation lead (grafy, interpretace trendů, propojení grafů s KPI, HTML
+                        dokument, příprava prezentace + demo)</li>
                 </ul>
                 <h3>Nástroje a prostředí</h3>
                 <ul>
@@ -444,7 +899,8 @@
                 <h4>Konvence</h4>
                 <ul>
                     <li>Databázové tabulky a sloupce využívají striktně snake_case.</li>
-                    <li>Oddělení vrstev: Očištěné analytické SQL pohledy mají vždy explicitní prefix v_clean_ nebo v_analytical_, aby se jasně odlišily od surových vstupních tabulek.</li>
+                    <li>Oddělení vrstev: Očištěné analytické SQL pohledy mají vždy explicitní prefix v_clean_ nebo
+                        v_analytical_, aby se jasně odlišily od surových vstupních tabulek.</li>
                 </ul>
                 <h3>AI použití</h3>
 
@@ -456,7 +912,7 @@
     </div>
 
     <footer>
-        <p>&copy; 2026 Tvé Jméno. Vytvořeno pro školní účely.</p>
+        <p>2026 PEF ČZU. Vytvořeno v rámci předmětu Zpracování velkých dat.</p>
     </footer>
 
 </body>
