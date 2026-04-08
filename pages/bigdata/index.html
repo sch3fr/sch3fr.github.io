@@ -885,20 +885,31 @@
                 <h3>Data story a vizualizace</h3>
                 <h4>Klíčové proměnné</h4>
                 <img src="obrazky/EDA1.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Histogram zobrazuje četnost časů kol, kde většina hodnot tvoří normální rozdělení kolem 95 sekund. Dlouhý „chvost“ v pravé části grafu reprezentuje anomální kola zajetá v provozu nebo při chybách jezdce.</li></ul>
                 <img src="obrazky/EDA2.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Graf znázorňuje rozdělení délek zastávek v boxech, které se nejčastěji pohybují v úzkém rozmezí 23 až 25 sekund. Rozptyl hodnot pomáhá analytikům identifikovat standardní průběh servisu oproti ojedinělým technickým problémům.</li></ul>
                 <img src="obrazky/EDA3.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Vizualizace rozdělení teploty trati ukazuje široké spektrum podmínek od 27 do 38 °C během session. Bimodální charakter křivky napovídá, že v průběhu závodu docházelo k výrazným klimatickým změnám (např. vliv oblačnosti).</li></ul>
                 <img src="obrazky/EDA4.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Histogram potvrzuje logické rozdělení opotřebení motoru (zde v rozmezí 28–36 %), které odpovídá kumulativnímu nárůstu během třetího závodu sezóny. Tvar zvonovité křivky dokazuje úspěšnou implementaci Gaussova šumu do syntetických dat pro vyšší realističnost.</li></ul>
 
                 <h4>Průzkum dat</h4>
                 <img src="obrazky/segmentova_analyza.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Boxplot srovnává konzistenci a absolutní tempo jezdců rozdělených do tří výkonnostních úrovní (Top, Mid, Back). Seřazení podle mediánu času na kolo jasně demonstruje rozdíly v technické úrovni jednotlivých týmů na startovním roštu.</li></ul>
                 <img src="obrazky/korelace.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Korelační matice vlevo odhaluje silné statistické vazby mezi proměnnými, zatímco regresní graf vpravo vizualizuje přímou závislost vyšší spotřeby paliva na rostoucí teplotě trati.</li></ul>
                 <img src="obrazky/casovaAnalyza.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Horní část sleduje vývoj času na kolo s jasně patrným zrychlením po výměně pneumatik (pit stopu). Spodní část grafu pak koreluje kolísající teplotu trati s plynule rostoucím kumulativním opotřebením motoru v průběhu celého závodu.</li></ul>
 
                 <h4>KPI</h4>
                 <img src="obrazky/KPI1.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Sloupcový graf zobrazuje efektivitu mechaniků jednotlivých jezdců, kde hodnota 1.0 představuje špičkový benchmark závodu. Nižší index (zelená barva) značí excelentní výkon, zatímco hodnoty nad 1.1 (červená barva) odhalují kritické časové ztráty při odbavení vozu.</li></ul>
                 <img src="obrazky/KPI2A.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Tento graf vizualizuje ztrátu tempa, kde je reálné opotřebení pneumatik maskováno úbytkem paliva, což vede k nelogickému zrychlování (klesající trend). Jde o důkaz limitace modelu před aplikací nezbytných fyzikálních korekcí.</li></ul>
                 <img src="obrazky/KPI2B.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li></li></ul>
                 <img src="obrazky/KPI3.png" class="gallery-img" onclick="openModal(this)">
+                <ul><li>Horizontální sloupcový graf srovnává finanční efektivitu týmů měřenou počtem získaných bodů na jeden milion USD vývojových nákladů. Ukazuje, že Mercedes a McLaren dosáhly nejlepšího poměru „cena/výkon“, zatímco týmy bez bodového zisku vykazují nulovou návratnost investice do daného závodu.</li></ul>
 
 
                 <dialog id="mainDialog" onclick="this.close()"
@@ -1019,7 +1030,9 @@
                 <h3>AI použití</h3>
                 <ul>
                     <li>Vytvoření skriptu pro generování dat</li>
-                    <li>Seznámení se a ladění Jupyter notebooku</li>
+                    <li>Seznámení se s Jupyter notebook a ladění skriptů</li>
+                    <li>Tvorba grafů pomocí pyplot knihovny</li>
+                    <li>Generování CSS 🥲</li>
                 </ul>
 
                 <h3>Zdroje</h3>
