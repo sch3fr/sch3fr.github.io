@@ -909,7 +909,10 @@
                 <img src="obrazky/KPI2A.png" class="gallery-img" onclick="openModal(this)">
                 <ul><li>Tento graf vizualizuje ztrátu tempa, kde je reálné opotřebení pneumatik maskováno úbytkem paliva, což vede k nelogickému zrychlování (klesající trend). Jde o důkaz limitace modelu před aplikací nezbytných fyzikálních korekcí.</li></ul>
                 <img src="obrazky/KPI2B.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Po aplikaci korekce na úbytek paliva graf konečně zobrazuje reálný nárůst ztráty tempa v důsledku degradace pneumatik. Červená přerušovaná čára značí kritickou mez 3.19 s, která definuje strop „Pit Window“. Po jeho překročení dochází k výrazným ztrátám které nemusí být dohnatelné po zbytek závodu..</li></ul>
+                <ul>
+                    <li>Po aplikaci korekce na úbytek paliva graf konečně zobrazuje reálný nárůst ztráty tempa v důsledku degradace pneumatik. Červená přerušovaná čára značí kritickou mez 3.19 s, která definuje strop „Pit Window“. Po jeho překročení dochází k výrazným ztrátám které nemusí být dohnatelné po zbytek závodu..</li>
+                    <li>Sleduje čistou časovou ztrátu tempa na kolo (Deltu) s rostoucím počtem odjetých kol na jedné sadě pneumatik. Ztráta je počítána jako rozdíl mezi aktuálním časem a nejlepším časem jezdce v daném stintu (base pace), přičemž hodnoty jsou fyzikálně očištěny o vliv ubývajícího paliva.</li>
+                </ul>
                 <img src="obrazky/KPI3.png" class="gallery-img" onclick="openModal(this)">
                 <ul><li>Horizontální sloupcový graf srovnává finanční efektivitu týmů měřenou počtem získaných bodů na jeden milion USD vývojových nákladů. Ukazuje, že Mercedes a McLaren dosáhly nejlepšího poměru „cena/výkon“, zatímco týmy bez bodového zisku vykazují nulovou návratnost investice do daného závodu.</li></ul>
 
@@ -984,8 +987,21 @@
                 </ul>
 
                 <h4>Pokročilé využití AI v prostředí F1</h4>
+                <ul>
+                    <li>Prediktivní strategie (Reinforcement Learning): Nasazení modelů, které se učí z milionů simulovaných závodů a v reálném čase navrhují optimální kolo pro pit stop (tzv. "Pit Window") na základě aktuálního provozu na trati.</li>
+                    <li>Počítačové vidění (Computer Vision): Automatická analýza obrazu z onboard kamer soupeřů pro okamžitou detekci opotřebení jejich pneumatik (např. drolení – graining), což dává týmu informace, které telemetrie konkurence neprozradí.</li>
+                    <li>Digital Twins: Vytváření virtuálních modelů kritických komponent (motor, převodovka), které pomocí hlubokého učení predikují únavu materiálu a poruchy dříve, než nastanou (Predictive Maintenance).</li>
+                    <li>AI v aerodynamice (CFD): Využití neuronových sítí k urychlení výpočtů proudění vzduchu. AI dokáže nahradit část drahých simulací v aerodynamickém tunelu, což je klíčové při omezeních daných pravidly.</li>
+                    
+                </ul>
 
                 <h4>Strategický přínos do budoucna</h4>
+                <ul>
+                    <li>Maximalizace výkonu pod rozpočtovým stropem (Cost Cap): Náš model ROI (Body/$1M) přímo odpovídá na největší výzvu moderní F1: jak efektivně alokovat omezené finance do vývoje, který přinese reálné body.</li>
+                    <li>Sjednocení dat (Single Source of Truth): Architektura postavená na DuckDB ukazuje, jak efektivně propojit roztříštěné zdroje (API počasí, telemetrie, finance) do jednoho místa pro rychlá manažerská rozhodnutí.</li>
+                    <li>Škálovatelnost na Real-Time: Projekt slouží jako Proof of Concept. Logiku výpočtu "Degradation Delty" lze snadno přenést z dávkového zpracování na streamování dat, což umožní bleskové reakce během závodu.</li>
+                    <li>Identifikace vzorců chování konkurence: Dlouhodobým sledováním očištěné degradace soupeřů (po našem "Fuel Correction" zásahu) lze odhalit slabiny jejich vozů v konkrétních teplotních podmínkách.</li>
+                </ul>
 
             </section>
 
