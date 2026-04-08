@@ -100,6 +100,7 @@
             padding: 40px;
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            min-width: 0;
         }
 
         /* Sekce a nadpisy */
@@ -151,35 +152,59 @@
         }
 
         table {
-        border-collapse: collapse;
+            border-collapse: collapse;
+            width: 100%;
+            /*
+            margin-bottom: 30px;
+            */
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #333;
+            color: white;
+            font-weight: bold;
+        }
+
+        /* --------------------------------------------------- */
+        /* STYL 1: Tabulky s daty (zarovnání vpravo, indexy)   */
+        /* --------------------------------------------------- */
+        .data-table td,
+        .data-table th {
+            text-align: right;
+        }
+
+        .data-table th:first-child,
+        .data-table td:first-child {
+            text-align: center;
+            background-color: #f9f9f9;
+            color: #555;
+            font-weight: bold;
+            width: 40px;
+        }
+
+        /* --------------------------------------------------- */
+        /* STYL 2: Přehledová tabulka (zarovnání vlevo)        */
+        /* --------------------------------------------------- */
+        .overview-table td,
+        .overview-table th {
+            text-align: left;
+        }
+
+        .table-responsive {
         width: 100%;
-        margin-bottom: 30px;
-        background-color: #fff;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    th, td {
-        border: 1px solid #ddd;
-        padding: 10px;
-        text-align: right;
-    }
-    th {
-        background-color: #333;
-        color: white;
-        font-weight: bold;
-    }
-    th:first-child, td:first-child {
-        text-align: center;
-        background-color: #f9f9f9;
-        color: #555;
-        font-weight: bold;
-        width: 40px;
-    }
-    h3 {
-        color: #444;
-        border-bottom: 2px solid #ddd;
-        padding-bottom: 5px;
-        margin-top: 40px;
-    }
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch; /* Zajistí plynulé scrollování prstem na iOS */
+        margin-bottom: 30px; 
+        }
+
     </style>
 
     <script>
@@ -472,6 +497,69 @@
                 <h2>4. Data a prezentace</h2>
 
                 <h3>Přehled datasetů</h3>
+                <div class="table-responsive">
+                <table class="overview-table">
+                    <thead>
+                        <tr>
+                            <th>Dataset (Tabulka)</th>
+                            <th>Zdroj</th>
+                            <th>Typ</th>
+                            <th>Granularita</th>
+                            <th>Klíčové atributy</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>laps</td>
+                            <td>OpenF1 API</td>
+                            <td>Reálná</td>
+                            <td>1 záznam = 1 kolo</td>
+                            <td>driver_number, lap_number, lap_duration</td>
+                        </tr>
+                        <tr>
+                            <td>pit_stops</td>
+                            <td>OpenF1 API</td>
+                            <td>Reálná</td>
+                            <td>1 záznam = 1 zastávka</td>
+                            <td>driver_number, lap_number, pit_duration</td>
+                        </tr>
+                        <tr>
+                            <td>weather</td>
+                            <td>OpenF1 API</td>
+                            <td>Reálná</td>
+                            <td>1 záznam = 1 minuta</td>
+                            <td>date, track_temperature, humidity</td>
+                        </tr>
+                        <tr>
+                            <td>position</td>
+                            <td>OpenF1 API</td>
+                            <td>Reálná</td>
+                            <td>1 záznam = změna</td>
+                            <td>driver_number, date, position</td>
+                        </tr>
+                        <tr>
+                            <td>synthetic_telemetry</td>
+                            <td>Python skript</td>
+                            <td>Syntetická</td>
+                            <td>1 záznam = 1 kolo</td>
+                            <td>fuel_consumed, engine_wear_percent</td>
+                        </tr>
+                        <tr>
+                            <td>synthetic_rd_costs</td>
+                            <td>Python skript</td>
+                            <td>Syntetická</td>
+                            <td>1 záznam = 1 tým</td>
+                            <td>team_name, development_cost_usd</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                <ul>
+                    <li>
+                        Data jsou uložena v relační databázi DuckDB. Hlavním propojovacím prvkem (Common Key) napříč datasety je kombinace driver_number a lap_number. Pro finanční analýzu (KPI 3) je využita mapovací tabulka, která přiřazuje startovní čísla jezdců k jejich týmům. 
+                    </li>
+                </ul>
 
                 <h3>Metodika vytvoření syntetických dat</h3>
                 <h4>Rozdělení týmů</h4>
@@ -516,7 +604,8 @@
                         vygenerováno pomocí random.uniform před začátkem závodu.</li>
                     <li>Penalizace za extrémní teplo <code>(temp_impact_wear)</code>: Využita funkce
                         <code>max(0, (track_temp - 32) * 0.02)</code>, která stanovuje, že pokud je teplota pod 32 °C,
-                        vliv tepla je nulová. Teplota přes 32 °C exponenciálně zvyšuje opotřebení.</li>
+                        vliv tepla je nulová. Teplota přes 32 °C exponenciálně zvyšuje opotřebení.
+                    </li>
                     <li>Sčítání: Opotřebení z daného kola přičteme k celkovému stavu motoru.</li>
                 </ul>
 
@@ -531,30 +620,42 @@
 
                 <h3>Předzpracování</h3>
                 <ul>
-                    <li>Byl zvolen ELT (Extract, Load, Transform) přístup, kdy jsou surová data načtena do databáze DuckDB 
-                        a veškeré úpravy probíhají formou analytických SQL pohledů (Views, např. v_clean_laps). Tím je 
+                    <li>Byl zvolen ELT (Extract, Load, Transform) přístup, kdy jsou surová data načtena do databáze
+                        DuckDB
+                        a veškeré úpravy probíhají formou analytických SQL pohledů (Views, např. v_clean_laps). Tím je
                         zachována integrita zdrojových dat.</li>
                 </ul>
 
                 <h4>Čištění dat</h4>
                 <ul>
-                    <li>Ošetření chybějících hodnot (NULLs): Z analýzy byly vyloučeny záznamy bez naměřeného času (např. zaváděcí kola nebo nedokončená kola po nehodě) pomocí lap_duration IS NOT NULL</li>
-                    <li>Filtrace anomálií a outlierů: Odstranění extrémních hodnot, které by zkreslily výpočet KPI. Vyloučeny byly časy kol nad 115 sekund (jízda za Safety Carem) a extrémní časy pit stopů (pod 22 s jako chyby senzorů, nad 30 s jako opravy vozu/penalizace).</li>
-                    <li>Deduplikace: Kontrola unikátnosti záznamů na základě primárního složeného klíče (driver_number + lap_number).</li>
+                    <li>Ošetření chybějících hodnot (NULLs): Z analýzy byly vyloučeny záznamy bez naměřeného času (např.
+                        zaváděcí kola nebo nedokončená kola po nehodě) pomocí lap_duration IS NOT NULL</li>
+                    <li>Filtrace anomálií a outlierů: Odstranění extrémních hodnot, které by zkreslily výpočet KPI.
+                        Vyloučeny byly časy kol nad 115 sekund (jízda za Safety Carem) a extrémní časy pit stopů (pod 22
+                        s jako chyby senzorů, nad 30 s jako opravy vozu/penalizace).</li>
+                    <li>Deduplikace: Kontrola unikátnosti záznamů na základě primárního složeného klíče (driver_number +
+                        lap_number).</li>
                 </ul>
 
                 <h4>Tvorba nových atributů</h4>
                 <ul>
-                    <li>Identifikace stintů (stint_id): Rozdělení závodu jezdce na souvislé jízdy na jedné sadě pneumatik pomocí detekce výjezdu z boxů a kumulativních součtů.</li>
-                    <li>Časové metriky: Výpočet aktuálního stáří pneumatiky v daném kole (laps_on_tyre) pomocí SQL Window funkce ROW_NUMBER().</li>
-                    <li>Pokročilé agregace: Nalezení nejlepšího času v každém stintu (base_pace přes MIN() OVER PARTITION) pro následné výpočty.</li>
-                    <li>Kategorické mapování: Vytvoření mapovací logiky (CASE WHEN) pro přiřazení čísel jezdců k domovským týmům, pro spojení se syntetickými daty o rozpočtech.</li>
+                    <li>Identifikace stintů (stint_id): Rozdělení závodu jezdce na souvislé jízdy na jedné sadě
+                        pneumatik pomocí detekce výjezdu z boxů a kumulativních součtů.</li>
+                    <li>Časové metriky: Výpočet aktuálního stáří pneumatiky v daném kole (laps_on_tyre) pomocí SQL
+                        Window funkce ROW_NUMBER().</li>
+                    <li>Pokročilé agregace: Nalezení nejlepšího času v každém stintu (base_pace přes MIN() OVER
+                        PARTITION) pro následné výpočty.</li>
+                    <li>Kategorické mapování: Vytvoření mapovací logiky (CASE WHEN) pro přiřazení čísel jezdců k
+                        domovským týmům, pro spojení se syntetickými daty o rozpočtech.</li>
                 </ul>
 
                 <h4>Typové konverze a integrace</h4>
                 <ul>
-                    <li>Konverze datových typů: Explicitní přetypování čísel jezdců (driver_number) z celých čísel (Integer) na textové řetězce (String/VARCHAR) v Pandas, aby s nimi vizualizační knihovny pracovaly jako s kategoriemi.</li>
-                    <li>Datová integrace (JOIN): Sjednocení reálné telemetrie ze sledování časů se syntetickými daty o opotřebení motoru a nákladech (R&D) prostřednictvím relačních vazeb napříč databází.</li>
+                    <li>Konverze datových typů: Explicitní přetypování čísel jezdců (driver_number) z celých čísel
+                        (Integer) na textové řetězce (String/VARCHAR) v Pandas, aby s nimi vizualizační knihovny
+                        pracovaly jako s kategoriemi.</li>
+                    <li>Datová integrace (JOIN): Sjednocení reálné telemetrie ze sledování časů se syntetickými daty o
+                        opotřebení motoru a nákladech (R&D) prostřednictvím relačních vazeb napříč databází.</li>
                 </ul>
 
                 <h3>EDA a KPI</h3>
@@ -565,210 +666,220 @@
                 </ul>
                 <h4>Ukázky využitých tabulek</h4>
                 <h3>🏎️ Tabulka: LAPS (Časy kol - ukázka 3 záznamů)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>driver_number</th>
-                <th>lap_number</th>
-                <th>lap_duration</th>
-                <th>is_pit_out_lap</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0</td>
-                <td>12</td>
-                <td>1</td>
-                <td>99.215</td>
-                <td>False</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>63</td>
-                <td>1</td>
-                <td>98.270</td>
-                <td>False</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>81</td>
-                <td>1</td>
-                <td>95.711</td>
-                <td>False</td>
-            </tr>
-        </tbody>
-    </table>
+                <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>driver_number</th>
+                            <th>lap_number</th>
+                            <th>lap_duration</th>
+                            <th>is_pit_out_lap</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>12</td>
+                            <td>1</td>
+                            <td>99.215</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>63</td>
+                            <td>1</td>
+                            <td>98.270</td>
+                            <td>False</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>81</td>
+                            <td>1</td>
+                            <td>95.711</td>
+                            <td>False</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
 
-    <h3>🛑 Tabulka: PIT (Zastávky v boxech)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>driver_number</th>
-                <th>lap_number</th>
-                <th>pit_duration</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0</td>
-                <td>1</td>
-                <td>16</td>
-                <td>23.3</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>87</td>
-                <td>16</td>
-                <td>25.0</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>16</td>
-                <td>17</td>
-                <td>22.9</td>
-            </tr>
-        </tbody>
-    </table>
+                <h3>🛑 Tabulka: PIT (Zastávky v boxech)</h3>
+                <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>driver_number</th>
+                            <th>lap_number</th>
+                            <th>pit_duration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>16</td>
+                            <td>23.3</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>87</td>
+                            <td>16</td>
+                            <td>25.0</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>16</td>
+                            <td>17</td>
+                            <td>22.9</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
 
-    <h3>⛽ Tabulka: SYNTHETIC_TELEMETRY (Palivo a motor)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>session_key</th>
-                <th>driver_number</th>
-                <th>lap_number</th>
-                <th>track_temperature_C</th>
-                <th>fuel_consumed_kg</th>
-                <th>engine_wear_percent</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0</td>
-                <td>11253</td>
-                <td>12</td>
-                <td>1</td>
-                <td>32.79</td>
-                <td>1.706</td>
-                <td>28.73</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>11253</td>
-                <td>12</td>
-                <td>2</td>
-                <td>34.42</td>
-                <td>1.623</td>
-                <td>28.86</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>11253</td>
-                <td>12</td>
-                <td>3</td>
-                <td>34.82</td>
-                <td>1.629</td>
-                <td>28.98</td>
-            </tr>
-        </tbody>
-    </table>
+                <h3>⛽ Tabulka: SYNTHETIC_TELEMETRY (Palivo a motor)</h3>
+                <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>session_key</th>
+                            <th>driver_number</th>
+                            <th>lap_number</th>
+                            <th>track_temperature_C</th>
+                            <th>fuel_consumed_kg</th>
+                            <th>engine_wear_percent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>11253</td>
+                            <td>12</td>
+                            <td>1</td>
+                            <td>32.79</td>
+                            <td>1.706</td>
+                            <td>28.73</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>11253</td>
+                            <td>12</td>
+                            <td>2</td>
+                            <td>34.42</td>
+                            <td>1.623</td>
+                            <td>28.86</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>11253</td>
+                            <td>12</td>
+                            <td>3</td>
+                            <td>34.82</td>
+                            <td>1.629</td>
+                            <td>28.98</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
 
-    <h3>💰 Tabulka: SYNTHETIC_RD_COSTS (Náklady na vývoj)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>session_key</th>
-                <th>team_name</th>
-                <th>development_cost_usd</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0</td>
-                <td>11253</td>
-                <td>Mercedes</td>
-                <td>2895662</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>11253</td>
-                <td>Ferrari</td>
-                <td>2593391</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>11253</td>
-                <td>McLaren</td>
-                <td>2208674</td>
-            </tr>
-        </tbody>
-    </table>
+                <h3>💰 Tabulka: SYNTHETIC_RD_COSTS (Náklady na vývoj)</h3>
+                <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>session_key</th>
+                            <th>team_name</th>
+                            <th>development_cost_usd</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>11253</td>
+                            <td>Mercedes</td>
+                            <td>2895662</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>11253</td>
+                            <td>Ferrari</td>
+                            <td>2593391</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>11253</td>
+                            <td>McLaren</td>
+                            <td>2208674</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
 
-    <h3>🔗 UKÁZKA VAZBY: Časy kol + Syntetická telemetrie (JOIN na úroveň kola)</h3>
-    <table>
-        <thead>
-            <tr>
-                <th></th>
-                <th>driver_number</th>
-                <th>lap_number</th>
-                <th>real_lap_time</th>
-                <th>track_temperature_C</th>
-                <th>fuel_consumed_kg</th>
-                <th>engine_wear_percent</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>0</td>
-                <td>1</td>
-                <td>1</td>
-                <td>97.639</td>
-                <td>32.79</td>
-                <td>1.635</td>
-                <td>27.33</td>
-            </tr>
-            <tr>
-                <td>1</td>
-                <td>1</td>
-                <td>2</td>
-                <td>94.905</td>
-                <td>34.42</td>
-                <td>1.668</td>
-                <td>27.46</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>1</td>
-                <td>3</td>
-                <td>96.301</td>
-                <td>34.82</td>
-                <td>1.623</td>
-                <td>27.61</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>1</td>
-                <td>4</td>
-                <td>95.451</td>
-                <td>35.84</td>
-                <td>1.741</td>
-                <td>27.75</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>1</td>
-                <td>5</td>
-                <td>95.170</td>
-                <td>34.09</td>
-                <td>1.628</td>
-                <td>27.88</td>
-            </tr>
-        </tbody>
-    </table>
+                <h3>🔗 UKÁZKA VAZBY: Časy kol + Syntetická telemetrie (JOIN na úroveň kola)</h3>
+                <div class="table-responsive">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>driver_number</th>
+                            <th>lap_number</th>
+                            <th>real_lap_time</th>
+                            <th>track_temperature_C</th>
+                            <th>fuel_consumed_kg</th>
+                            <th>engine_wear_percent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>97.639</td>
+                            <td>32.79</td>
+                            <td>1.635</td>
+                            <td>27.33</td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>94.905</td>
+                            <td>34.42</td>
+                            <td>1.668</td>
+                            <td>27.46</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>1</td>
+                            <td>3</td>
+                            <td>96.301</td>
+                            <td>34.82</td>
+                            <td>1.623</td>
+                            <td>27.61</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>1</td>
+                            <td>4</td>
+                            <td>95.451</td>
+                            <td>35.84</td>
+                            <td>1.741</td>
+                            <td>27.75</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>1</td>
+                            <td>5</td>
+                            <td>95.170</td>
+                            <td>34.09</td>
+                            <td>1.628</td>
+                            <td>27.88</td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
 
 
                 <h3>Data story a vizualizace</h3>
@@ -833,9 +944,11 @@
                         odpovědi na straně poskytovatele by rozbila naši ingesční pipeline.</li>
                     <li>Technická omezení: Lokální dávkové zpracování (Batch ELT v DuckDB) neumožňuje analýzu „live“
                         (near-real-time) přímo v průběhu závodu.</li>
-                    <li>Zjednodušení dat: Spotřeba a opotřebení motoru byla navázána na zjednodušený, uměle vygenerovaný 
-                        trend teploty trati. V reálné produkci by byl implementován dynamický Time-Series JOIN (ASOF JOIN) 
-                        na reálná data z tabulky weather z OpenF1 API. Tím by syntetické modely reagovaly na skutečné výkyvy 
+                    <li>Zjednodušení dat: Spotřeba a opotřebení motoru byla navázána na zjednodušený, uměle vygenerovaný
+                        trend teploty trati. V reálné produkci by byl implementován dynamický Time-Series JOIN (ASOF
+                        JOIN)
+                        na reálná data z tabulky weather z OpenF1 API. Tím by syntetické modely reagovaly na skutečné
+                        výkyvy
                         počasí v daném závodě."</li>
                 </ul>
 
@@ -893,8 +1006,9 @@
                 </ul>
                 <h3>Nástroje a prostředí</h3>
                 <ul>
-                    <li>Sběr a transformace: Python 3.x, requests, DuckDB.</li>
+                    <li>Sběr a transformace: Python 3, requests, DuckDB.</li>
                     <li>Analýza a vizualizace: Jupyter Notebook, knihovny Pandas, Matplotlib, Seaborn.</li>
+                    <li>OpenF1 API spadá pot MIT licenci</li>
                 </ul>
                 <h4>Konvence</h4>
                 <ul>
@@ -903,8 +1017,16 @@
                         v_analytical_, aby se jasně odlišily od surových vstupních tabulek.</li>
                 </ul>
                 <h3>AI použití</h3>
+                <ul>
+                    <li>Vytvoření skriptu pro generování dat</li>
+                    <li>Seznámení se a ladění Jupyter notebooku</li>
+                </ul>
 
                 <h3>Zdroje</h3>
+                <ul>
+                    <li>OpenF1 API dokumentace z <a href="www.openf1.org">openF1.org</a></li>
+                    <li>Informace o týmech, pravidla a statistiky F1 z <a href="www.f1.com">F1.COM</a></li>
+                </ul>
 
             </section>
         </main>
