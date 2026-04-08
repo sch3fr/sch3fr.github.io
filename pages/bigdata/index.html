@@ -199,12 +199,12 @@
         }
 
         .table-responsive {
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch; /* Zajistí plynulé scrollování prstem na iOS */
-        margin-bottom: 30px; 
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            /* Zajistí plynulé scrollování prstem na iOS */
+            margin-bottom: 30px;
         }
-
     </style>
 
     <script>
@@ -329,18 +329,20 @@
                 </p>
 
                 <h3>Business questions</h3>
-                <ul>
-                    <li>Kdy je optimální pit window pro přezutí vzhledem k degradaci pneumatik konkurence?</li>
-                    <li>Jak moc ovlivňuje teplota trati spotřebu paliva a životnost motoru?</li>
-                    <li>Jaká je pravděpodobnost zisku bodů při zvolení alternativní strategie</li>
-                </ul>
+                <ol>
+                    <li>Jak si stojíme v rychlosti zastávek v boxech oproti absolutní špičce a ztrácíme tím čas?</li>
+                    <li>Kdy je optimální okno pro výměnu pneumatik (pit window), abychom minimalizovali časovou ztrátu z
+                        degradace?</li>
+                    <li>Jsou naše investice do vývoje vozu efektivní v porovnání s konkurencí z hlediska získaných bodů?
+                    </li>
+                </ol>
                 <h3>KPI</h3>
-                <ul>
+                <ol>
                     <li>PIT Stop Efficiency Index: poměr mezi časem pit stopu a průměrem top 3 týmů</li>
                     <li>Degradation Delta: rozdíl mezi predikovaným a reálným časem na kolo s rostoucím počtem kol na
                         sadě gum</li>
                     <li>ROI: kolik bodů tým získal vzhledem k nákladům na vývoj v daném závodě</li>
-                </ul>
+                </ol>
                 <h3>Stakeholdeři a rozhodnutí</h3>
                 <p>Strategy Chief rozhoduje zda:
                 <ul>
@@ -447,7 +449,10 @@
                 </p>
 
                 <h3>Diagramy</h3>
-                todo
+                <h4>High level architektura</h4>
+                <img src="obrazky/high-level.png" class="gallery-img" onclick="openModal(this)">
+                <h4>Datový tok</h4>
+                <img src="obrazky/datovytok.png" class="gallery-img" onclick="openModal(this)">
             </section>
 
             <section id="data">
@@ -498,66 +503,68 @@
 
                 <h3>Přehled datasetů</h3>
                 <div class="table-responsive">
-                <table class="overview-table">
-                    <thead>
-                        <tr>
-                            <th>Dataset (Tabulka)</th>
-                            <th>Zdroj</th>
-                            <th>Typ</th>
-                            <th>Granularita</th>
-                            <th>Klíčové atributy</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>laps</td>
-                            <td>OpenF1 API</td>
-                            <td>Reálná</td>
-                            <td>1 záznam = 1 kolo</td>
-                            <td>driver_number, lap_number, lap_duration</td>
-                        </tr>
-                        <tr>
-                            <td>pit_stops</td>
-                            <td>OpenF1 API</td>
-                            <td>Reálná</td>
-                            <td>1 záznam = 1 zastávka</td>
-                            <td>driver_number, lap_number, pit_duration</td>
-                        </tr>
-                        <tr>
-                            <td>weather</td>
-                            <td>OpenF1 API</td>
-                            <td>Reálná</td>
-                            <td>1 záznam = 1 minuta</td>
-                            <td>date, track_temperature, humidity</td>
-                        </tr>
-                        <tr>
-                            <td>position</td>
-                            <td>OpenF1 API</td>
-                            <td>Reálná</td>
-                            <td>1 záznam = změna</td>
-                            <td>driver_number, date, position</td>
-                        </tr>
-                        <tr>
-                            <td>synthetic_telemetry</td>
-                            <td>Python skript</td>
-                            <td>Syntetická</td>
-                            <td>1 záznam = 1 kolo</td>
-                            <td>fuel_consumed, engine_wear_percent</td>
-                        </tr>
-                        <tr>
-                            <td>synthetic_rd_costs</td>
-                            <td>Python skript</td>
-                            <td>Syntetická</td>
-                            <td>1 záznam = 1 tým</td>
-                            <td>team_name, development_cost_usd</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="overview-table">
+                        <thead>
+                            <tr>
+                                <th>Dataset (Tabulka)</th>
+                                <th>Zdroj</th>
+                                <th>Typ</th>
+                                <th>Granularita</th>
+                                <th>Klíčové atributy</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>laps</td>
+                                <td>OpenF1 API</td>
+                                <td>Reálná</td>
+                                <td>1 záznam = 1 kolo</td>
+                                <td>driver_number, lap_number, lap_duration</td>
+                            </tr>
+                            <tr>
+                                <td>pit_stops</td>
+                                <td>OpenF1 API</td>
+                                <td>Reálná</td>
+                                <td>1 záznam = 1 zastávka</td>
+                                <td>driver_number, lap_number, pit_duration</td>
+                            </tr>
+                            <tr>
+                                <td>weather</td>
+                                <td>OpenF1 API</td>
+                                <td>Reálná</td>
+                                <td>1 záznam = 1 minuta</td>
+                                <td>date, track_temperature, humidity</td>
+                            </tr>
+                            <tr>
+                                <td>position</td>
+                                <td>OpenF1 API</td>
+                                <td>Reálná</td>
+                                <td>1 záznam = změna</td>
+                                <td>driver_number, date, position</td>
+                            </tr>
+                            <tr>
+                                <td>synthetic_telemetry</td>
+                                <td>Python skript</td>
+                                <td>Syntetická</td>
+                                <td>1 záznam = 1 kolo</td>
+                                <td>fuel_consumed, engine_wear_percent</td>
+                            </tr>
+                            <tr>
+                                <td>synthetic_rd_costs</td>
+                                <td>Python skript</td>
+                                <td>Syntetická</td>
+                                <td>1 záznam = 1 tým</td>
+                                <td>team_name, development_cost_usd</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <ul>
                     <li>
-                        Data jsou uložena v relační databázi DuckDB. Hlavním propojovacím prvkem (Common Key) napříč datasety je kombinace driver_number a lap_number. Pro finanční analýzu (KPI 3) je využita mapovací tabulka, která přiřazuje startovní čísla jezdců k jejich týmům. 
+                        Data jsou uložena v relační databázi DuckDB. Hlavním propojovacím prvkem (Common Key) napříč
+                        datasety je kombinace driver_number a lap_number. Pro finanční analýzu (KPI 3) je využita
+                        mapovací tabulka, která přiřazuje startovní čísla jezdců k jejich týmům.
                     </li>
                 </ul>
 
@@ -667,255 +674,423 @@
                 <h4>Ukázky využitých tabulek</h4>
                 <h3>🏎️ Tabulka: LAPS (Časy kol - ukázka 3 záznamů)</h3>
                 <div class="table-responsive">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>driver_number</th>
-                            <th>lap_number</th>
-                            <th>lap_duration</th>
-                            <th>is_pit_out_lap</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>0</td>
-                            <td>12</td>
-                            <td>1</td>
-                            <td>99.215</td>
-                            <td>False</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>63</td>
-                            <td>1</td>
-                            <td>98.270</td>
-                            <td>False</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>81</td>
-                            <td>1</td>
-                            <td>95.711</td>
-                            <td>False</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>driver_number</th>
+                                <th>lap_number</th>
+                                <th>lap_duration</th>
+                                <th>is_pit_out_lap</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>12</td>
+                                <td>1</td>
+                                <td>99.215</td>
+                                <td>False</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>63</td>
+                                <td>1</td>
+                                <td>98.270</td>
+                                <td>False</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>81</td>
+                                <td>1</td>
+                                <td>95.711</td>
+                                <td>False</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <h3>🛑 Tabulka: PIT (Zastávky v boxech)</h3>
                 <div class="table-responsive">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>driver_number</th>
-                            <th>lap_number</th>
-                            <th>pit_duration</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>16</td>
-                            <td>23.3</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>87</td>
-                            <td>16</td>
-                            <td>25.0</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>16</td>
-                            <td>17</td>
-                            <td>22.9</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>driver_number</th>
+                                <th>lap_number</th>
+                                <th>pit_duration</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>16</td>
+                                <td>23.3</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>87</td>
+                                <td>16</td>
+                                <td>25.0</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>16</td>
+                                <td>17</td>
+                                <td>22.9</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <h3>⛽ Tabulka: SYNTHETIC_TELEMETRY (Palivo a motor)</h3>
                 <div class="table-responsive">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>session_key</th>
-                            <th>driver_number</th>
-                            <th>lap_number</th>
-                            <th>track_temperature_C</th>
-                            <th>fuel_consumed_kg</th>
-                            <th>engine_wear_percent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>0</td>
-                            <td>11253</td>
-                            <td>12</td>
-                            <td>1</td>
-                            <td>32.79</td>
-                            <td>1.706</td>
-                            <td>28.73</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>11253</td>
-                            <td>12</td>
-                            <td>2</td>
-                            <td>34.42</td>
-                            <td>1.623</td>
-                            <td>28.86</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>11253</td>
-                            <td>12</td>
-                            <td>3</td>
-                            <td>34.82</td>
-                            <td>1.629</td>
-                            <td>28.98</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>session_key</th>
+                                <th>driver_number</th>
+                                <th>lap_number</th>
+                                <th>track_temperature_C</th>
+                                <th>fuel_consumed_kg</th>
+                                <th>engine_wear_percent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>11253</td>
+                                <td>12</td>
+                                <td>1</td>
+                                <td>32.79</td>
+                                <td>1.706</td>
+                                <td>28.73</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>11253</td>
+                                <td>12</td>
+                                <td>2</td>
+                                <td>34.42</td>
+                                <td>1.623</td>
+                                <td>28.86</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>11253</td>
+                                <td>12</td>
+                                <td>3</td>
+                                <td>34.82</td>
+                                <td>1.629</td>
+                                <td>28.98</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <h3>💰 Tabulka: SYNTHETIC_RD_COSTS (Náklady na vývoj)</h3>
                 <div class="table-responsive">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>session_key</th>
-                            <th>team_name</th>
-                            <th>development_cost_usd</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>0</td>
-                            <td>11253</td>
-                            <td>Mercedes</td>
-                            <td>2895662</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>11253</td>
-                            <td>Ferrari</td>
-                            <td>2593391</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>11253</td>
-                            <td>McLaren</td>
-                            <td>2208674</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>session_key</th>
+                                <th>team_name</th>
+                                <th>development_cost_usd</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>11253</td>
+                                <td>Mercedes</td>
+                                <td>2895662</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>11253</td>
+                                <td>Ferrari</td>
+                                <td>2593391</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>11253</td>
+                                <td>McLaren</td>
+                                <td>2208674</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <h3>🔗 UKÁZKA VAZBY: Časy kol + Syntetická telemetrie (JOIN na úroveň kola)</h3>
                 <div class="table-responsive">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>driver_number</th>
-                            <th>lap_number</th>
-                            <th>real_lap_time</th>
-                            <th>track_temperature_C</th>
-                            <th>fuel_consumed_kg</th>
-                            <th>engine_wear_percent</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>0</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>97.639</td>
-                            <td>32.79</td>
-                            <td>1.635</td>
-                            <td>27.33</td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>2</td>
-                            <td>94.905</td>
-                            <td>34.42</td>
-                            <td>1.668</td>
-                            <td>27.46</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>1</td>
-                            <td>3</td>
-                            <td>96.301</td>
-                            <td>34.82</td>
-                            <td>1.623</td>
-                            <td>27.61</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>1</td>
-                            <td>4</td>
-                            <td>95.451</td>
-                            <td>35.84</td>
-                            <td>1.741</td>
-                            <td>27.75</td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>1</td>
-                            <td>5</td>
-                            <td>95.170</td>
-                            <td>34.09</td>
-                            <td>1.628</td>
-                            <td>27.88</td>
-                        </tr>
-                    </tbody>
-                </table>
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>driver_number</th>
+                                <th>lap_number</th>
+                                <th>real_lap_time</th>
+                                <th>track_temperature_C</th>
+                                <th>fuel_consumed_kg</th>
+                                <th>engine_wear_percent</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>97.639</td>
+                                <td>32.79</td>
+                                <td>1.635</td>
+                                <td>27.33</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>1</td>
+                                <td>2</td>
+                                <td>94.905</td>
+                                <td>34.42</td>
+                                <td>1.668</td>
+                                <td>27.46</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>1</td>
+                                <td>3</td>
+                                <td>96.301</td>
+                                <td>34.82</td>
+                                <td>1.623</td>
+                                <td>27.61</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>1</td>
+                                <td>4</td>
+                                <td>95.451</td>
+                                <td>35.84</td>
+                                <td>1.741</td>
+                                <td>27.75</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>1</td>
+                                <td>5</td>
+                                <td>95.170</td>
+                                <td>34.09</td>
+                                <td>1.628</td>
+                                <td>27.88</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
 
                 <h3>Data story a vizualizace</h3>
                 <h4>Klíčové proměnné</h4>
                 <img src="obrazky/EDA1.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Histogram zobrazuje četnost časů kol, kde většina hodnot tvoří normální rozdělení kolem 95 sekund. Dlouhý „chvost“ v pravé části grafu reprezentuje anomální kola zajetá v provozu nebo při chybách jezdce.</li></ul>
+                <ul>
+                    <li>Histogram zobrazuje četnost časů kol, kde většina hodnot tvoří normální rozdělení kolem 95
+                        sekund. Dlouhý „chvost“ v pravé části grafu reprezentuje anomální kola zajetá v provozu nebo při
+                        chybách jezdce.</li>
+                </ul>
                 <img src="obrazky/EDA2.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Graf znázorňuje rozdělení délek zastávek v boxech, které se nejčastěji pohybují v úzkém rozmezí 23 až 25 sekund. Rozptyl hodnot pomáhá analytikům identifikovat standardní průběh servisu oproti ojedinělým technickým problémům.</li></ul>
+                <ul>
+                    <li>Graf znázorňuje rozdělení délek zastávek v boxech, které se nejčastěji pohybují v úzkém rozmezí
+                        23 až 25 sekund. Rozptyl hodnot pomáhá analytikům identifikovat standardní průběh servisu oproti
+                        ojedinělým technickým problémům.</li>
+                </ul>
                 <img src="obrazky/EDA3.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Vizualizace rozdělení teploty trati ukazuje široké spektrum podmínek od 27 do 38 °C během session. Bimodální charakter křivky napovídá, že v průběhu závodu docházelo k výrazným klimatickým změnám (např. vliv oblačnosti).</li></ul>
+                <ul>
+                    <li>Vizualizace rozdělení teploty trati ukazuje široké spektrum podmínek od 27 do 38 °C během
+                        session. Bimodální charakter křivky napovídá, že v průběhu závodu docházelo k výrazným
+                        klimatickým změnám (např. vliv oblačnosti).</li>
+                </ul>
                 <img src="obrazky/EDA4.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Histogram potvrzuje logické rozdělení opotřebení motoru (zde v rozmezí 28–36 %), které odpovídá kumulativnímu nárůstu během třetího závodu sezóny. Tvar zvonovité křivky dokazuje úspěšnou implementaci Gaussova šumu do syntetických dat pro vyšší realističnost.</li></ul>
+                <ul>
+                    <li>Histogram potvrzuje normální rozdělení spotřeby paliva. Tvar zvonovité křivky dokazuje úspěšnou
+                        implementaci Gaussova šumu do syntetických dat pro vyšší realističnost.</li>
+                </ul>
 
                 <h4>Průzkum dat</h4>
                 <img src="obrazky/segmentova_analyza.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Boxplot srovnává konzistenci a absolutní tempo jezdců rozdělených do tří výkonnostních úrovní (Top, Mid, Back). Seřazení podle mediánu času na kolo jasně demonstruje rozdíly v technické úrovni jednotlivých týmů na startovním roštu.</li></ul>
+                <ul>
+                    <li>Boxplot srovnává konzistenci a absolutní tempo jezdců rozdělených do tří výkonnostních úrovní
+                        (Top, Mid, Back). Seřazení podle mediánu času na kolo jasně demonstruje rozdíly v technické
+                        úrovni jednotlivých týmů na startovním roštu.</li>
+                </ul>
                 <img src="obrazky/korelace.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Korelační matice vlevo odhaluje silné statistické vazby mezi proměnnými, zatímco regresní graf vpravo vizualizuje přímou závislost vyšší spotřeby paliva na rostoucí teplotě trati.</li></ul>
+                <ul>
+                    <li>Korelační matice vlevo odhaluje silné statistické vazby mezi proměnnými, zatímco regresní graf
+                        vpravo vizualizuje přímou závislost vyšší spotřeby paliva na rostoucí teplotě trati.</li>
+                </ul>
                 <img src="obrazky/casovaAnalyza.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Horní část sleduje vývoj času na kolo s jasně patrným zrychlením po výměně pneumatik (pit stopu). Spodní část grafu pak koreluje kolísající teplotu trati s plynule rostoucím kumulativním opotřebením motoru v průběhu celého závodu.</li></ul>
+                <ul>
+                    <li>Horní část sleduje vývoj času na kolo s jasně patrným zrychlením po výměně pneumatik (pit
+                        stopu). Spodní část grafu pak sleduje kolísající teplotu trati a její vztah se 
+                        spotřebou paliva v průběhu celého závodu.</li>
+                </ul>
                 <img src="obrazky/pitstrop.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>In-Laps analýza ukazuje mediánovou ztrátu tempa těsně před reálným pit stopem 3.19 s. </li></ul>
+                <ul>
+                    <li>In-Laps analýza ukazuje mediánovou ztrátu tempa těsně před reálným pit stopem 3.19 s. </li>
+                </ul>
 
                 <h4>KPI</h4>
                 <img src="obrazky/KPI1.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Sloupcový graf zobrazuje efektivitu mechaniků jednotlivých jezdců, kde hodnota 1.0 představuje špičkový benchmark závodu. Nižší index (zelená barva) značí excelentní výkon, zatímco hodnoty nad 1.1 (červená barva) odhalují kritické časové ztráty při odbavení vozu.</li></ul>
+                <ul>
+                    <li>Sloupcový graf zobrazuje efektivitu mechaniků jednotlivých jezdců, kde hodnota 1.0 představuje
+                        špičkový benchmark závodu. Nižší index (zelená barva) značí excelentní výkon, zatímco hodnoty
+                        nad 1.1 (červená barva) odhalují kritické časové ztráty při odbavení vozu.</li>
+                </ul>
                 <img src="obrazky/KPI2A.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Tento graf vizualizuje ztrátu tempa, kde je reálné opotřebení pneumatik maskováno úbytkem paliva, což vede k nelogickému zrychlování (klesající trend). Jde o důkaz limitace modelu před aplikací nezbytných fyzikálních korekcí.</li></ul>
+                <ul>
+                    <li>Tento graf vizualizuje ztrátu tempa, kde je reálné opotřebení pneumatik maskováno úbytkem
+                        paliva, což vede k nelogickému zrychlování (klesající trend). Jde o důkaz limitace modelu před
+                        aplikací nezbytných fyzikálních korekcí.</li>
+                </ul>
                 <img src="obrazky/KPI2B.png" class="gallery-img" onclick="openModal(this)">
                 <ul>
-                    <li>Po aplikaci korekce na úbytek paliva graf konečně zobrazuje reálný nárůst ztráty tempa v důsledku degradace pneumatik. Červená přerušovaná čára značí kritickou mez 3.19 s, která definuje strop „Pit Window“. Po jeho překročení dochází k výrazným ztrátám které nemusí být dohnatelné po zbytek závodu..</li>
-                    <li>Sleduje čistou časovou ztrátu tempa na kolo (Deltu) s rostoucím počtem odjetých kol na jedné sadě pneumatik. Ztráta je počítána jako rozdíl mezi aktuálním časem a nejlepším časem jezdce v daném stintu (base pace), přičemž hodnoty jsou fyzikálně očištěny o vliv ubývajícího paliva.</li>
+                    <li>Po aplikaci korekce na úbytek paliva graf konečně zobrazuje reálný nárůst ztráty tempa v
+                        důsledku degradace pneumatik. Červená přerušovaná čára značí kritickou mez 3.19 s, která
+                        definuje strop „Pit Window“. Po jeho překročení dochází k výrazným ztrátám které nemusí být
+                        dohnatelné po zbytek závodu..</li>
+                    <li>Sleduje čistou časovou ztrátu tempa na kolo (Deltu) s rostoucím počtem odjetých kol na jedné
+                        sadě pneumatik. Ztráta je počítána jako rozdíl mezi aktuálním časem a nejlepším časem jezdce v
+                        daném stintu (base pace), přičemž hodnoty jsou fyzikálně očištěny o vliv ubývajícího paliva.
+                    </li>
                 </ul>
-                <img src="obrazky/KPI3.png" class="gallery-img" onclick="openModal(this)">
-                <ul><li>Horizontální sloupcový graf srovnává finanční efektivitu týmů měřenou počtem získaných bodů na jeden milion USD vývojových nákladů. Ukazuje, že Mercedes a McLaren dosáhly nejlepšího poměru „cena/výkon“, zatímco týmy bez bodového zisku vykazují nulovou návratnost investice do daného závodu.</li></ul>
+                <img src="obrazky/KPI2realnepalivo.png" class="gallery-img" onclick="openModal(this)">
+                <ul>
+                    <li>Graf zobrazuje ztrátu tempa vzhledem k dynamické spotřebě paliva.</li>
+                </ul>
 
+                <img src="obrazky/KPI3.png" class="gallery-img" onclick="openModal(this)">
+                <ul>
+                    <li>Horizontální sloupcový graf srovnává finanční efektivitu týmů měřenou počtem získaných bodů na
+                        jeden milion USD vývojových nákladů. Ukazuje, že Mercedes a McLaren dosáhly nejlepšího poměru
+                        „cena/výkon“, zatímco týmy bez bodového zisku vykazují nulovou návratnost investice do daného
+                        závodu.</li>
+                </ul>
+
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>team_name</th>
+                                <th>development_cost_usd</th>
+                                <th>crash_damage_costs_usd</th>
+                                <th>total_investment_usd</th>
+                                <th>total_points</th>
+                                <th>roi_points_per_million</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0</td>
+                                <td>Mercedes</td>
+                                <td>2329248</td>
+                                <td>0.0</td>
+                                <td>2329248.0</td>
+                                <td>37.0</td>
+                                <td>15.88</td>
+                            </tr>
+                            <tr>
+                                <td>1</td>
+                                <td>Alpine</td>
+                                <td>475516</td>
+                                <td>0.0</td>
+                                <td>475516.0</td>
+                                <td>6.0</td>
+                                <td>12.62</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>McLaren</td>
+                                <td>2318303</td>
+                                <td>0.0</td>
+                                <td>2318303.0</td>
+                                <td>28.0</td>
+                                <td>12.08</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Ferrari</td>
+                                <td>2067561</td>
+                                <td>0.0</td>
+                                <td>2067561.0</td>
+                                <td>23.0</td>
+                                <td>11.12</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>Red Bull Racing</td>
+                                <td>2160760</td>
+                                <td>0.0</td>
+                                <td>2160760.0</td>
+                                <td>4.0</td>
+                                <td>1.85</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>Racing Bulls</td>
+                                <td>1004349</td>
+                                <td>1257418.0</td>
+                                <td>2261767.0</td>
+                                <td>2.0</td>
+                                <td>0.88</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>Haas F1 Team</td>
+                                <td>1137442</td>
+                                <td>260293.0</td>
+                                <td>1397735.0</td>
+                                <td>1.0</td>
+                                <td>0.72</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>Cadillac</td>
+                                <td>480173</td>
+                                <td>2020205.0</td>
+                                <td>2500378.0</td>
+                                <td>0.0</td>
+                                <td>0.00</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>Aston Martin</td>
+                                <td>450179</td>
+                                <td>1108644.0</td>
+                                <td>1558823.0</td>
+                                <td>0.0</td>
+                                <td>0.00</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>Audi</td>
+                                <td>985597</td>
+                                <td>0.0</td>
+                                <td>985597.0</td>
+                                <td>0.0</td>
+                                <td>0.00</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Williams</td>
+                                <td>597929</td>
+                                <td>1933155.0</td>
+                                <td>2531084.0</td>
+                                <td>0.0</td>
+                                <td>0.00</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <dialog id="mainDialog" onclick="this.close()"
                     style="padding:0; border:none; background:rgba(0,0,0,0.85); width:100vw; height:100vh; max-width:none; max-height:none;">
@@ -988,19 +1163,35 @@
 
                 <h4>Pokročilé využití AI v prostředí F1</h4>
                 <ul>
-                    <li>Prediktivní strategie (Reinforcement Learning): Nasazení modelů, které se učí z milionů simulovaných závodů a v reálném čase navrhují optimální kolo pro pit stop (tzv. "Pit Window") na základě aktuálního provozu na trati.</li>
-                    <li>Počítačové vidění (Computer Vision): Automatická analýza obrazu z onboard kamer soupeřů pro okamžitou detekci opotřebení jejich pneumatik (např. drolení – graining), což dává týmu informace, které telemetrie konkurence neprozradí.</li>
-                    <li>Digital Twins: Vytváření virtuálních modelů kritických komponent (motor, převodovka), které pomocí hlubokého učení predikují únavu materiálu a poruchy dříve, než nastanou (Predictive Maintenance).</li>
-                    <li>AI v aerodynamice (CFD): Využití neuronových sítí k urychlení výpočtů proudění vzduchu. AI dokáže nahradit část drahých simulací v aerodynamickém tunelu, což je klíčové při omezeních daných pravidly.</li>
-                    
+                    <li>Prediktivní strategie (Reinforcement Learning): Nasazení modelů, které se učí z milionů
+                        simulovaných závodů a v reálném čase navrhují optimální kolo pro pit stop (tzv. "Pit Window") na
+                        základě aktuálního provozu na trati.</li>
+                    <li>Počítačové vidění (Computer Vision): Automatická analýza obrazu z onboard kamer soupeřů pro
+                        okamžitou detekci opotřebení jejich pneumatik (např. drolení – graining), což dává týmu
+                        informace, které telemetrie konkurence neprozradí.</li>
+                    <li>Digital Twins: Vytváření virtuálních modelů kritických komponent (motor, převodovka), které
+                        pomocí hlubokého učení predikují únavu materiálu a poruchy dříve, než nastanou (Predictive
+                        Maintenance).</li>
+                    <li>AI v aerodynamice (CFD): Využití neuronových sítí k urychlení výpočtů proudění vzduchu. AI
+                        dokáže nahradit část drahých simulací v aerodynamickém tunelu, což je klíčové při omezeních
+                        daných pravidly.</li>
+
                 </ul>
 
                 <h4>Strategický přínos do budoucna</h4>
                 <ul>
-                    <li>Maximalizace výkonu pod rozpočtovým stropem (Cost Cap): Náš model ROI (Body/$1M) přímo odpovídá na největší výzvu moderní F1: jak efektivně alokovat omezené finance do vývoje, který přinese reálné body.</li>
-                    <li>Sjednocení dat (Single Source of Truth): Architektura postavená na DuckDB ukazuje, jak efektivně propojit roztříštěné zdroje (API počasí, telemetrie, finance) do jednoho místa pro rychlá manažerská rozhodnutí.</li>
-                    <li>Škálovatelnost na Real-Time: Projekt slouží jako Proof of Concept. Logiku výpočtu "Degradation Delty" lze snadno přenést z dávkového zpracování na streamování dat, což umožní bleskové reakce během závodu.</li>
-                    <li>Identifikace vzorců chování konkurence: Dlouhodobým sledováním očištěné degradace soupeřů (po našem "Fuel Correction" zásahu) lze odhalit slabiny jejich vozů v konkrétních teplotních podmínkách.</li>
+                    <li>Maximalizace výkonu pod rozpočtovým stropem (Cost Cap): Náš model ROI (Body/$1M) přímo odpovídá
+                        na největší výzvu moderní F1: jak efektivně alokovat omezené finance do vývoje, který přinese
+                        reálné body.</li>
+                    <li>Sjednocení dat (Single Source of Truth): Architektura postavená na DuckDB ukazuje, jak efektivně
+                        propojit roztříštěné zdroje (API počasí, telemetrie, finance) do jednoho místa pro rychlá
+                        manažerská rozhodnutí.</li>
+                    <li>Škálovatelnost na Real-Time: Projekt slouží jako Proof of Concept. Logiku výpočtu "Degradation
+                        Delty" lze snadno přenést z dávkového zpracování na streamování dat, což umožní bleskové reakce
+                        během závodu.</li>
+                    <li>Identifikace vzorců chování konkurence: Dlouhodobým sledováním očištěné degradace soupeřů (po
+                        našem "Fuel Correction" zásahu) lze odhalit slabiny jejich vozů v konkrétních teplotních
+                        podmínkách.</li>
                 </ul>
 
             </section>
