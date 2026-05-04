@@ -132,6 +132,49 @@
             transform: translateX(-50%) translateY(1px);
         }
 
+        /* Styling the Collapsible Section */
+        .deep-dive {
+            margin: 30px 0;
+            border-top: 1px solid rgba(44, 53, 45, 0.1);
+            border-bottom: 1px solid rgba(44, 53, 45, 0.1);
+        }
+
+        .deep-dive summary {
+            list-style: none; /* Hide default arrow */
+            padding: 20px 0;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            color: var(--sage);
+            transition: color 0.2s;
+        }
+
+        .deep-dive summary::-webkit-details-marker {
+            display: none; /* Hide default arrow for Safari */
+        }
+
+        .deep-dive summary:hover {
+            color: var(--terracotta);
+        }
+
+        .deep-dive .chevron {
+            transition: transform 0.3s ease;
+        }
+
+        /* Rotate the arrow when open */
+        .deep-dive[open] .chevron {
+            transform: rotate(180deg);
+        }
+
+        .details-content {
+            padding-bottom: 20px;
+            font-size: 1rem;
+            color: rgba(44, 53, 45, 0.8); /* Slightly lighter text for the deep dive */
+        }
+
         /* --- THE MAGIC TOGGLE CSS --- */
         .en { display: none; }
         body.lang-czech .en { display: block; }
@@ -152,7 +195,7 @@
             <p class="lead-text">Klávesnice, tak jak jí známe, je zastaralá. Je na tobě s tím něco udělat.</p>
             <h2>Úvod</h2>
             <p>Když jsem začal studovat informatiku, velmi rychle jsem si uvědomil že pravděpodobně strávím velkou část 
-                svého života u počítače. Někdy tou dobou mě také začalo přestat 3D tisknout figurky a chtěl jsem začít 
+                svého života u počítače. Někdy tou dobou mě také začalo přestat bavit 3D tisknout figurky a chtěl jsem začít 
                 dělat něco zajímavějšího. Napadlo mě, proč si tedy pomocí 3D tisku nezlepšit prožitek ze sezení u počítače?
             </p>
             <h2>Podomácku vyrobená klávesnice</h2>
@@ -166,16 +209,43 @@
             </p>
             <!--Prostor na obrázky-->
             <h2>Anatomie klávesnice</h2>
+
             <p>Aby byl proces vytvoření klávesnice co nejjednodušší, využívají se pro tyto účely spínače mechanických
             klávesnic. Mimo lepší pocit ze psaní, pokud přecházíte ze standardní membránové klváesnice, je hlavním 
-            důvodem jejich jednoduché použití. Každý spínač je samostatně funkční, není třeba tvořit nějaké složité 
-            kombinace součástek, jdou jednoduše integrovat do 3D výtisků, a když se pokazí, jednoduše se vymění.</p>
+            důvodem jejich jednoduché použití.</p>
+            <details class="deep-dive">
+                <summary>
+                    <span>Proč se používají spínače mechanických klávesnic?</span>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="details-content">
+                    <p>Každý spínač je samostatně funkční, není třeba tvořit nějaké složité 
+                    kombinace součástek. Tento druh spínačů lze jednoduše integrovat do 3D výtisků, a když se 
+                    pokazí, jednoduše se vymění.</p>
+                </div>
+            </details>
             <p>Na spínače se nasazují klávesy. Nebo hmatníky, chcete-li. Osobně doporučuji koupit si sadu kláves. 
                 Existují maniaci, kteří je tisknou na SLA i FDM tiskárnách, ale já nikdy nebyl dost spokojený s jejich 
-                kvalitou. Základní set kláves se dá sehnat v zahraničí od 300 do 800 korun. Různé sety mají rozdílné 
-                profily. Mezi ty nejběžnější patří Cherry/OEM profil, kde se klávesy liší podle řádků. Dalším je XDA profil,
-                kde jsou všechny klávesy stejné.
+                kvalitou.Základní set kláves se dá sehnat v zahraničí od 300 do 1000 korun. Samozřejmě se dají koupit i 
+                výrazně dražší sady, ale ty na první pokusy nemůžu doporučit. 
             </p>
+            <details class="deep-dive">
+                <summary>
+                    <span>Na co si dát při výběru pozor?</span>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                </summary>
+                <div class="details-content">
+                    <p>Různé sety mají rozdílné 
+                    profily. Mezi ty nejběžnější patří Cherry/OEM profil, kde se klávesy liší podle řádků. Dalším je XDA profil,
+                    kde jsou všechny klávesy stejné.</p>
+                    <p>Sady kláves se také liší materiály a způsobem potisku. Double shot klávesy bývají výrazně draží,
+                        ale jejich legendy jsou vytvořené slitinou 2 různých plastů, takže se na rozdíl od potisknutých 
+                        kláves nikdy nevymažou. Také je to jeiný způsob, jak zajistit, že světlo podsvícení svítí skrz legendu* ** <br>
+                        *(pokud děláte klávesnici s podsvícenými klávesami)<br>
+                        **(tedy pokud si nekoupíte průhlednou barvu a neuděláte si to sami).
+                    </p>
+                </div>
+            </details>
             <p>Klávesy jsou spojeny diodami v řadách, a pouhým drátem ve sloupcích. Každá řada a sloupec jsou následně 
                 napojeny na mikrokontroler, na kterém běží QMK firmware.
             </p>
@@ -192,8 +262,8 @@
                 <li>tolik spínačů mechanické klávesnice, kolik chcete tlačítek *</li>
                 <li>klávesy / hmatníky *</li>
             </ul>
-            <p>* zeptejte se nejbližšího nerda, co staví custom klávesnice. Pokud ho nemáte, aliexpress (a místy i místní
-                obchody) pomůžou, hledejte "mechanical keyboard switches" a "mechanical keyboard keycaps".
+            <p>* zeptejte se nejbližšího nerda, co staví custom klávesnice. Pokud ho nemáte, aliexpress (a některé <a href="https://www.42keebs.eu">místní obchody</a>
+                ) pomůžou. Hledejte "mechanical keyboard switches" a "mechanical keyboard keycaps".
             </p>
             <p>⚠️ Ujistětě se, že spínače i klávesy jsou cherry-mx kompatibilní, tzn. spínače mají navrchu křížek, klávesy 
                 majít křížek zespodu.
