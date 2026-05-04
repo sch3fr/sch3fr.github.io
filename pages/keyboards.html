@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kool klávesnice</title>
+    
+    <!-- Importing a geometric sans for headings and a serif for body text -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Outfit:wght@500;800&display=swap" rel="stylesheet">
+
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    
+    <style>
+        /* CSS Variables for our Mid-Century Palette */
+        :root {
+            --paper: #EFECE6;       /* Warm, textured cream */
+            --ink: #2C352D;         /* Deep, muted forest green/black */
+            --terracotta: #C85A32;  /* Burnt orange */
+            --sage: #6B8770;        /* Mid-century green */
+        }
+
+        body {
+            background-color: var(--paper);
+            color: var(--ink);
+            font-family: 'Lora', Georgia, serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 80px 24px 120px 24px;
+        }
+
+        /* --- New HERO IMAGE Container --- */
+        .hero-container {
+            width: 100%;
+            height: 400px; /* Adjust this height as needed */
+            overflow: hidden;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        /* The actual image */
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures the image fills the area beautifully without stretching */
+            object-position: center; /* Keeps the middle of the photo in view */
+        }
+
+        /* Stylized overlay (adds to the MCM aesthetic) */
+        .hero-container::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            /* subtle warm screen over the image */
+            background-color: rgba(200, 90, 50, 0.1); 
+            mix-blend-mode: multiply;
+        }
+        /* --- End HERO IMAGE Section --- */
+
+        /* Replaces the card with a clean, open layout */
+        .article-wrapper {
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        /* The MCM geometric accent line */
+        .article-wrapper::before {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 8px;
+            background-color: var(--sage);
+            margin-bottom: 30px;
+            border-radius: 2px;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            color: var(--terracotta);
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-top: 0;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+        }
+
+        .lead-text {
+            font-size: 1.35rem;
+            font-style: italic;
+            color: var(--sage);
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        p {
+            font-size: 1.15rem;
+            margin-bottom: 24px;
+        }
+
+        /* Sleek, floating pill button */
+        #lang-toggle {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--ink);
+            color: var(--paper);
+            border: none;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            box-shadow: 0 10px 25px rgba(44, 53, 45, 0.25);
+            cursor: pointer;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        #lang-toggle:hover {
+            background-color: var(--sage);
+            transform: translateX(-50%) translateY(-3px);
+            box-shadow: 0 15px 30px rgba(107, 135, 112, 0.3);
+        }
+
+        #lang-toggle:active {
+            transform: translateX(-50%) translateY(1px);
+        }
+
+        /* --- THE MAGIC TOGGLE CSS --- */
+        .en { display: none; }
+        body.lang-czech .en { display: block; }
+        body.lang-czech .cs { display: none; }
+    </style>
+</head>
+<body>
+
+    <div class="hero-container">
+        <!-- REPLACE THIS LINK WITH YOUR CONVENTION PHOTO -->
+        <img src="/images/qr-keeb-article/hero.jpg"" alt="Convention photo" class="hero-image">
+    </div>
+
+    <div class="article-wrapper">
+        <!-- Czech Content -->
+        <div class="cs">
+            <h1>Není důvod proč by tvoje příští klávesnice musela vypadat jako ta stará.</h1>
+            <p class="lead-text">Klávesnice, tak jak jí známe, je zastaralá. Je na tobě s tím něco udělat.</p>
+            <h2>Úvod</h2>
+            <p>Když jsem začal studovat informatiku, velmi rychle jsem si uvědomil že pravděpodobně strávím velkou část 
+                svého života u počítače. Někdy tou dobou mě také začalo přestat 3D tisknout figurky a chtěl jsem začít 
+                dělat něco zajímavějšího. Napadlo mě, proč si tedy pomocí 3D tisku nezlepšit prožitek ze sezení u počítače?
+            </p>
+            <h2>Podomácku vyrobená klávesnice</h2>
+            <p>Pokud hledáte co nového zkusit se 3D tiskárnou, chcete se naučit se pájet, nebo něco o základní 
+                elektronice, nemůžu si vynachválit podomácku vyrobenou klávesnici. Je to zábava, výsledná klávsenice je 
+                nekonečně přizpůsobitelná, a využijete jí pro tvorbu dalších projektů, takže se vám brzo vrátí investice.
+            </p>
+            <p>Já jsem začal s trošku zvláštní klávesnicí, chtěl jsem zkusit něco ergonomického. Ale nic vám nezabrání 
+                v tom udělat si vlastní klávesnici, která vypadá docela normálně. Nebo nemusíte dělat celou klávesnici, 
+                proces můžete ochutnat i na tvorbě macropadu, ale o těch později.
+            </p>
+            <!--Prostor na obrázky-->
+            <h2>Anatomie klávesnice</h2>
+            <p>Aby byl proces vytvoření klávesnice co nejjednodušší, využívají se pro tyto účely spínače mechanických
+            klávesnic. Mimo lepší pocit ze psaní, pokud přecházíte ze standardní membránové klváesnice, je hlavním 
+            důvodem jejich jednoduché použití. Každý spínač je samostatně funkční, není třeba tvořit nějaké složité 
+            kombinace součástek, jdou jednoduše integrovat do 3D výtisků, a když se pokazí, jednoduše se vymění.</p>
+            <p>Na spínače se nasazují klávesy. Nebo hmatníky, chcete-li. Osobně doporučuji koupit si sadu kláves. 
+                Existují maniaci, kteří je tisknou na SLA i FDM tiskárnách, ale já nikdy nebyl dost spokojený s jejich 
+                kvalitou. Základní set kláves se dá sehnat v zahraničí od 300 do 800 korun. Různé sety mají rozdílné 
+                profily. Mezi ty nejběžnější patří Cherry/OEM profil, kde se klávesy liší podle řádků. Dalším je XDA profil,
+                kde jsou všechny klávesy stejné.
+            </p>
+            <p>Klávesy jsou spojeny diodami v řadách, a pouhým drátem ve sloupcích. Každá řada a sloupec jsou následně 
+                napojeny na mikrokontroler, na kterém běží QMK firmware.
+            </p>
+            
+
+            <h2>Co je potřeba pro výrobu klávesnice</h2>
+            <p>Na DIY klávesnici jsou potřeba materiály, co dost možná máte, pár speciálních součástek, a specifické díly 
+            na klávesnice.</p>
+            <ul>
+                <li>množství drátu</li>
+                <li>filament</li>
+                <li>tolik 1N4148 diod, kolik chcete tlačítek na klávesnici</li>
+                <li>microcontroller, většinou Teensy / Pro Micro / RP2040</li>
+                <li>tolik spínačů mechanické klávesnice, kolik chcete tlačítek *</li>
+                <li>klávesy / hmatníky *</li>
+            </ul>
+            <p>* zeptejte se nejbližšího nerda, co staví custom klávesnice. Pokud ho nemáte, aliexpress (a místy i místní
+                obchody) pomůžou, hledejte "mechanical keyboard switches" a "mechanical keyboard keycaps".
+            </p>
+            <p>⚠️ Ujistětě se, že spínače i klávesy jsou cherry-mx kompatibilní, tzn. spínače mají navrchu křížek, klávesy 
+                majít křížek zespodu.
+            </p>
+            
+
+            <h2>Alternativní klávesnice</h2>
+
+            <h2>Macropady</h2>
+        </div>
+
+        <!-- English Content -->
+        <div class="en">
+            <h1>Your next keyboard dones not have to look like this ⌨️</h1>
+            <p class="lead-text">There is no reason why you can't make your own keyboard.</p>
+            <p>Picture this. You're at the Maker Faire. The home of the nerds, the tinkerers, the inventors..</p>
+        </div>
+    </div>
+
+    <!-- The toggle button -->
+    <button id="lang-toggle">Switch to English</button>
+
+    <script>
+        const toggleBtn = document.getElementById('lang-toggle');
+
+        toggleBtn.addEventListener('click', () => {
+            document.body.classList.toggle('lang-czech');
+            
+            if (document.body.classList.contains('lang-czech')) {
+                toggleBtn.textContent = 'Přepnout do češtiny';
+            } else {
+                toggleBtn.textContent = 'Switch to English';
+            }
+        });
+    </script>
+</body>
+</html>
