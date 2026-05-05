@@ -1,24 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kool klávesnice</title>
-    
+
     <!-- Importing a geometric sans for headings and a serif for body text -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Outfit:wght@500;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:ital@0;1&family=Outfit:wght@500;800&display=swap"
+        rel="stylesheet">
 
     <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-    
+
     <style>
         /* CSS Variables for our Mid-Century Palette */
         :root {
-            --paper: #EFECE6;       /* Warm, textured cream */
-            --ink: #2C352D;         /* Deep, muted forest green/black */
-            --terracotta: #C85A32;  /* Burnt orange */
-            --sage: #6B8770;        /* Mid-century green */
+            --paper: #EFECE6;
+            /* Warm, textured cream */
+            --ink: #2C352D;
+            /* Deep, muted forest green/black */
+            --terracotta: #C85A32;
+            /* Burnt orange */
+            --sage: #6B8770;
+            /* Mid-century green */
         }
 
         body {
@@ -33,7 +39,8 @@
         /* --- New HERO IMAGE Container --- */
         .hero-container {
             width: 100%;
-            height: 400px; /* Adjust this height as needed */
+            height: 400px;
+            /* Adjust this height as needed */
             overflow: hidden;
             margin-bottom: 50px;
             position: relative;
@@ -43,19 +50,25 @@
         .hero-image {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures the image fills the area beautifully without stretching */
-            object-position: center; /* Keeps the middle of the photo in view */
+            object-fit: cover;
+            /* Ensures the image fills the area beautifully without stretching */
+            object-position: center;
+            /* Keeps the middle of the photo in view */
         }
 
         /* Stylized overlay (adds to the MCM aesthetic) */
         .hero-container::after {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             /* subtle warm screen over the image */
-            background-color: rgba(200, 90, 50, 0.1); 
+            background-color: rgba(200, 90, 50, 0.1);
             mix-blend-mode: multiply;
         }
+
         /* --- End HERO IMAGE Section --- */
 
         /* Replaces the card with a clean, open layout */
@@ -140,7 +153,8 @@
         }
 
         .deep-dive summary {
-            list-style: none; /* Hide default arrow */
+            list-style: none;
+            /* Hide default arrow */
             padding: 20px 0;
             cursor: pointer;
             display: flex;
@@ -153,7 +167,8 @@
         }
 
         .deep-dive summary::-webkit-details-marker {
-            display: none; /* Hide default arrow for Safari */
+            display: none;
+            /* Hide default arrow for Safari */
         }
 
         .deep-dive summary:hover {
@@ -172,20 +187,146 @@
         .details-content {
             padding-bottom: 20px;
             font-size: 1rem;
-            color: rgba(44, 53, 45, 0.8); /* Slightly lighter text for the deep dive */
+            color: rgba(44, 53, 45, 0.8);
+            /* Slightly lighter text for the deep dive */
         }
 
         /* --- THE MAGIC TOGGLE CSS --- */
-        .en { display: none; }
-        body.lang-czech .en { display: block; }
-        body.lang-czech .cs { display: none; }
+        .en {
+            display: none;
+        }
+
+        body.lang-czech .en {
+            display: block;
+        }
+
+        body.lang-czech .cs {
+            display: none;
+        }
+
+
+        /* --- RETRO EDITORIAL CAROUSEL (BUGFIXED) --- */
+        .carousel-wrapper {
+            margin: 60px -24px;
+            /* Pulls it out to the edges of the screen safely */
+            width: calc(100% + 48px);
+            /* Matches the padding we negated */
+            position: relative;
+        }
+
+        .carousel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 0 24px;
+        }
+
+        .carousel-hint {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: var(--terracotta);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        /* Show buttons if the device has a mouse, OR if it's a wide screen */
+        .carousel-nav {
+            display: none;
+            gap: 10px;
+        }
+
+        @media (pointer: fine),
+        (min-width: 768px) {
+            .carousel-nav {
+                display: flex;
+            }
+        }
+
+        .carousel-nav button {
+            background: transparent;
+            border: 2px solid var(--ink);
+            color: var(--ink);
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-nav button:hover {
+            background: var(--ink);
+            color: var(--paper);
+        }
+
+        .carousel-track {
+            display: flex;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scroll-behavior: smooth;
+            gap: 24px;
+            padding: 0 24px 30px 24px;
+
+            scrollbar-width: thin;
+            scrollbar-color: var(--sage) transparent;
+        }
+
+        /* The Phantom Element: Forces the browser to respect the right-side padding */
+        .carousel-track::after {
+            content: '';
+            flex: 0 0 1px;
+        }
+
+        .carousel-track::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .carousel-track::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .carousel-track::-webkit-scrollbar-thumb {
+            background-color: var(--sage);
+            border-radius: 10px;
+        }
+
+        .carousel-slide {
+            flex: 0 0 85%;
+            max-width: 450px;
+            scroll-snap-align: start;
+            /* FIXED: Snaps to the left edge, preventing the cut-off */
+        }
+
+        .carousel-slide img {
+            width: 100%;
+            aspect-ratio: 4 / 3;
+            object-fit: cover;
+            border: 2px solid var(--ink);
+            box-shadow: 10px 10px 0px var(--sage);
+            margin-bottom: 20px;
+        }
+
+        .slide-caption p {
+            font-family: 'Lora', Georgia, serif;
+            font-size: 1.05rem;
+            line-height: 1.5;
+            color: var(--ink);
+            font-style: italic;
+            margin: 0;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="hero-container">
         <!-- REPLACE THIS LINK WITH YOUR CONVENTION PHOTO -->
-        <img src="/images/qr-keeb-article/hero.jpg"" alt="Convention photo" class="hero-image">
+        <img src="/images/qr-keeb-article/hero.jpg"" alt=" Convention photo" class="hero-image">
     </div>
 
     <div class="article-wrapper">
@@ -194,66 +335,78 @@
             <h1>Není důvod proč by tvoje příští klávesnice musela vypadat jako ta stará.</h1>
             <p class="lead-text">Klávesnice, tak jak jí známe, je zastaralá. Je na tobě s tím něco udělat.</p>
             <h2>Úvod</h2>
-            <p>Když jsem začal studovat informatiku, velmi rychle jsem si uvědomil že pravděpodobně strávím velkou část 
-                svého života u počítače. Někdy tou dobou mě také začalo přestat bavit 3D tisknout figurky a chtěl jsem začít 
-                dělat něco zajímavějšího. Napadlo mě, proč si tedy pomocí 3D tisku nezlepšit prožitek ze sezení u počítače?
+            <p>Když jsem začal studovat informatiku, velmi rychle jsem si uvědomil že pravděpodobně strávím velkou část
+                svého života u počítače. Někdy tou dobou mě také začalo přestat bavit 3D tisknout figurky a chtěl jsem
+                začít
+                dělat něco zajímavějšího. Napadlo mě, proč si tedy pomocí 3D tisku nezlepšit prožitek ze sezení u
+                počítače?
             </p>
             <h2>Podomácku vyrobená klávesnice</h2>
-            <p>Pokud hledáte co nového zkusit se 3D tiskárnou, chcete se naučit se pájet, nebo něco o základní 
-                elektronice, nemůžu si vynachválit podomácku vyrobenou klávesnici. Je to zábava, výsledná klávsenice je 
-                nekonečně přizpůsobitelná, a využijete jí pro tvorbu dalších projektů, takže se vám brzo vrátí investice.
+            <p>Pokud hledáte co nového zkusit se 3D tiskárnou, chcete se naučit se pájet, nebo něco o základní
+                elektronice, nemůžu si vynachválit podomácku vyrobenou klávesnici. Je to zábava, výsledná klávsenice je
+                nekonečně přizpůsobitelná, a využijete jí pro tvorbu dalších projektů, takže se vám brzo vrátí
+                investice.
             </p>
-            <p>Já jsem začal s trošku zvláštní klávesnicí, chtěl jsem zkusit něco ergonomického. Ale nic vám nezabrání 
-                v tom udělat si vlastní klávesnici, která vypadá docela normálně. Nebo nemusíte dělat celou klávesnici, 
-                proces můžete ochutnat i na tvorbě macropadu, ale o těch později.
+            <p>Já jsem začal s trošku zvláštní klávesnicí, chtěl jsem zkusit něco ergonomického. Ale nic vám nezabrání
+                v tom udělat si vlastní klávesnici, která vypadá docela normálně. Nebo nemusíte rovnou dělat celou klávesnici,
+                proces můžete ochutnat i na tvorbě macropadu. Ale o těch později.
             </p>
             <!--Prostor na obrázky-->
             <h2>Anatomie klávesnice</h2>
 
             <p>Aby byl proces vytvoření klávesnice co nejjednodušší, využívají se pro tyto účely spínače mechanických
-            klávesnic. Mimo lepší pocit ze psaní, pokud přecházíte ze standardní membránové klváesnice, je hlavním 
-            důvodem jejich jednoduché použití.</p>
+                klávesnic. Mimo lepší pocit ze psaní, pokud přecházíte ze standardní membránové klváesnice, je hlavním
+                důvodem jejich jednoduché použití.</p>
             <details class="deep-dive">
                 <summary>
                     <span>Proč se používají spínače mechanických klávesnic?</span>
-                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
                 </summary>
                 <div class="details-content">
-                    <p>Každý spínač je samostatně funkční, není třeba tvořit nějaké složité 
-                    kombinace součástek. Tento druh spínačů lze jednoduše integrovat do 3D výtisků, a když se 
-                    pokazí, jednoduše se vymění.</p>
+                    <p>Každý spínač je samostatně funkční, není třeba tvořit nějaké složité
+                        kombinace součástek. Tento druh spínačů lze jednoduše integrovat do 3D výtisků, a když se
+                        pokazí, jednoduše se vymění.</p>
                 </div>
             </details>
-            <p>Na spínače se nasazují klávesy. Nebo hmatníky, chcete-li. Osobně doporučuji koupit si sadu kláves. 
-                Existují maniaci, kteří je tisknou na SLA i FDM tiskárnách, ale já nikdy nebyl dost spokojený s jejich 
-                kvalitou.Základní set kláves se dá sehnat v zahraničí od 300 do 1000 korun. Samozřejmě se dají koupit i 
-                výrazně dražší sady, ale ty na první pokusy nemůžu doporučit. 
+            <p>Na spínače se nasazují klávesy. Nebo hmatníky, chcete-li. Osobně doporučuji koupit si sadu kláves.
+                Existují maniaci, kteří je tisknou na SLA i FDM tiskárnách, ale já nikdy nebyl dost spokojený s jejich
+                kvalitou. Základní set kláves se dá sehnat v zahraničí od 300 do 1000 korun. Samozřejmě se dají koupit i
+                výrazně dražší sady, ale ty na první pokusy nemůžu doporučit.
             </p>
             <details class="deep-dive">
                 <summary>
                     <span>Na co si dát při výběru pozor?</span>
-                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
                 </summary>
                 <div class="details-content">
-                    <p>Různé sety mají rozdílné 
-                    profily. Mezi ty nejběžnější patří Cherry/OEM profil, kde se klávesy liší podle řádků. Dalším je XDA profil,
-                    kde jsou všechny klávesy stejné.</p>
+                    <p>Různé sety mají rozdílné
+                        profily. Mezi ty nejběžnější patří Cherry/OEM profil, kde se klávesy liší podle řádků. Dalším je
+                        XDA profil,
+                        kde jsou všechny klávesy stejné.</p>
                     <p>Sady kláves se také liší materiály a způsobem potisku. Double shot klávesy bývají výrazně draží,
-                        ale jejich legendy jsou vytvořené slitinou 2 různých plastů, takže se na rozdíl od potisknutých 
-                        kláves nikdy nevymažou. Také je to jeiný způsob, jak zajistit, že světlo podsvícení svítí skrz legendu* ** <br>
+                        ale jejich legendy jsou vytvořené slitinou 2 různých plastů, takže se na rozdíl od potisknutých
+                        kláves nikdy nevymažou. Také je to jeiný způsob, jak zajistit, že světlo podsvícení svítí skrz
+                        legendu* ** <br>
                         *(pokud děláte klávesnici s podsvícenými klávesami)<br>
                         **(tedy pokud si nekoupíte průhlednou barvu a neuděláte si to sami).
                     </p>
                 </div>
             </details>
-            <p>Klávesy jsou spojeny diodami v řadách, a pouhým drátem ve sloupcích. Každá řada a sloupec jsou následně 
+            <p>Klávesy jsou spojeny diodami v řadách, a pouhým drátem ve sloupcích. Každá řada a sloupec jsou následně
                 napojeny na mikrokontroler, na kterém běží QMK firmware.
             </p>
-            
+
 
             <h2>Co je potřeba pro výrobu klávesnice</h2>
-            <p>Na DIY klávesnici jsou potřeba materiály, co dost možná máte, pár speciálních součástek, a specifické díly 
-            na klávesnice.</p>
+            <p>Na DIY klávesnici jsou potřeba materiály, co dost možná máte, pár speciálních součástek, a specifické
+                díly
+                na klávesnice.</p>
             <ul>
                 <li>množství drátu</li>
                 <li>filament</li>
@@ -262,17 +415,100 @@
                 <li>tolik spínačů mechanické klávesnice, kolik chcete tlačítek *</li>
                 <li>klávesy / hmatníky *</li>
             </ul>
-            <p>* zeptejte se nejbližšího nerda, co staví custom klávesnice. Pokud ho nemáte, aliexpress (a některé <a href="https://www.42keebs.eu">místní obchody</a>
-                ) pomůžou. Hledejte "mechanical keyboard switches" a "mechanical keyboard keycaps".
+            <p>* zeptejte se nejbližšího nerda, co staví custom klávesnice. Pokud ho nemáte, aliexpress (a některé <a
+                    href="https://www.42keebs.eu">místní obchody</a>) pomůžou. Hledejte "mechanical keyboard switches" a
+                "mechanical keyboard keycaps".
             </p>
-            <p>⚠️ Ujistětě se, že spínače i klávesy jsou cherry-mx kompatibilní, tzn. spínače mají navrchu křížek, klávesy 
+            <p>⚠️ Ujistětě se, že spínače i klávesy jsou cherry-mx kompatibilní, tzn. spínače mají navrchu křížek,
+                klávesy
                 majít křížek zespodu.
             </p>
-            
+
 
             <h2>Alternativní klávesnice</h2>
+            <p>Tady konečně začíná zábava. Jakmile si totiž uvědomíte, že klávesnice mají sice nějaké standardy, ale
+                žádné pravidla, můžete si začít dělat naprosto co chcete.</p>
+            <div class="carousel-wrapper">
+                <div class="carousel-header">
+                    <div class="carousel-hint">
+                        <span class="cs">Galerie ➔</span>
+                        <span class="en">Gallery ➔</span>
+                    </div>
+                    <!-- Desktop Navigation Arrows -->
+                    <div class="carousel-nav">
+                        <button id="scroll-left" aria-label="Scroll left">←</button>
+                        <button id="scroll-right" aria-label="Scroll right">→</button>
+                    </div>
+                </div>
 
+                <div class="carousel-track" id="gallery-track">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/split79.jpeg"
+                            alt="split79">
+                        <div class="slide-caption">
+                            <p class="cs">Chcete rozdělit klávesnici vejpůl?.</p>
+                            <p class="en">Do you like your keyboards split?.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/batoid.jpg"
+                            alt="Batoid">
+                        <div class="slide-caption">
+                            <p class="cs">Co takhle zahodit půlku tlačítek?</p>
+                            <p class="en">How about removing half of the keys?</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/void40.jpg"
+                            alt="void40">
+                        <div class="slide-caption">
+                            <p class="cs">Co kdybychom seřadili klávesy přímo pod sebe?</p>
+                            <p class="en">Or we could stack the keys in a perfect grid.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/v4n.jpg"
+                            alt="v4n4g0n clone">
+                        <div class="slide-caption">
+                            <p class="cs">Je libo mini gaming klávesnici, která nechá spoustu místa pro myš?</p>
+                            <p class="en">Can I offer you a mini gaming keeb, that leaves a lot of mousing space?.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/dactyl.jpg"
+                            alt="Dactyl manuform">
+                        <div class="slide-caption">
+                            <p class="cs">Nebo něco zcela exotického?</p>
+                            <p class="en">Or would you like something more exotic?.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/rotary.jpg"
+                            alt="TKL keyboard with numpad made of rotary phone parts">
+                        <div class="slide-caption">
+                            <p class="cs">Či něco hloupého?</p>
+                            <p class="en">We also do dumb things.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <h2>Macropady</h2>
+
+            <h2>Závěr</h2>
+
+            <h2>Kontakty a cool linky</h2>
+            <ul>
+                <li><a href="https://www.42keebs.eu">42keebs.eu</a></li>
+                <li><a href="https://www.hwlab.praha.eu">hwlab.praha.eu</a></li>
+            </ul>
         </div>
 
         <!-- English Content -->
@@ -291,13 +527,30 @@
 
         toggleBtn.addEventListener('click', () => {
             document.body.classList.toggle('lang-czech');
-            
+
             if (document.body.classList.contains('lang-czech')) {
                 toggleBtn.textContent = 'Přepnout do češtiny';
             } else {
                 toggleBtn.textContent = 'Switch to English';
             }
         });
+
+        // Carousel Desktop Navigation
+        const track = document.getElementById('gallery-track');
+        const scrollLeftBtn = document.getElementById('scroll-left');
+        const scrollRightBtn = document.getElementById('scroll-right');
+
+        scrollLeftBtn.addEventListener('click', () => {
+            // Get the exact width of one slide + the 24px gap
+            const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 24;
+            track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+        });
+
+        scrollRightBtn.addEventListener('click', () => {
+            const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 24;
+            track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+        });
     </script>
 </body>
+
 </html>
