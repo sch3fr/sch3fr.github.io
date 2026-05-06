@@ -319,6 +319,41 @@
             font-style: italic;
             margin: 0;
         }
+
+        /* --- INLINE EDITORIAL IMAGE --- */
+        .editorial-image {
+            margin: 40px 0;
+            /* Gives the image plenty of breathing room from the text */
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .editorial-image img {
+            /* The Responsive Magic */
+            max-width: 100%;
+            height: auto;
+            display: block;
+
+            /* The Mid-Century Aesthetic */
+            border: 2px solid var(--ink);
+            box-shadow: 8px 8px 0px var(--sage);
+            border-radius: 2px;
+        }
+
+        .editorial-image figcaption {
+            margin-top: 20px;
+            font-family: 'Lora', Georgia, serif;
+            font-style: italic;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            color: var(--ink);
+
+            /* Adds a nice editorial accent line next to the caption */
+            padding-left: 16px;
+            border-left: 3px solid var(--terracotta);
+            opacity: 0.9;
+        }
     </style>
 </head>
 
@@ -348,9 +383,20 @@
                 investice.
             </p>
             <p>Já jsem začal s trošku zvláštní klávesnicí, chtěl jsem zkusit něco ergonomického. Ale nic vám nezabrání
-                v tom udělat si vlastní klávesnici, která vypadá docela normálně. Nebo nemusíte rovnou dělat celou klávesnici,
+                v tom udělat si vlastní klávesnici, která vypadá docela normálně. Nebo nemusíte rovnou dělat celou
+                klávesnici,
                 proces můžete ochutnat i na tvorbě macropadu. Ale o těch později.
             </p>
+            <figure class="editorial-image">
+                <!-- The Image -->
+                <img src="/images/qr-keeb-article/dumbo65.jpeg" alt="Jenda z normálnějších možností">
+
+                <!-- The Bilingual Caption -->
+                <figcaption>
+                    <span class="cs">Jenda z normálnějších možností.</span>
+                    <span class="en">A detailed look at the stage during the afternoon keynote.</span>
+                </figcaption>
+            </figure>
             <!--Prostor na obrázky-->
             <h2>Anatomie klávesnice</h2>
 
@@ -420,8 +466,7 @@
                 "mechanical keyboard keycaps".
             </p>
             <p>⚠️ Ujistětě se, že spínače i klávesy jsou cherry-mx kompatibilní, tzn. spínače mají navrchu křížek,
-                klávesy
-                majít křížek zespodu.
+                klávesy mají křížek zespodu.
             </p>
 
 
@@ -444,8 +489,7 @@
                 <div class="carousel-track" id="gallery-track">
                     <!-- Slide 1 -->
                     <div class="carousel-slide">
-                        <img src="/images/qr-keeb-article/split79.jpeg"
-                            alt="split79">
+                        <img src="/images/qr-keeb-article/split79.jpeg" alt="split79">
                         <div class="slide-caption">
                             <p class="cs">Chcete rozdělit klávesnici vejpůl?.</p>
                             <p class="en">Do you like your keyboards split?.</p>
@@ -454,8 +498,7 @@
 
                     <!-- Slide 2 -->
                     <div class="carousel-slide">
-                        <img src="/images/qr-keeb-article/batoid.jpg"
-                            alt="Batoid">
+                        <img src="/images/qr-keeb-article/batoid.jpg" alt="Batoid">
                         <div class="slide-caption">
                             <p class="cs">Co takhle zahodit půlku tlačítek?</p>
                             <p class="en">How about removing half of the keys?</p>
@@ -464,8 +507,7 @@
 
                     <!-- Slide 3 -->
                     <div class="carousel-slide">
-                        <img src="/images/qr-keeb-article/void40.jpg"
-                            alt="void40">
+                        <img src="/images/qr-keeb-article/void40.jpg" alt="void40">
                         <div class="slide-caption">
                             <p class="cs">Co kdybychom seřadili klávesy přímo pod sebe?</p>
                             <p class="en">Or we could stack the keys in a perfect grid.</p>
@@ -473,8 +515,7 @@
                     </div>
 
                     <div class="carousel-slide">
-                        <img src="/images/qr-keeb-article/v4n.jpg"
-                            alt="v4n4g0n clone">
+                        <img src="/images/qr-keeb-article/v4n.jpg" alt="v4n4g0n clone">
                         <div class="slide-caption">
                             <p class="cs">Je libo mini gaming klávesnici, která nechá spoustu místa pro myš?</p>
                             <p class="en">Can I offer you a mini gaming keeb, that leaves a lot of mousing space?.</p>
@@ -482,8 +523,7 @@
                     </div>
 
                     <div class="carousel-slide">
-                        <img src="/images/qr-keeb-article/dactyl.jpg"
-                            alt="Dactyl manuform">
+                        <img src="/images/qr-keeb-article/dactyl.jpg" alt="Dactyl manuform">
                         <div class="slide-caption">
                             <p class="cs">Nebo něco zcela exotického?</p>
                             <p class="en">Or would you like something more exotic?.</p>
