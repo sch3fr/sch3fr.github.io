@@ -508,7 +508,8 @@
                     </p>
                 </div>
             </details>
-            <p>Klávesy jsou spojeny diodami v řadách, a pouhým drátem ve sloupcích. Každá řada a sloupec jsou následně
+            <p>Klávesy jsou spojeny diodami v řadách, a pouhým drátem ve sloupcích. Výsledné zapojení 
+                tvoří matici. Každá řada a sloupec jsou následně
                 napojeny na mikrokontroler, na kterém běží QMK firmware.
             </p>
 
@@ -523,6 +524,7 @@
                 <li>microcontroller, většinou Teensy / Pro Micro / RP2040</li>
                 <li>tolik spínačů mechanické klávesnice, kolik chcete tlačítek *</li>
                 <li>klávesy / hmatníky *</li>
+                <li>&lt;volitelně&gt; Rotační enkodér</li>
             </ul>
             <p>* zeptejte se nejbližšího nerda, co staví custom klávesnice. Pokud ho nemáte, aliexpress (a některé <a
                     href="https://www.42keebs.eu">místní obchody</a>) pomůžou. Hledejte "mechanical keyboard switches" a
@@ -687,18 +689,53 @@
                     </svg>
                 </summary>
                 <div class="details-content">
-                    <p>Různé sety mají rozdílné
-                        profily. Mezi ty nejběžnější patří Cherry/OEM profil, kde se klávesy liší podle řádků. Dalším je
-                        XDA profil, kde jsou všechny klávesy stejné.</p>
-                    <p>Sady kláves se také liší materiály a způsobem potisku. Double shot klávesy bývají výrazně draží,
-                        ale jejich legendy jsou vytvořené slitinou 2 různých plastů, takže se na rozdíl od potisknutých
-                        kláves nikdy nevymažou. Také je to jeiný způsob, jak zajistit, že světlo podsvícení svítí skrz
-                        legendu* ** <br>
-                        *(pokud děláte klávesnici s podsvícenými klávesami)<br>
-                        **(tedy pokud si nekoupíte průhlednou barvu a neuděláte si to sami).
+                    <p>Different keycaps sets have different profiles. The most 
+                        common ones are Cherry / OEM profile, which has different 
+                        shapes for keys in each row. Then there is the XDA profile,
+                        which keeps all the keys the same shape.</p>
+                    <p>Keycap sets also differ in material and printing method. Double 
+                        shot keycaps are not printed, but molded from two different
+                        kinds of plastic, making them impossible to wear the printing out.
+                        But it's also the most expensive. And the only way to make 
+                        shine through keycaps for backlit keyboards* **.<br>
+                        * (That is if you're making a keyboard with backlight)<br>
+                        ** (Unless you get yourself a can of transparent color and DIY it).
                     </p>
                 </div>
             </details>
+            <p>Keys are connected by diodes in rows, and by a simple wire in columns, 
+                making a nice matrix. Each row and column is connected to a microcontroller, 
+                which runs QMK keyboard firmware.
+            </p>
+
+            <h2>Bill of materials for a keyboard</h2>
+            <p>To make yourself a DIY keyboard you need some things that you probably already 
+                have, some special things, and some keyboard specific parts.
+            </p>
+            <ul>
+                <li>A length of wire</li>
+                <li>Filament</li>
+                <li>As many 1N4148 diodes as the number of the keys on your keyboard</li>
+                <li>MCU, usually Teensy (old), Pro Micro or RP2040</li>
+                <li>As many mechanical keyboard switches as you want</li>
+                <li>Keycaps *</li>
+                <li>&lt;optional&gt; Rotary encoder</li>
+            </ul>
+            <p>* ask your closest keyboard nerd. If you don't have any, Aliexpress (and some 
+                <a href="https://42keebs.eu">local shops</a>) got you covered. Look for 
+            "mechanical keyboard swithces" and "mechanical keyboard keycaps"</p>
+            <p>⚠️ Make sure that your keycaps and your switches are cherry-mx compatible, 
+                meaning the switches have a little cross on top of them, and the keycaps 
+                have a cross on the bottom.
+            </p>
+            <h2>How to?</h2>
+            <h2>Macropads</h2>
+            <h2>Conclusion</h2>
+            <h2>Contacts and cool links</h2>
+            <ul>
+                <li><a href="https://www.42keebs.eu">42keebs.eu</a></li>
+                <li><a href="https://www.hwlab.praha.eu">hwlab.praha.eu</a></li>
+            </ul>           
         </div>
     </div>
 
