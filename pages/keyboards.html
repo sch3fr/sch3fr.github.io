@@ -1127,7 +1127,7 @@
         window.addEventListener('load', function () {
             // We use the 'total' endpoint. 'location.pathname' ensures it gets the count for this specific page.
             var code = encodeURIComponent(window.location.pathname);
-            fetch('https://YOUR-USERNAME.goatcounter.com/counter/' + code + '.json')
+            fetch('https://neosynth.goatcounter.com/counter/' + code + '.json')
                 .then(response => response.json())
                 .then(data => {
                     // Replace the dash with the actual number
