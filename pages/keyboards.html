@@ -354,6 +354,37 @@
             border-left: 3px solid var(--terracotta);
             opacity: 0.9;
         }
+
+        /* --- FULL WIDTH UNCROPPED IMAGE --- */
+        .full-width-image {
+            margin: 40px 0;
+            /* Space above and below the image */
+            padding: 0;
+        }
+
+        .full-width-image img {
+            width: 100%;
+            /* Stretches to fill the text column */
+            height: auto;
+            /* Calculates height automatically to prevent stretching/squishing */
+            display: block;
+            /* Removes the weird tiny gap browsers put under images */
+
+            /* Clean, polished MCM aesthetic */
+            border-radius: 4px;
+            border: 1px solid rgba(44, 53, 45, 0.15);
+            /* A very subtle dark green line */
+        }
+
+        .full-width-image figcaption {
+            margin-top: 12px;
+            font-family: 'Outfit', sans-serif;
+            /* Using your geometric font for contrast */
+            font-size: 0.85rem;
+            color: var(--sage);
+            text-align: center;
+            letter-spacing: 0.02em;
+        }
     </style>
 </head>
 
@@ -368,7 +399,7 @@
         <!-- Czech Content -->
         <div class="cs">
             <h1>Není důvod proč by tvoje příští klávesnice musela vypadat jako ta stará.</h1>
-            <p class="lead-text">Klávesnice, tak jak jí známe, je zastaralá. Je na tobě s tím něco udělat 
+            <p class="lead-text">Klávesnice, tak jak jí známe, je zastaralá. Je na tobě s tím něco udělat
                 aneb nepříšliš stručný úvod do 3D tisku mechanických klávesnic
             </p>
             <h2>Úvod</h2>
@@ -511,16 +542,32 @@
                     </p>
                 </div>
             </details>
-            <p>Klávesy jsou spojeny diodami v řadách, a pouhým drátem ve sloupcích. Výsledné zapojení 
+            <p>Klávesy jsou spojeny diodami v řadách, a pouhým drátem ve sloupcích. Výsledné zapojení
                 tvoří matici. Každá řada a sloupec jsou následně
-                napojeny na mikrokontroler, na kterém běží QMK firmware.
+                napojeny na mikrokontroler, na kterém běží QMK firmware Na konci stránky jsou odkazy
+                s podrobnějšími návody.
             </p>
-
-
+            <details class="deep-dive">
+                <summary>
+                    <span>Bonus? 👀</span>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </summary>
+                <div class="details-content">
+                    <p>Tato sekce měla původně být delší, ale zatímco píšu tuhle stránku Maker Faire
+                        je za míň než 24 hodin. Ale slibuji že do roka a do dne se vrátím s více
+                        podrobnostmi. Možná bude nějaká výstava/workshop/zine 👀. Zatím si musíte
+                        vystačít s odkazy na konci stránky.</p>
+                </div>
+            </details>
             <h2>Co je potřeba pro výrobu klávesnice</h2>
             <p>Na DIY klávesnici jsou potřeba materiály, co dost možná máte, pár speciálních součástek, a specifické
                 díly na klávesnice.</p>
             <ul>
+                <li>pájka a páječka</li>
+                <li>kleště a pinzety</li>
                 <li>množství drátu</li>
                 <li>filament</li>
                 <li>tolik 1N4148 diod, kolik chcete tlačítek na klávesnici</li>
@@ -536,49 +583,148 @@
             <p>⚠️ Ujistětě se, že spínače i klávesy jsou cherry-mx kompatibilní, tzn. spínače mají navrchu křížek,
                 klávesy mají křížek zespodu.
             </p>
-
-            <h2>Jak na to?</h2>
-            
             <h2>Macropady</h2>
+            <p>Macropady jsou malé výňatky klávesnic, které si připojíte k počítači a na které
+                naprogramujete jakékoliv funkce vás napadnou. Ovládání médií, jasu monitoru, macra,
+                klávesové zkratky... Pokud vás nezajímá počítačová bezpečnost můžete si i naprogramovat
+                vložení hesla stisknutím jednoho tlačítka!
+            </p>
+            <div class="carousel-wrapper">
+                <div class="carousel-header">
+                    <div class="carousel-hint">
+                        <span class="cs">Galerie ➔</span>
+                        <span class="en">Gallery ➔</span>
+                    </div>
+                    <!-- Desktop Navigation Arrows -->
+                    <div class="carousel-nav">
+                        <button id="scroll-left" aria-label="Scroll left">←</button>
+                        <button id="scroll-right" aria-label="Scroll right">→</button>
+                    </div>
+                </div>
 
-            <h2>Alternativní rozložení</h2>
+                <div class="carousel-track" id="gallery-track">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/bananaphone.jpg" alt="split79">
+                        <div class="slide-caption">
+                            <p class="cs">Bananapad.</p>
+                        </div>
+                    </div>
 
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/void9.jpg" alt="Batoid">
+                        <div class="slide-caption">
+                            <p class="cs">Macropad s rotačním enkoderem na ovládání hlasitosti.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/rickpad.jpg" alt="Batoid">
+                        <div class="slide-caption">
+                            <p class="cs">Tlačítko otevře prohlížeč, youtube, a spustí
+                                "Never Gonna Give You Up".</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/radiopad.jpg" alt="Batoid">
+                        <div class="slide-caption">
+                            <p class="cs">Macropad bez dílů mechanických klávesnic pro ovládání SDR.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>Poslední z macropadů v této galerii je specifický v tom, že nepoužívá standardní
+                klávesnicové spínače a klávesy. Postavil jsem ho pro tátu, který chtěl emluovat pocit
+                reálného rádia v jeho SDR. Tlačítka na bocích jsou klasické mikrospínače, které
+                po stisku provádějí klávesové zkratky. To stejné dělá enkodér, který s každým pootočením
+                vyšle signál klávesové zkratky na přeladění frekvence.
+            </p>
+            <h2>Přizpůsobení a alternativní rozložení</h2>
+            <p>Jakmile se začnete vrtat v makrech a dalších možnostech klávesnicového firmware,
+                zjistíte že klasické klávesnice nemají smysl. Protože co vám brání nastavit si '('
+                na stisknutí levého shiftu, ')' na stisknutí pravého shiftu, hranaté závorky na
+                dvojstisk, zatímco při podržení zachovává shift svou klasickou funkci? A nebo
+                přesun modifikačních kláves (meta, ctrl, alt, shift) na dlouhý stisk kláves na
+                domovské řadě (<a href="https://precondition.github.io/home-row-mods">tzv. home row
+                    mods)</a>? V moment kdy tohle ovládnete zjistíte, že je to ta nejvíc cool věc
+                všech dob.
+            </p>
+            <p>Pokud jste to dočetli až sem, je velká šance že víte že QWERTY není to nejlepší
+                rozložení klávesnice, jen je defaultní. Taky jste možná slyšeli o DVORAK nebo
+                COLEMAK. Ale napadlo vás někdy že si můžete udělat vlastní rozložení? <br>
+                Mě ano, a výsledek mé diplomové práce s cílem optimalizace rozložení kláves na
+                klávesnici pro psaní v českém jazyce je následující zrůdnost.
+            </p>
+            <figure class="full-width-image">
+                <img src="/images/qr-keeb-article/ga-v1.png" alt="Full uncropped convention photo">
+
+                <figcaption>Výsledek optimalizace pro češtinu po aplikaci genetického algoritmu</figcaption>
+            </figure>
+            <p>Nutno říci, že pasní na takovéhle klávesnici je neuvěřitelně pohodlné. A matoucí.</p>
             <h2>Závěr</h2>
-
-            <h2>Kontakty a cool linky</h2>
+            <p>Na závěr vám chci jen poděkovat za naskenování náhodného QR kódu a že jste si prolezli. 
+                tuto stránku. Doufám že si užíváte (nebo jste si užili) Maker Faire, že jsem vás 
+                přesvědčil vyzkoušet udělat si klávesnici, a že mi vaše výtvory nějakým způsobem
+                ukážete :)
+                <br>
+                Pokud jsem ještě na místě, neváhejte se mě zeptat na cokoliv, a možná vám i něco dám :O
+            </p>
+            <h2>Cool linky</h2>
             <ul>
                 <li><a href="https://www.42keebs.eu">42keebs.eu</a></li>
                 <li><a href="https://www.hwlab.praha.eu">hwlab.praha.eu</a></li>
                 <li><a href="https://joeyvigil.github.io/MechanicalKeys/tutorial">Hlubší návod na stavění klávesnic</a></li>
+                <li><a href="https://www.keyboard-layout-editor.com/">Nástroj na design vlastních rozložení</a></li>
+                <li><a href="https://kbfirmware.com/">Jednoduchý generátor firmware</a></li>
+                <li><a href="https://web.archive.org/web/20210305140905/https://matt3o.com/book/">
+                        How to build a custom keyboard: an introduction
+                    </a> od Matt3o, zahrnuje podrobnosti k designu vlastní case klávesnice (anglicky)</li>
+            </ul>
+            <h3>Klávesnice ke stažení cože?</h3>
+            <ul>
+                <li><a href="https://github.com/jurassic73/split89">Split89</a></li>
+                <li><a href="https://www.reddit.com/r/MechanicalKeyboards/comments/azyfnl/3dprinted_handwired_super_affordable_keyboard/">SiCK-68</a></li>
+                <li><a href="https://www.printables.com/model/307908-mechanical-keyboard-68-key-65">Clueboard68</a>
+            </ul>
+            <h2>Kontakt</h2>
+            <figure class="editorial-image">
+                <img src="/images/qr-keeb-article/hackervibes.jpg" alt="Jenda z normálnějších možností">
+            </figure>
+            <p>Fanda. Místní snílek, profesionální trouba. Maker.</p>
+            <ul>
+                <li><a href="https://discordapp.com/user/320557691472969730">Discord: </a>neosynth</li>
+                <li>Instagram</li>
             </ul>
         </div>
 
         <!-- English Content -->
         <div class="en">
-            <h1>There is no reason why your next keyboard should look like the 
+            <h1>There is no reason why your next keyboard should look like the
                 old one.</h1>
-            <p class="lead-text">The keyboard as we know it is obsolete. It's 
-                up to you to change that, a Not so short intro to 3D printing 
+            <p class="lead-text">The keyboard as we know it is obsolete. It's
+                up to you to change that, a Not so short intro to 3D printing
                 custom keyboards.</p>
             <h2>Intro</h2>
-            <p>When I started studying computer science I quickly realized that 
-                I'm probably gonna spend a lot of my time in front of a computer. 
-                Around the same time I wanted to move on from printing figures 
-                and small toys. I wanted to try something more interesting. I 
-                thought to myself, why shouldn't I use 3D printing to make my 
+            <p>When I started studying computer science I quickly realized that
+                I'm probably gonna spend a lot of my time in front of a computer.
+                Around the same time I wanted to move on from printing figures
+                and small toys. I wanted to try something more interesting. I
+                thought to myself, why shouldn't I use 3D printing to make my
                 computer time more enjoyable?
             </p>
             <h2>Homemade keyboard</h2>
-            <p>If you're looking for something new to print on your 3D printer, 
-                want to learn to solder or just something about electronics, I 
-                can't recommend making your own keyboard enough. It's fun, your 
-                final keyboard is infinitely customizable, and you will use it 
-                to make your next project, which means it has a great return of 
+            <p>If you're looking for something new to print on your 3D printer,
+                want to learn to solder or just something about electronics, I
+                can't recommend making your own keyboard enough. It's fun, your
+                final keyboard is infinitely customizable, and you will use it
+                to make your next project, which means it has a great return of
                 investment.
             </p>
             <p>I initially started on the deep end with an ergonomic keyboard,
-                but there's nothing stopping you from making a traditional looking 
-                keyboard. Or you don't have to make a whole keyboard as you tip 
+                but there's nothing stopping you from making a traditional looking
+                keyboard. Or you don't have to make a whole keyboard as you tip
                 your toes into this infinite rabbit hole, you can just try making
                 a macropad, but more on those later.
             </p>
@@ -590,8 +736,8 @@
             </figure>
 
             <h2>Alternative keyboards</h2>
-            <p>This is where the true fun starts. Once you realize that there 
-                are some standards set in the world of keyboards, but there are 
+            <p>This is where the true fun starts. Once you realize that there
+                are some standards set in the world of keyboards, but there are
                 no rules, you can do whatever the heck you want.
             </p>
             <div class="carousel-wrapper">
@@ -656,9 +802,9 @@
             </div>
 
             <h2>Anatomy of a keyboard</h2>
-            <p>To make a process of making the keyboard as easy as possible, people 
-                are using mechanical keyboard switches. Outside of better typing 
-                feel (if you're coming from your standard e-waste keyboard), the 
+            <p>To make a process of making the keyboard as easy as possible, people
+                are using mechanical keyboard switches. Outside of better typing
+                feel (if you're coming from your standard e-waste keyboard), the
                 reason why we use them is their ease of use.
             </p>
 
@@ -671,23 +817,23 @@
                     </svg>
                 </summary>
                 <div class="details-content">
-                    <p>Every single switch works by itself, there's no need for 
-                        any difficult circuits or parts combination. This type of 
-                        switches is easy to integrate into 3D prints, and if one 
-                        goes bad, switching them (ha!) is one of the easiest 
+                    <p>Every single switch works by itself, there's no need for
+                        any difficult circuits or parts combination. This type of
+                        switches is easy to integrate into 3D prints, and if one
+                        goes bad, switching them (ha!) is one of the easiest
                         things ever.</p>
                 </div>
             </details>
-            <p>On top of switches is what you actually see. The keycaps. I 
-                personally recommend getting the whole keycap set. There are 
-                maniacs who do print their own keycaps, it is possible on both 
-                FDM and SLA printeres. However I was never impressed with 
-                the quality of printed keycaps. You can get a basic keycaps 
-                set on Aliexpress for somewhere between €10 to €30. Of course 
-                the sky is the limit in terms of keycap prices, but a basic 
+            <p>On top of switches is what you actually see. The keycaps. I
+                personally recommend getting the whole keycap set. There are
+                maniacs who do print their own keycaps, it is possible on both
+                FDM and SLA printeres. However I was never impressed with
+                the quality of printed keycaps. You can get a basic keycaps
+                set on Aliexpress for somewhere between €10 to €30. Of course
+                the sky is the limit in terms of keycap prices, but a basic
                 set is enough to get you started.
             </p>
-             <details class="deep-dive">
+            <details class="deep-dive">
                 <summary>
                     <span>Deep-er dive on keycaps</span>
                     <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -696,14 +842,14 @@
                     </svg>
                 </summary>
                 <div class="details-content">
-                    <p>Different keycaps sets have different profiles. The most 
-                        common ones are Cherry / OEM profile, which has different 
+                    <p>Different keycaps sets have different profiles. The most
+                        common ones are Cherry / OEM profile, which has different
                         shapes for keys in each row. Then there is the XDA profile,
                         which keeps all the keys the same shape.</p>
-                    <p>Keycap sets also differ in material and printing method. Double 
+                    <p>Keycap sets also differ in material and printing method. Double
                         shot keycaps are not printed, but molded from two different
                         kinds of plastic, making them impossible to wear the printing out.
-                        But it's also the most expensive. And the only way to make 
+                        But it's also the most expensive. And the only way to make
                         shine through keycaps for backlit keyboards* **.</p>
                     <p>
                         * (That is if you're making a keyboard with backlight)<br>
@@ -711,16 +857,33 @@
                     </p>
                 </div>
             </details>
-            <p>Keys are connected by diodes in rows, and by a simple wire in columns, 
-                making a nice matrix. Each row and column is connected to a microcontroller, 
+            <p>Keys are connected by diodes in rows, and by a simple wire in columns,
+                making a nice matrix. Each row and column is connected to a microcontroller,
                 which runs QMK keyboard firmware.
             </p>
-
+            <details class="deep-dive">
+                <summary>
+                    <span>Bonus? 👀</span>
+                    <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                    </svg>
+                </summary>
+                <div class="details-content">
+                    <p>This section was supposed to be longer, in much more detail. But as I'm typing
+                        this, the Maker Faire is starting in less than 24 hours. Mark my words dear
+                        reader, in a year I will be back with more details, and maybe my own
+                        panel/workshop/zine 👀. For now you have to make do with links at the bottom
+                        of the page.</p>
+                </div>
+            </details>
             <h2>Bill of materials for a keyboard</h2>
-            <p>To make yourself a DIY keyboard you need some things that you probably already 
+            <p>To make yourself a DIY keyboard you need some things that you probably already
                 have, some special things, and some keyboard specific parts.
             </p>
             <ul>
+                <li>A soldering iron and solder</li>
+                <li>pliers and tweezers</li>
                 <li>A length of wire</li>
                 <li>Filament</li>
                 <li>As many 1N4148 diodes as the number of the keys on your keyboard</li>
@@ -730,18 +893,106 @@
                 <li>Keycaps *</li>
                 <li>&lt;optional&gt; Rotary encoder</li>
             </ul>
-            <p>* ask your closest keyboard nerd. If you don't have any, Aliexpress (and some 
-                <a href="https://42keebs.eu">local shops</a>) got you covered. Look for 
-            "mechanical keyboard swithces" and "mechanical keyboard keycaps"</p>
-            <p>⚠️ Make sure that your keycaps and your switches are cherry-mx compatible, 
-                meaning the switches have a little cross on top of them, and the keycaps 
+            <p>* ask your closest keyboard nerd. If you don't have any, Aliexpress (and some
+                <a href="https://42keebs.eu">local shops</a>) got you covered. Look for
+                "mechanical keyboard swithces" and "mechanical keyboard keycaps"
+            </p>
+            <p>⚠️ Make sure that your keycaps and your switches are cherry-mx compatible,
+                meaning the switches have a little cross on top of them, and the keycaps
                 have a cross on the bottom.
             </p>
-            <h2>How to?</h2>
             <h2>Macropads</h2>
-            <h2>Alternative layouts</h2>
+            <p>Macropads are small "pieces" of keyboards, that you can connect to a computer 
+                and program to do whatever the heck you want. Media control, brightness settings, 
+                macros, keyboard shortcuts... If you don't care about computer security, you could 
+                even program a whole password to a press of a button!
+            </p>
+            <div class="carousel-wrapper">
+                <div class="carousel-header">
+                    <div class="carousel-hint">
+                        <span class="cs">Galerie ➔</span>
+                        <span class="en">Gallery ➔</span>
+                    </div>
+                    <!-- Desktop Navigation Arrows -->
+                    <div class="carousel-nav">
+                        <button id="scroll-left" aria-label="Scroll left">←</button>
+                        <button id="scroll-right" aria-label="Scroll right">→</button>
+                    </div>
+                </div>
+
+                <div class="carousel-track" id="gallery-track">
+                    <!-- Slide 1 -->
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/bananaphone.jpg" alt="split79">
+                        <div class="slide-caption">
+                            <p class="cs">Bananapad.</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/void9.jpg" alt="Batoid">
+                        <div class="slide-caption">
+                            <p class="cs">Macropad with rotary encoder that changes the volume.</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/rickpad.jpg" alt="Batoid">
+                        <div class="slide-caption">
+                            <p class="cs">This single button opens a browser, goes to youtube, and 
+                                plays "Never Gonna Give You Up".</p>
+                        </div>
+                    </div>
+
+                    <div class="carousel-slide">
+                        <img src="/images/qr-keeb-article/radiopad.jpg" alt="Batoid">
+                        <div class="slide-caption">
+                            <p class="cs">Macropad without any mechanical keyboard parts used for 
+                                SDR controls..</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <p>The last macropad in this gallery is special. It does not use any mechanical 
+                    keyboard switches or keycaps. I built it for my dad, who wanted to emulate a 
+                    feeling of a real radio when using his SDR. The buttons on the sides are classic
+                    microswitches which are programmed to send a specific keyboard shortcut when pressed.
+                    The seame goes for the encoder, which sends a signal tuning command whenever it 
+                    is rotated.
+                </p>
+            <h2>Customization and alternative layouts</h2>
+            <p>Once you start digging deep into macros and other firmware settings, you 
+                will realize that classic keyboards do not make sense anymore. Because 
+                what is stopping you from setting '(' to a left shift press, ')' to 
+                right shift press, square brackets on double press, all while keeping 
+                the shift functionality on hold. Or the coolest thing ever- programming 
+                modifiers to your home rome. It's called <a href="https://precondition.github.io/home-row-mods">
+                    home row mods</a>, and once you master that will you feel like an 
+                1337 hacker.
+            </p>
+            <p>If I kept your attention this long, chances are, you know that QWERTY is neither
+                the best nor the only thing out there. You've probably heard of DVORAK and 
+                COLEMAK. But what if I told you you can make your own layout? I did. 
+                <br>
+                As a main goal of my masters thesis I made the following layout which is optimized 
+                for typing in czech.
+            </p>
+                        <figure class="full-width-image">
+                <img src="/images/qr-keeb-article/ga-v1.png" alt="Full uncropped convention photo">
+
+                <figcaption>Result of applying a genetic algorithm to the keyboard layout problem</figcaption>
+            </figure>
+            <p>I gotta admit, that once you get over the confusion, typing on this is veeery comfy.</p>
             <h2>Conclusion</h2>
-            <h2>Contacts and cool links</h2>
+            <p>If you made it this far, I just wanna say thank you for trusting a random QR code 
+                and for checking out this webpage. I hope you're enjoying (or have enjoyed) the 
+                2026 Maker Faire, that I convinced you to make yoursel a nice keyboard, and that you 
+                will find a way to show it to me in the future :).<br>
+                If you see me in person, don't hesitate to ask any question, and I may have a little 
+                something something for you :O
+            </p>
+            <h2>Cool links</h2>
             <ul>
                 <li><a href="https://www.42keebs.eu">42keebs.eu</a></li>
                 <li><a href="https://www.hwlab.praha.eu">hwlab.praha.eu</a></li>
@@ -749,10 +1000,26 @@
                 <li><a href="https://www.keyboard-layout-editor.com/">Keyboard layout editor</a></li>
                 <li><a href="https://kbfirmware.com/">Keyboard firmware builder</a></li>
                 <li><a href="https://web.archive.org/web/20210305140905/https://matt3o.com/book/">
-                    How to build a custom keyboard: an introduction
-                </a> by Matt3o, includes design guildelines for your own case</li>
-            </ul>           
-        </div>
+                        How to build a custom keyboard: an introduction
+                    </a> by Matt3o, includes design guildelines for your own case</li>
+            </ul>
+            <h3>You wouldn't download a keyboard</h3>
+            <ul>
+                <li><a href="https://github.com/jurassic73/split89">Split89</a></li>
+                <li><a href="https://www.reddit.com/r/MechanicalKeyboards/comments/azyfnl/3dprinted_handwired_super_affordable_keyboard/">SiCK-68</a></li>
+                <li><a href="https://www.printables.com/model/307908-mechanical-keyboard-68-key-65">Clueboard68</a>
+            </ul>
+            <h2>Contact</h2>
+            <figure class="editorial-image">
+                <img src="/images/qr-keeb-article/hackervibes.jpg" alt="Jenda z normálnějších možností">
+            </figure>
+            <p>Fanda. Local dreamer, professional moron. Maker.</p>
+            <ul>
+                <li><a href="https://discordapp.com/user/320557691472969730">Discord: </a>neosynth</li>
+                <li>Instagram</li>
+            </ul>
+            </div>
+
     </div>
 
     <!-- The toggle button -->
