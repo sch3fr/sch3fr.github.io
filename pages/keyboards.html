@@ -429,7 +429,7 @@
                 počítače?
             </p>
             <h2>Podomácku vyrobená klávesnice</h2>
-            <p>Pokud hledáte co nového zkusit se 3D tiskárnou, chcete se naučit se pájet, nebo něco o základní
+            <p>Pokud hledáte co nového zkusit se 3D tiskárnou, chcete se naučit pájet, nebo něco o základní
                 elektronice, nemůžu si vynachválit podomácku vyrobenou klávesnici. Je to zábava, výsledná klávesnice je
                 nekonečně přizpůsobitelná, a využijete jí pro tvorbu dalších projektů, takže se vám brzo vrátí
                 investice.
@@ -456,17 +456,17 @@
                     </div>
                     <!-- Desktop Navigation Arrows -->
                     <div class="carousel-nav">
-                        <button id="scroll-left" aria-label="Scroll left">←</button>
-                        <button id="scroll-right" aria-label="Scroll right">→</button>
+                        <button class="scroll-left" aria-label="Scroll left">←</button>
+                        <button class="scroll-right" aria-label="Scroll right">→</button>
                     </div>
                 </div>
 
-                <div class="carousel-track" id="gallery-track">
+                <div class="carousel-track">
                     <!-- Slide 1 -->
                     <div class="carousel-slide">
                         <img src="/images/qr-keeb-article/split79.jpeg" alt="split79">
                         <div class="slide-caption">
-                            <p class="cs">Chcete rozdělit klávesnici vejpůl?.</p>
+                            <p class="cs">Chcete rozdělit klávesnici vejpůl?</p>
                             <p class="en">Do you like your keyboards split?.</p>
                         </div>
                     </div>
@@ -553,7 +553,7 @@
                         XDA profil, kde jsou všechny klávesy stejné.</p>
                     <p>Sady kláves se také liší materiály a způsobem potisku. Double shot klávesy bývají výrazně draží,
                         ale jejich legendy jsou vytvořené slitinou 2 různých plastů, takže se na rozdíl od potisknutých
-                        kláves nikdy nevymažou. Také je to jeiný způsob, jak zajistit, že světlo podsvícení svítí skrz
+                        kláves nikdy nevymažou. Také je to jediný způsob, jak zajistit, že světlo podsvícení svítí skrz
                         legendu* ** </p>
                     <p>
                         *(pokud děláte klávesnici s podsvícenými klávesami)<br>
@@ -578,7 +578,7 @@
                     <p>Tato sekce měla původně být delší, ale zatímco píšu tuhle stránku Maker Faire
                         je za míň než 24 hodin. Ale slibuji že do roka a do dne se vrátím s více
                         podrobnostmi. Možná bude nějaká výstava/workshop/zine 👀. Zatím si musíte
-                        vystačít s odkazy na konci stránky.</p>
+                        vystačit s odkazy na konci stránky.</p>
                 </div>
             </details>
             <h2>Co je potřeba pro výrobu klávesnice</h2>
@@ -629,12 +629,12 @@
                     </div>
                     <!-- Desktop Navigation Arrows -->
                     <div class="carousel-nav">
-                        <button id="scroll-left" aria-label="Scroll left">←</button>
-                        <button id="scroll-right" aria-label="Scroll right">→</button>
+                        <button class="scroll-left" aria-label="Scroll left">←</button>
+                        <button class="scroll-right" aria-label="Scroll right">→</button>
                     </div>
                 </div>
 
-                <div class="carousel-track" id="gallery-track">
+                <div class="carousel-track">
                     <!-- Slide 1 -->
                     <div class="carousel-slide">
                         <img src="/images/qr-keeb-article/bananaphone.jpg" alt="split79">
@@ -694,9 +694,9 @@
 
                 <figcaption>Výsledek optimalizace pro češtinu po aplikaci genetického algoritmu</figcaption>
             </figure>
-            <p>Nutno říci, že pasní na takovéhle klávesnici je neuvěřitelně pohodlné. A matoucí.</p>
+            <p>Nutno říci, že psaní na takovéhle klávesnici je neuvěřitelně pohodlné. A matoucí.</p>
             <h2>Závěr</h2>
-            <p>Na závěr vám chci jen poděkovat za naskenování náhodného QR kódu a že jste si prolezli.
+            <p>Na závěr vám chci jen poděkovat za naskenování náhodného QR kódu a že jste si prolezli
                 tuto stránku. Doufám že si užíváte (nebo jste si užili) Maker Faire, že jsem vás
                 přesvědčil vyzkoušet udělat si klávesnici, a že mi vaše výtvory nějakým způsobem
                 ukážete :)
@@ -785,12 +785,12 @@
                     </div>
                     <!-- Desktop Navigation Arrows -->
                     <div class="carousel-nav">
-                        <button id="scroll-left" aria-label="Scroll left">←</button>
-                        <button id="scroll-right" aria-label="Scroll right">→</button>
+                        <button class="scroll-left" aria-label="Scroll left">←</button>
+                        <button class="scroll-right" aria-label="Scroll right">→</button>
                     </div>
                 </div>
 
-                <div class="carousel-track" id="gallery-track">
+                <div class="carousel-track">
                     <!-- Slide 1 -->
                     <div class="carousel-slide">
                         <img src="/images/qr-keeb-article/split79.jpeg" alt="split79">
@@ -966,12 +966,12 @@
                     </div>
                     <!-- Desktop Navigation Arrows -->
                     <div class="carousel-nav">
-                        <button id="scroll-left" aria-label="Scroll left">←</button>
-                        <button id="scroll-right" aria-label="Scroll right">→</button>
+                        <button class="scroll-left" aria-label="Scroll left">←</button>
+                        <button class="scroll-right" aria-label="Scroll right">→</button>
                     </div>
                 </div>
 
-                <div class="carousel-track" id="gallery-track">
+                <div class="carousel-track">
                     <!-- Slide 1 -->
                     <div class="carousel-slide">
                         <img src="/images/qr-keeb-article/bananaphone.jpg" alt="split79">
@@ -1098,29 +1098,36 @@
             }
         });
 
-        // Carousel Desktop Navigation
-        const track = document.getElementById('gallery-track');
-        const scrollLeftBtn = document.getElementById('scroll-left');
-        const scrollRightBtn = document.getElementById('scroll-right');
+        // Wait for the HTML to fully load before running the script
+        document.addEventListener('DOMContentLoaded', () => {
 
-        scrollLeftBtn.addEventListener('click', () => {
-            // Get the exact width of one slide + the 24px gap
-            const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 24;
-            track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+            const allCarousels = document.querySelectorAll('.carousel-wrapper');
+            console.log(`Found ${allCarousels.length} carousels on the page!`); // Check your console for this!
+
+            allCarousels.forEach((carousel, index) => {
+                const track = carousel.querySelector('.carousel-track');
+                const scrollLeftBtn = carousel.querySelector('.scroll-left');
+                const scrollRightBtn = carousel.querySelector('.scroll-right');
+
+                // Safety check
+                if (!track || !scrollLeftBtn || !scrollRightBtn) {
+                    console.warn(`Carousel ${index + 1} is missing its track or buttons.`);
+                    return;
+                }
+
+                scrollLeftBtn.addEventListener('click', () => {
+                    const slide = track.querySelector('.carousel-slide');
+                    const slideWidth = slide ? slide.offsetWidth + 24 : 300;
+                    track.scrollBy({ left: -slideWidth, behavior: 'smooth' });
+                });
+
+                scrollRightBtn.addEventListener('click', () => {
+                    const slide = track.querySelector('.carousel-slide');
+                    const slideWidth = slide ? slide.offsetWidth + 24 : 300;
+                    track.scrollBy({ left: slideWidth, behavior: 'smooth' });
+                });
+            });
         });
-
-        scrollRightBtn.addEventListener('click', () => {
-            const slideWidth = track.querySelector('.carousel-slide').offsetWidth + 24;
-            track.scrollBy({ left: slideWidth, behavior: 'smooth' });
-        });
-
-        (function () {
-            var script = document.createElement('script');
-            script.async = true;
-            script.src = '//gc.zgo.at/count.js';
-            script.setAttribute('data-goatcounter', 'https://neosynth.goatcounter.com/count');
-            document.head.appendChild(script);
-        })();
 
         // 2. Fetch and Display the count
         // We wait for the page to load, then ask GoatCounter for the total hits for this URL
